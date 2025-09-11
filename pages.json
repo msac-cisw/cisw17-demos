@@ -1,0 +1,25 @@
+{
+  "pages": [
+    {
+      "title": "WEB03 Happy or Sad",
+      "description": "Use JS to change the images to be happy or sad.",
+      "filename": "HappyOrSad/web03-happy-sad.html",
+      "icon": "😀",
+      "status": "active"
+    },
+    {
+      "title": "Coming Soon",
+      "description": "More exciting content on the way",
+      "filename": "",
+      "icon": "🚀",
+      "status": "coming-soon"
+    },
+    {
+      "title": "Future Project",
+      "description": "Stay tuned for updates",
+      "filename": "",
+      "icon": "💡",
+      "status": "coming-soon"
+    }
+  ]
+}
