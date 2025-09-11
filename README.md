@@ -1,6 +1,11 @@
-# Pages Index
+# CISW 17 Demo Files
 
-A modern, responsive index page that dynamically loads page listings from a JSON configuration file.
+These are in class demos and assignments.
+
+## [🚀 View on the Web](https://msac-cisw.github.io/cisw17-demos/)
+
+
+---
 
 ## Adding New Pages
 
