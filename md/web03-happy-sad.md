@@ -41,7 +41,7 @@ Create two HTML buttons.
 
 ## Results area setup
 
-Create a `&lt;div&gt;` for your result with `id="mood"`.
+Create a **div** for your result with `id="mood"`.
 
 <pre>
 <code>
