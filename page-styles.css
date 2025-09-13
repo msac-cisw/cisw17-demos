@@ -48,3 +48,10 @@ footer {
   margin-top: 3em;
   font-style: italic;
 }
+
+/* Add padding for mobile devices */
+@media (max-width: 600px) {
+  body {
+    padding: 0 1em;
+  }
+}
