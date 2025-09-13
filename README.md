@@ -1,15 +1,21 @@
 # CISW 17 Demo Files
 
-These are in class demos and assignments.
+These are classroom demos.
 
 ## [🚀 View on the Web](https://msac-cisw.github.io/cisw17-demos/)
 
 
----
+## Markdown
 
-## Adding New Pages
+Create the markdown tutorial in the `md` folder.
 
-To add a new page, simply edit the `pages.json` file and add a new entry:
+Add the filename to `build.sh`.
+
+Run `build.sh`.
+
+The html file will be in the `demos` folder.
+
+Edit the `pages.json` file and add a new entry:
 
 ```json
 {
@@ -29,11 +35,6 @@ To add a new page, simply edit the `pages.json` file and add a new entry:
 - **icon**: An emoji or icon to display
 - **status**: Either "active" or "coming-soon"
 
-### Layout Behavior
-
-- **3 or fewer pages**: Displays in a responsive card grid
-- **4+ pages**: Automatically switches to a compact list view
-
 ## Example
 
 ```json
@@ -50,4 +51,4 @@ To add a new page, simply edit the `pages.json` file and add a new entry:
 }
 ```
 
-Just save the `pages.json` file and refresh the index page - no HTML editing required!
+**Pandoc required to build files.**

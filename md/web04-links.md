@@ -6,7 +6,7 @@ Create links between pages in a website.
 
 **Tools Needed**
 
-You will need a [code editor](../code-editors.html) and a web browser.
+You will need a [code editor](/demos/code-editors.html) and a web browser.
 
 ## Internal vs. External Links
 
@@ -26,7 +26,7 @@ Additional attributes like `target="_blank"` open links in new tabs, and `title=
 
 ## Step 1 – Setup 2 Basic Pages
 
-Create two [basic html files](../web00-basic-html/).
+Create two [basic html files](/demos/web00-basic-html.html).
 
 These will be **Page 1** and **Page 2**.
 
@@ -73,6 +73,6 @@ Click here to visit Page 1
 
 Test that the links work to send you back and forth between the pages.
 
-<img src="imgs/page1.png" width="400px" alt="Page 1">
+<img src="/imgs/web04-page1.png" width="400px" alt="Page 1">
 
-<img src="imgs/page2.png" width="400px" alt="Page 2">
+<img src="/imgs/web04-page2.png" width="400px" alt="Page 2">

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="$lang$" $if(dir)$ dir="$dir$" $endif$>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Web Demos</title>
+    <link rel="icon" type="image/png" href="imgs/logo.png" />
+    <link rel="stylesheet" href="/page-styles.css" />
+  </head>
+
+  <body>
+    $body$
+
+    <footer>
+      &copy; <span id="year"></span>Sable Cantus
+    </footer>
+    <script>
+      const currentYear = new Date().getFullYear();
+      document.getElementById("year").textContent = currentYear;
+    </script>
+  </body>
+</html>

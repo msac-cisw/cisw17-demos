@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="" >
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Web Demos</title>
+    <link rel="icon" type="image/png" href="imgs/logo.png" />
+    <link rel="stylesheet" href="/page-styles.css" />
+  </head>
+
+  <body>
+    <h1 id="creating-links">Creating Links</h1>
+    <p><strong>Objectives</strong></p>
+    <p>Create links between pages in a website.</p>
+    <p><strong>Tools Needed</strong></p>
+    <p>You will need a <a href="/demos/code-editors.html">code
+    editor</a> and a web browser.</p>
+    <h2 id="internal-vs.-external-links">Internal vs. External
+    Links</h2>
+    <p><strong>Internal links</strong> connect to pages within your own
+    website and use relative paths like <code>href="about.html"</code>
+    or <code>href="../contact.html"</code>. These links keep visitors on
+    your site and load faster since they don’t require connecting to
+    external servers.</p>
+    <p><strong>External links</strong> point to pages on other websites
+    and require full URLs like <code>href="https://example.com"</code>.
+    They take users away from your site to another domain, so it’s often
+    good practice to add <code>target="_blank"</code> to open them in a
+    new tab, keeping your original page accessible to the visitor.</p>
+    <h2 id="anchor-tags">Anchor Tags</h2>
+    <p><strong>Anchor tags</strong> (<code>&lt;a&gt;</code>) are HTML
+    elements used to create clickable links on web pages. The
+    <code>href</code> attribute specifies the destination.</p>
+    <p><code>&lt;a href="contact.html"&gt;Contact Us&lt;/a&gt;</code>
+    creates an internal link, while
+    <code>&lt;a href="https://mtsac.edu/cis"&gt;CIS Department&lt;/a&gt;</code>
+    links to an external site.</p>
+    <p>You can also link to sections within the same page using
+    <code>&lt;a href="#section-id"&gt;Jump to Section&lt;/a&gt;</code>
+    where the target element has <code>id="section-id"</code>.</p>
+    <p>Additional attributes like <code>target="_blank"</code> open
+    links in new tabs, and <code>title="Description"</code> provide
+    hover tooltips for better user experience.</p>
+    <h2 id="step-1-setup-2-basic-pages">Step 1 – Setup 2 Basic
+    Pages</h2>
+    <p>Create two <a href="/demos/web00-basic-html.html">basic html
+    files</a>.</p>
+    <p>These will be <strong>Page 1</strong> and <strong>Page
+    2</strong>.</p>
+    <p>Name the html files <strong>page1.html</strong> and
+    <strong>page2.html</strong>.</p>
+    <p>Update the title to “Page 1” for page1.html and “Page 2” for
+    page2.html.</p>
+    <p>Add an <strong>h1</strong> for page1.html that is “This is Page
+    1”.</p>
+    <p>Creat a blank *<em>styles.css</em> file.</p>
+    <p>Your working folder should be similar to this:</p>
+    <pre>
+    WorkingFolder
+    ├── page1.html
+    ├── page2.html
+    └── styles.css
+    </pre>
+    <h2 id="step-2-create-links-between-the-pages">Step 2 – Create Links
+    Between the Pages</h2>
+    <p>We are going to create links to move from Page 1 to Page 2 and
+    from Page 2 back to Page 1.</p>
+    <p>Create a new paragraph and insert this code into
+    <strong>page1.html</strong>.</p>
+    <pre>
+    <code>
+    &lt;a href="page2.html" title="Navigate to Page 2"&gt;
+    Click here to visit Page 2
+    &lt;/a&gt;.
+    </code>
+    </pre>
+    <p>Insert the following into <strong>page2.html</strong>.</p>
+    <pre>
+    <code>
+    &lt;a href="page1.html" title="Navigate to Page 1"&gt;
+    Click here to visit Page 1
+    &lt;/a&gt;.
+    </code>
+    </pre>
+    <p>Test that the links work to send you back and forth between the
+    pages.</p>
+    <p><img src="/imgs/web04-page1.png" width="400px" alt="Page 1"></p>
+    <p><img src="/imgs/web04-page2.png" width="400px" alt="Page 2"></p>
+
+    <footer>
+      &copy; <span id="year"></span>Sable Cantus
+    </footer>
+    <script>
+      const currentYear = new Date().getFullYear();
+      document.getElementById("year").textContent = currentYear;
+    </script>
+  </body>
+</html>
