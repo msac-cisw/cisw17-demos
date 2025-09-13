@@ -6,7 +6,7 @@ Create a basic HTML page.
 
 **Tools Needed**
 
-A [code editor](/demos/code-editors.html) and a web browser.
+A [code editor](code-editors.html) and a web browser.
 
 ## HTML Page Setup
 

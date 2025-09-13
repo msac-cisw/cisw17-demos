@@ -8,7 +8,7 @@ Use JavaScript to dynamically update the web page.
 
 **Tools Needed**
 
-You will need a [code editor](/demos/code-editors.html) and a web browser.
+You will need a [code editor](code-editors.html) and a web browser.
 
 ## HTML Page Setup
 
@@ -16,7 +16,7 @@ Create a working folder named `HappyOrSad`.
 
 Navigate to the new folder. Open the folder in your IDE if you are using one.
 
-Create a [basic html files](/demos/web00-basic-html.html) named `happy-sad.html`
+Create a [basic html files](web00-basic-html.html) named `happy-sad.html`
 
 Change the **title** to show "Happy or Sad".
 
@@ -78,7 +78,7 @@ We will use `onclick=""` to provide the command that changes the text content of
 
 Load your page in the browser and test it out. It should be basic, but functional.
 
-<img src="/imgs/web03-basic.png" width="400px">
+<img src="../imgs/web03-basic.png" width="400px">
 
 ## Adding some CSS
 
@@ -110,7 +110,7 @@ Add a style tag in the **head**.
     &lt;/style&gt;
 </code></pre>
 
-<img src="/imgs/web03-styled.png" width="400px">
+<img src="../imgs/web03-styled.png" width="400px">
 
 ## Going further
 
