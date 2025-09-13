@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CISW 17 Demos</title>
+    <link rel="stylesheet" href="../page-styles.css" />
+  </head>
+
+  <body>
+    <h1>WEB00 – A Basic HTML Page</h1>
+    <p><strong>Objectives</strong></p>
+    <p>Create a basic HTML page.</p>
+    <p><strong>Tools Needed</strong></p>
+    <p>A code editor and a web browser.</p>
+    <p>
+      Refer to the <a href="../code-editors.html">code editors page</a> for more
+      information.
+    </p>
+    <h2>HTML Page Setup</h2>
+    <p>
+      Create a new html file named <code>index.html</code> or the name of your
+      project.
+    </p>
+    <p>Add the standard HTML elements.</p>
+    <p>Change the <strong>title</strong> and the <strong>h1</strong>.</p>
+    <pre>
+<code>
+&lt;!doctype html&gt;
+    &lt;html lang="en-US"&gt;
+    &lt;head&gt;
+        &lt;meta charset="utf-8" /&gt;
+        &lt;meta name="viewport" content="width=device-width" /&gt;
+        &lt;title&gt;My Basic Webpage&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;h1&gt;My Basic Webpage&lt;/h1&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code>
+</pre>
+
+    <h2>Document Structure</h2>
+    <ul>
+      <li>
+        <strong><code>&lt;!DOCTYPE html&gt;</code></strong> - Declares the
+        document type and HTML version
+      </li>
+      <li>
+        <strong><code>&lt;html&gt;</code></strong> - Root element that wraps all
+        content on the page
+      </li>
+      <li>
+        <strong><code>&lt;head&gt;</code></strong> - Contains metadata not
+        displayed on the page (title, links to CSS, etc.)
+      </li>
+      <li>
+        <strong><code>&lt;body&gt;</code></strong> - Contains all visible
+        content
+      </li>
+    </ul>
+    <h2>Text Elements</h2>
+    <ul>
+      <li>
+        <strong><code>&lt;h1&gt;</code> to <code>&lt;h6&gt;</code></strong> -
+        Headings in decreasing order of importance
+      </li>
+      <li>
+        <strong><code>&lt;p&gt;</code></strong> - Paragraphs of text
+      </li>
+      <li>
+        <strong><code>&lt;span&gt;</code></strong> - Inline text container for
+        styling specific words/phrases
+      </li>
+      <li>
+        <strong><code>&lt;div&gt;</code></strong> - Block-level container for
+        grouping content
+      </li>
+    </ul>
+    <h2>Viewport Meta Tag</h2>
+    <p>
+      The
+      <code>&lt;meta name="viewport" content="width=device-width" /&gt;</code>
+      line is crucial for responsive web design:
+    </p>
+    <ul>
+      <li>
+        <strong>What it does:</strong> Tells the browser how to control the
+        page's dimensions and scaling on different devices
+      </li>
+      <li>
+        <strong>Why it's important:</strong> Without it, mobile browsers assume
+        your page is designed for desktop and show a tiny, hard-to-read version
+      </li>
+      <li>
+        <strong>The result:</strong> Your page will be sized appropriately for
+        each device (mobile, tablet, desktop)
+      </li>
+      <li>
+        <strong>The breakdown:</strong> <code>name="viewport"</code> specifies
+        viewport configuration, <code>content="width=device-width"</code> sets
+        the viewport width to match the device's actual screen width
+      </li>
+    </ul>
+    <h2>Linking to a stylesheet</h2>
+    <p>
+      Create a link to an external stylesheet (e.g. styles.css). use the name of
+      your stylesheet.
+    </p>
+    <p>Add this line to the head:</p>
+    <pre>
+<code>
+&lt;link rel="stylesheet" href="styles.css"&gt;
+</code>
+</pre>
+
+    <h2>Linking to a JS file</h2>
+    <p>
+      Add a link to an external JS file (e.g. script.js) in the head. Use the
+      name of your script.
+    </p>
+    <p>
+      The <em>defer</em> statement will load the file <em>after</em> the page
+      loads.
+    </p>
+    <pre>
+<code>
+&lt;script src="script.js" defer&gt;
+</code>
+</pre>
+
+    <h2>Final Basic Template</h2>
+    <pre>
+<code>
+&lt;!doctype html&gt;
+    &lt;html lang="en-US"&gt;
+    &lt;head&gt;
+        &lt;meta charset="utf-8" /&gt;
+        &lt;meta name="viewport" content="width=device-width" /&gt;
+        &lt;link rel="stylesheet" href="styles.css"&gt;
+        &lt;script src="script.js" defer&gt;
+        &lt;title&gt;My Basic Webpage&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;h1&gt;My Basic Webpage&lt;/h1&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code>
+</pre>
+
+    <footer>&copy; <span id="year"></span> Sable Cantus</footer>
+    <script>
+      const currentYear = new Date().getFullYear();
+      document.getElementById("year").textContent = currentYear;
+    </script>
+  </body>
+</html>

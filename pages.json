@@ -1,18 +1,32 @@
 {
   "pages": [
+        {
+      "title": "Code Editors",
+      "description": "Code editors for both Windows and macOS.",
+      "filename": "code-editors.html",
+      "icon": "📝",
+      "status": "active"
+    },
+        {
+      "title": "WEB00 A Basic HTML Page",
+      "description": "Create a basic html page.",
+      "filename": "web00-basic-html/web00-basic-html.html",
+      "icon": "<>",
+      "status": "active"
+    },
     {
       "title": "WEB03 Happy or Sad",
       "description": "Use JS to change the images to be happy or sad.",
-      "filename": "HappyOrSad/web03-happy-sad.html",
+      "filename": "web03-HappyOrSad/web03-happy-sad.html",
       "icon": "😀",
       "status": "active"
     },
     {
-      "title": "Coming Soon",
-      "description": "More exciting content on the way",
-      "filename": "",
-      "icon": "🚀",
-      "status": "coming-soon"
+      "title": "WEB04 Links",
+      "description": "Create links between web pages",
+      "filename": "web04-Links/web04-links.html",
+      "icon": "🔗",
+      "status": "active"
     },
     {
       "title": "Future Project",

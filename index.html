@@ -1,31 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CISW 17 Demos</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/png" href="imgs/logo.png" />
+    <link rel="stylesheet" href="styles.css" />
     <script src="script.js" defer></script>
-</head>
+  </head>
 
-<body>
+  <body>
     <div class="container">
-        <header>
-            <h1>CISW 17 Demos</h1>
-            <p class="subtitle">Click on a page to view the demo.</p>
-        </header>
+      <header>
+        <h1>CISW 17 Demos</h1>
+        <p class="subtitle">Click on a page to view the demo.</p>
+      </header>
 
-        <main>
-            <section class="pages-grid" id="pages-grid">
-                <!-- Pages will be loaded dynamically -->
-            </section>
-        </main>
+      <main>
+        <section class="pages-grid" id="pages-grid">
+          <!-- Pages will be loaded dynamically -->
+        </section>
+      </main>
 
-        <footer>
-            <p>&copy; 2025 Sable Cantus</p>
-        </footer>
+      <footer>&copy; <span id="year"></span> Sable Cantus</footer>
+      <script>
+        const currentYear = new Date().getFullYear();
+        document.getElementById("year").textContent = currentYear;
+      </script>
     </div>
-</body>
-
+  </body>
 </html>

@@ -5,12 +5,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CISW 17 Demos</title>
-    <link rel="stylesheet" href="page-styles.css">
+    <link rel="stylesheet" href="../page-styles.css">
 </head>
 
 <body>
     
 
+    <footer>
+        &copy; <span id="year"></span> Sable Cantus
+    </footer>
+    <script>
+        const currentYear = new Date().getFullYear();
+        document.getElementById('year').textContent = currentYear;
+    </script>
 </body>
 
 </html>
