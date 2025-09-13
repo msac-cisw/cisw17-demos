@@ -3,28 +3,28 @@
         {
       "title": "Code Editors",
       "description": "Code editors for both Windows and macOS.",
-      "filename": "/demos/code-editors.html",
+      "filename": "demos/code-editors.html",
       "icon": "📝",
       "status": "active"
     },
         {
       "title": "WEB00 A Basic HTML Page",
       "description": "Create a basic html page.",
-      "filename": "/demos/web00-basic-html.html",
+      "filename": "demos/web00-basic-html.html",
       "icon": "<>",
       "status": "active"
     },
     {
       "title": "WEB03 Happy or Sad",
       "description": "Use JS to change the images to be happy or sad.",
-      "filename": "/demos/web03-happy-sad.html",
+      "filename": "demos/web03-happy-sad.html",
       "icon": "😀",
       "status": "active"
     },
     {
       "title": "WEB04 Links",
       "description": "Create links between web pages",
-      "filename": "/demos/web04-links.html",
+      "filename": "demos/web04-links.html",
       "icon": "🔗",
       "status": "active"
     },
