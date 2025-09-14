@@ -1,7 +1,7 @@
 <iframe width="560" height="315" src="https://www.youtube.com/embed/bLwwsMoBVJs?si=iJQM390qUM7pSZu7" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 
-## What Is a Code Editor?
+# Code Editors
 
 A code editor is a software tool used by developers to write and edit source code. It provides features that make programming easier, such as:
 
