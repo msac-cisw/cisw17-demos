@@ -86,11 +86,9 @@ Let's add some basic CSS styling to make the page look a little nicer.
 Add this to your **styles.css** file:
 
 <pre><code>
-&lt;style&gt;
-    body {
-        margin: 0 auto;
-        width: 800px;
-        font-size: 1.5rem;
-    }
-&lt;/style&gt;
+body {
+    margin: 0 auto;
+    width: 800px;
+    font-size: 1.5rem;
+}
 </code></pre>
