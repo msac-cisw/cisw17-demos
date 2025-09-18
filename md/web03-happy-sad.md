@@ -118,4 +118,4 @@ What other emotions would you add?
 
 How would you use animated gifs or images instead of the emoji?
 
-Which would cuter: puppies or kittens?
+Which would be cuter: puppies or kittens?
