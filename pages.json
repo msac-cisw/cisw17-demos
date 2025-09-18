@@ -29,6 +29,13 @@
       "status": "active"
     },
     {
+      "title": "WEB05 Custom Homepage",
+      "description": "Create a custom homepage for your personal links",
+      "filename": "demos/web05-custom-homepage.html",
+      "icon": "🏡",
+      "status": "active"
+    },
+    {
       "title": "Future Project",
       "description": "Stay tuned for updates",
       "filename": "",
