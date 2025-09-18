@@ -36,7 +36,9 @@ Update the title to "Page 1" for page1.html and "Page 2" for page2.html.
 
 Add an **h1** for page1.html that is "This is Page 1".
 
-Creat a blank \*_styles.css_ file.
+Add an **h1** for page2.html that is "This is Page 2".
+
+Creat a blank **styles.css** file.
 
 Your working folder should be similar to this:
 
@@ -76,3 +78,19 @@ Test that the links work to send you back and forth between the pages.
 <img src="../imgs/web04-page1.png" width="400px" alt="Page 1">
 
 <img src="../imgs/web04-page2.png" width="400px" alt="Page 2">
+
+## Step 3 – Add basic styling
+
+Let's add some basic CSS styling to make the page look a little nicer.
+
+Add this to your **styles.css** file:
+
+<pre><code>
+&lt;style&gt;
+    body {
+        margin: 0 auto;
+        width: 800px;
+        font-size: 1.5rem;
+    }
+&lt;/style&gt;
+</code></pre>
