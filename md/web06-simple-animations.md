@@ -1,4 +1,4 @@
-# WEB06 – Simple Animations
+# WEB06 – Simple CSS Animations
 
 **Objectives**
 
