@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="" >
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Web Demos</title>
+    <link rel="icon" type="image/png" href="../imgs/logo.png" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    <link rel="stylesheet" href="../page-styles.css" />
+  </head>
+
+  <body>
+    <h1 id="web06-simple-animations">WEB06 – Simple Animations</h1>
+    <p><strong>Objectives</strong></p>
+    <p>Create simple CSS animations. <strong>Tools Needed</strong></p>
+    <p>You will need a <a href="code-editors.html">code editor</a> and a
+    web browser.</p>
+    <h2 id="what-are-css-animations">What are CSS animations?</h2>
+    <p>CSS animations let you animate HTML elements using CSS with no
+    JavaScript required. They will commonly create effect like text that
+    slides in, fades, or bounces.</p>
+    <ol type="1">
+    <li>CSS Transitions</li>
+    </ol>
+    <p>Smoothly animates between two states when a property changes.</p>
+    <p>Define a transition for an element and trigger the change.</p>
+    <p><strong>Example: Fade in on Hover</strong></p>
+    <div class="sourceCode" id="cb1"><pre
+    class="sourceCode css"><code class="sourceCode css"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">.text</span> {</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">opacity</span><span class="ch">:</span> <span class="dv">0.3</span><span class="op">;</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">transition</span><span class="ch">:</span> <span class="dv">opacity 0.6</span><span class="dt">s</span> <span class="dv">ease</span><span class="op">;</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">.text</span><span class="in">:hover</span> {</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="kw">opacity</span><span class="ch">:</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+    <ol start="2" type="1">
+    <li>CSS Keyframe Animations</li>
+    </ol>
+    <p>Creates for complex, timeline-based animations like slide, spin,
+    or bounce.</p>
+    <p>Define a keyframe block and apply it with an animation
+    property.</p>
+    <p><strong>Example: Slide &amp; Fade In</strong></p>
+    <div class="sourceCode" id="cb2"><pre
+    class="sourceCode css"><code class="sourceCode css"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">@keyframes</span> slideInFade {</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="dv">0%</span>   { <span class="kw">transform</span><span class="ch">:</span> <span class="fu">translateX(</span><span class="dv">-50</span><span class="dt">px</span><span class="fu">)</span><span class="op">;</span> <span class="kw">opacity</span><span class="ch">:</span> <span class="dv">0</span><span class="op">;</span> }</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="dv">100%</span> { <span class="kw">transform</span><span class="ch">:</span> <span class="fu">translateX(</span><span class="dv">0</span><span class="fu">)</span><span class="op">;</span>     <span class="kw">opacity</span><span class="ch">:</span> <span class="dv">1</span><span class="op">;</span> }</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">.text</span> {</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="kw">animation</span><span class="ch">:</span> <span class="dv">slideInFade 1</span><span class="dt">s</span> <span class="dv">ease-out</span> <span class="dv">forwards</span><span class="op">;</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+    <h2 id="step-1-page-setup">Step 1 – Page Setup</h2>
+    <p>Create a working folder named
+    <strong>simple-animations</strong>.</p>
+    <p>Create a <a href="web00-basic-html.html">basic html file</a>
+    named <strong>simple-animations.html</strong> in your working
+    folder.</p>
+    <p>Create a blank <strong>styles.css</strong> file in your working
+    folder.</p>
+    <p>Update the <strong>title</strong> of simple-animations.html to be
+    <strong>Simple Animations</strong>.</p>
+    <p>Update the <strong>h1</strong> to be <strong>Simple
+    Animations</strong>.</p>
+    <p>Add two paragraphs of example text.</p>
+    <pre>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    </pre>
+    <p>Add basic CSS styling.</p>
+    <div class="sourceCode" id="cb3"><pre
+    class="sourceCode css"><code class="sourceCode css"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>body {</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">width</span><span class="ch">:</span> <span class="dv">600</span><span class="dt">px</span><span class="op">;</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">margin</span><span class="ch">:</span> <span class="dv">0</span> <span class="bu">auto</span><span class="op">;</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>h1 {</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">text-align</span><span class="ch">:</span> <span class="dv">center</span><span class="op">;</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+    <p>Open your page in the browser.</p>
+    <h2 id="step-2-slide-the-h1-in-from-the-left">Step 2 – Slide the H1
+    in from the left</h2>
+    <p>We will use a keyframe that starts at 0% with the h1 moved -100%
+    to the left. Then, at 100%, the text will be at the 0 position.</p>
+    <div class="sourceCode" id="cb4"><pre
+    class="sourceCode css"><code class="sourceCode css"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">@keyframes</span> slideIn {</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="dv">0%</span> {</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>        <span class="kw">transform</span><span class="ch">:</span> <span class="fu">translateX(</span><span class="dv">-100</span><span class="dt">%</span><span class="fu">)</span><span class="op">;</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="dv">100%</span> {</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>        <span class="kw">transform</span><span class="ch">:</span> <span class="fu">translateX(</span><span class="dv">0</span><span class="fu">)</span><span class="op">;</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+    <p>Next we will style a class <strong>slideIn</strong> with the
+    animation paramters.</p>
+    <div class="sourceCode" id="cb5"><pre
+    class="sourceCode css"><code class="sourceCode css"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">.slideIn</span> {</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">animation</span><span class="ch">:</span> <span class="dv">slideIn 1</span><span class="dt">s</span> <span class="dv">ease-in-out</span><span class="op">;</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+    <p>Add the class to your h1:
+    <code>&lt;h1 class="slideIn"&gt;</code>.</p>
+    <style>
+    @keyframes slideIn {
+        0% {
+            transform: translateX(-100%);
+        }
+        100% {
+            transform: translateX(0);
+        }
+    }
+    .slideIn {
+        animation: slideIn 1s ease-in-out;
+    }
+    .example {
+        background-color: lightgoldenrodyellow;
+        padding: 5px 0px 5px 15px;
+    }
+    </style>
+    <p><strong>Example (reload the page to view again):</strong></p>
+    <div class="example">
+    <h3 class="slideIn">
+    Simple Animations
+    </h1>
+    </div>
+    <h2 id="step-3-fade-the-paragraphs-in">Step 3 – Fade the paragraphs
+    in</h2>
+    <p>We will follow the same steps as above to create keframes and a
+    class. This time we will change the opacity from 0 to 1. This will
+    fade in the paragraphs.</p>
+    <div class="sourceCode" id="cb6"><pre
+    class="sourceCode css"><code class="sourceCode css"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">@keyframes</span> fadeIn {</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="dv">0%</span> {</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>        <span class="kw">opacity</span><span class="ch">:</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    <span class="dv">100%</span> {</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>        <span class="kw">opacity</span><span class="ch">:</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="fu">.fadeIn</span> {</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>    <span class="kw">animation</span><span class="ch">:</span> <span class="dv">fadeIn 3</span><span class="dt">s</span> <span class="dv">ease-in-out</span><span class="op">;</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+    <p>Add the class to your paragraphs:
+    <code>&lt;p class="fadeIn"&gt;</code>.</p>
+    <p><strong>Example (reload the page to view again):</strong></p>
+    <style>
+    @keyframes fadeIn {
+        0% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+    .fadeIn {
+        animation: fadeIn 3s ease-in-out;
+    }
+    </style>
+    <div class="example">
+    <p class="fadeIn">
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta,
+    quas cupiditate. Ut aliquam, excepturi architecto voluptates, modi
+    officiis dolores quaerat dolorem sint dignissimos accusamus
+    temporibus dolor voluptatem assumenda repudiandae eos?
+    </p>
+    </div>
+    <p><br></p>
+    <details>
+    <summary style="cursor: pointer; font-size: large; border: 1px solid #D6D9DC; background-color: #f5f5f5; padding: 10px 10px 10px 20px; border-radius: 15px; margin-bottom: 2rem;">
+    Click here to see the final page.
+    </summary>
+    <img src="../imgs/web06-final.gif" width="400px" alt="final">
+    </details>
+    </div>
+
+    <footer>
+      &copy; <span id="year"></span> <a href="https://cantus.us/msac/" target="_blank">Sable Cantus</a> | 
+      <a href="https://msac-cisw.github.io/cisw17-demos/">Web Demos</a>
+    </footer>
+    <script>
+      const currentYear = new Date().getFullYear();
+      document.getElementById("year").textContent = currentYear;
+    </script>
+  </body>
+</html>

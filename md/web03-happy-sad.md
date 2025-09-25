@@ -107,7 +107,7 @@ Add a style tag in the **head**.
       #mood {
         font-size: 10em;
       }
-    &lt;/style&gt;
+&lt;/style&gt;
 </code></pre>
 
 <img src="../imgs/web03-styled.png" width="400px">

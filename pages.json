@@ -36,6 +36,13 @@
       "status": "active"
     },
     {
+      "title": "WEB06 Simple CSS Animations",
+      "description": "Create simple animations using CSS",
+      "filename": "demos/web06-simple-animations.html",
+      "icon": "📄",
+      "status": "active"
+    },
+    {
       "title": "Future Project",
       "description": "Stay tuned for updates",
       "filename": "",
