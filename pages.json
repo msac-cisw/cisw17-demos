@@ -50,6 +50,13 @@
       "status": "active"
     },
     {
+      "title": "WEB18 Simple TypeScript Application",
+      "description": "Build a simple TypeScript application.",
+      "filename": "demos/web18-simple-typescript.html",
+      "icon": "📄",
+      "status": "active"
+    },
+    {
       "title": "Future Project",
       "description": "Stay tuned for updates",
       "filename": "",

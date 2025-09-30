@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="" >
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Web Demos</title>
+    <link rel="icon" type="image/png" href="../imgs/logo.png" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    <link rel="stylesheet" href="../page-styles.css" />
+  </head>
+
+  <body>
+    <h1 id="web18-simple-typescript-application">WEB18 – Simple
+    TypeScript Application</h1>
+    <h2 id="objectives">Objectives</h2>
+    <p>In this demo you will build a small web project using
+    <strong>TypeScript</strong>. Along the way you will learn why
+    developers increasingly choose TypeScript over JavaScript. By the
+    end you will be able to:</p>
+    <ul>
+    <li>Explain what TypeScript is and why it was created.</li>
+    <li>Set up a local TypeScript environment and compile
+    <code>.ts</code> files to JavaScript.</li>
+    <li>Write a simple application that uses variables, functions,
+    interfaces, classes and generics.</li>
+    <li>See how the TypeScript compiler catches common mistakes before
+    they become runtime bugs.</li>
+    <li>Compare the same code written in JavaScript to understand the
+    advantages of static typing.</li>
+    </ul>
+    <p><strong>Tools Needed</strong></p>
+    <ul>
+    <li>You will need a <a href="code-editors.html">code editor</a></li>
+    <li>A modern web browser (Chrome, Firefox, etc.).</li>
+    <li>A recent installation of <a
+    href="https://nodejs.org/en/download/"><strong>Node.js</strong></a>
+    and the <strong>npm</strong> package manager (these are installed
+    together).</li>
+    <li>The <strong>typescript compiler</strong></li>
+    </ul>
+    <p>Install the TypeScript compiler globally:</p>
+    <pre><code>npm install -g typescript</code></pre>
+    <p><em>The <code>tsc</code> command is the TypeScript compiler; it
+    converts <code>.ts</code> files into <code>.js</code>
+    files.</em></p>
+    <h2 id="what-is-typescript">What is TypeScript?</h2>
+    <p>JavaScript is a flexible scripting language that has powered web
+    pages since the 1990s, but it uses <strong>dynamic typing</strong> –
+    the type of a variable is determined at runtime. This means you can
+    reassign a number variable to a string and only discover the mistake
+    when the code runs. Because of this, large JavaScript codebases can
+    be difficult to maintain.</p>
+    <p>TypeScript is a <strong>superset of JavaScript</strong> developed
+    by Microsoft that adds <strong>static typing</strong> and other
+    modern features on top of JavaScript. Being a superset means any
+    valid JavaScript code is also valid TypeScript. According to the
+    Contentful guide, TypeScript was created to address the difficulties
+    of maintaining large JavaScript projects and adds features such as
+    <strong>interfaces</strong>, <strong>generics</strong>, <strong>type
+    inference</strong> and <strong>access modifiers</strong> not present
+    in standard JavaScript.</p>
+    <p>Static typing lets you specify the data types of variables,
+    function parameters and return values in advance. The TypeScript
+    compiler checks these types when compiling to JavaScript, so
+    type‑related errors are caught before they reach users. In contrast,
+    JavaScript’s dynamic typing only checks types at runtime, so type
+    errors such as trying to multiply a string by a number are only
+    detected when the buggy code executes.</p>
+    <p><strong>Interfaces</strong> help describe the shape of an object
+    while <strong>generics</strong> let you write reusable functions and
+    classes that work over a variety of types.</p>
+    <p>Because TypeScript compiles down to plain JavaScript, anything
+    that works in JavaScript will work in TypeScript. Once compiled, the
+    JavaScript can run in any modern browser or JavaScript runtime
+    without requiring TypeScript support.</p>
+    <h2 id="step-1-set-up-the-project">Step 1 – Set up the project</h2>
+    <ol type="1">
+    <li><p><strong>Create a working folder.</strong> Open a terminal or
+    file explorer and make a new folder named
+    <code>typescript-demo</code>. This folder will hold all of the files
+    for the project.</p></li>
+    <li><p><strong>Create the HTML file.</strong> Inside
+    <code>typescript-demo</code>, create a file named
+    <code>index.html</code> and add the following markup:</p></li>
+    </ol>
+    <div class="sourceCode" id="cb2"><pre
+    class="sourceCode html"><code class="sourceCode html"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;!DOCTYPE</span> html<span class="dt">&gt;</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">html</span><span class="ot"> lang</span><span class="op">=</span><span class="st">&quot;en&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">head</span><span class="dt">&gt;</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">meta</span><span class="ot"> charset</span><span class="op">=</span><span class="st">&quot;UTF-8&quot;</span><span class="ot"> </span><span class="dt">/&gt;</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">title</span><span class="dt">&gt;</span>TypeScript Demo<span class="dt">&lt;/</span><span class="kw">title</span><span class="dt">&gt;</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">style</span><span class="dt">&gt;</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    body {</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>      <span class="kw">font-family</span><span class="ch">:</span> <span class="dv">Arial</span><span class="op">,</span> <span class="dv">sans-serif</span><span class="op">;</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>      <span class="kw">margin</span><span class="ch">:</span> <span class="dv">2</span><span class="dt">rem</span> <span class="bu">auto</span><span class="op">;</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>      <span class="kw">max-width</span><span class="ch">:</span> <span class="dv">600</span><span class="dt">px</span><span class="op">;</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>      <span class="kw">line-height</span><span class="ch">:</span> <span class="dv">1.5</span><span class="op">;</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>    h1 {</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>      <span class="kw">text-align</span><span class="ch">:</span> <span class="dv">center</span><span class="op">;</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>    button {</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>      <span class="kw">display</span><span class="ch">:</span> <span class="dv">inline-block</span><span class="op">;</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>      <span class="kw">margin-top</span><span class="ch">:</span> <span class="dv">1</span><span class="dt">rem</span><span class="op">;</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>      <span class="kw">padding</span><span class="ch">:</span> <span class="dv">0.5</span><span class="dt">rem</span> <span class="dv">1</span><span class="dt">rem</span><span class="op">;</span></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>      <span class="kw">font-size</span><span class="ch">:</span> <span class="dv">1</span><span class="dt">rem</span><span class="op">;</span></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>      <span class="kw">cursor</span><span class="ch">:</span> <span class="dv">pointer</span><span class="op">;</span></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>    <span class="pp">#output</span> {</span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>      <span class="kw">margin-top</span><span class="ch">:</span> <span class="dv">1</span><span class="dt">rem</span><span class="op">;</span></span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>      <span class="kw">padding</span><span class="ch">:</span> <span class="dv">0.5</span><span class="dt">rem</span><span class="op">;</span></span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>      <span class="kw">border</span><span class="ch">:</span> <span class="dv">1</span><span class="dt">px</span> <span class="dv">solid</span> <span class="cn">#ccc</span><span class="op">;</span></span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>      <span class="kw">background-color</span><span class="ch">:</span> <span class="cn">#f9f9f9</span><span class="op">;</span></span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;/</span><span class="kw">style</span><span class="dt">&gt;</span></span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">head</span><span class="dt">&gt;</span></span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">body</span><span class="dt">&gt;</span></span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">h1</span><span class="dt">&gt;</span>TypeScript Demo<span class="dt">&lt;/</span><span class="kw">h1</span><span class="dt">&gt;</span></span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">p</span><span class="dt">&gt;</span>This page will demonstrate a simple TypeScript application. Open the developer console to see logs.<span class="dt">&lt;/</span><span class="kw">p</span><span class="dt">&gt;</span></span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">button</span><span class="ot"> id</span><span class="op">=</span><span class="st">&quot;runDemo&quot;</span><span class="dt">&gt;</span>Run Demo<span class="dt">&lt;/</span><span class="kw">button</span><span class="dt">&gt;</span></span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">div</span><span class="ot"> id</span><span class="op">=</span><span class="st">&quot;output&quot;</span><span class="dt">&gt;&lt;/</span><span class="kw">div</span><span class="dt">&gt;</span></span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>  <span class="co">&lt;!-- The compiled JavaScript will be loaded here --&gt;</span></span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">script</span><span class="ot"> src</span><span class="op">=</span><span class="st">&quot;app.js&quot;</span><span class="dt">&gt;&lt;/</span><span class="kw">script</span><span class="dt">&gt;</span></span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">body</span><span class="dt">&gt;</span></span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">html</span><span class="dt">&gt;</span></span></code></pre></div>
+    <p>The HTML sets up a heading, a description, a button to run the
+    demo and a <code>div</code> where results can be displayed. It also
+    links to <code>app.js</code>, which will be generated by the
+    TypeScript compiler in the next steps.</p>
+    <ol start="3" type="1">
+    <li><p><strong>Create the TypeScript file.</strong> In the same
+    folder, create a new file named <code>app.ts</code>. TypeScript uses
+    the <code>.ts</code> extension. For now leave this file empty; you
+    will add code in the next step.</p></li>
+    <li><p><em>(Optional)</em> <strong>Create a configuration
+    file.</strong> TypeScript projects often include a
+    <code>tsconfig.json</code> file to configure the compiler. In this
+    demo it is optional because we will compile a single file, but if
+    you want to generate one run:</p>
+    <p>tsc –init</p>
+    <p>This creates a default <code>tsconfig.json</code> with many
+    commented settings. You can enable <code>"strict": true</code> to
+    opt into TypeScript’s strict type checking, which is recommended for
+    catching more errors early.</p></li>
+    </ol>
+    <h2 id="step-2-write-the-typescript-code">Step 2 – Write the
+    TypeScript code</h2>
+    <p>Open <code>app.ts</code> in your editor and add the following
+    TypeScript code. Each section of the code demonstrates a feature of
+    TypeScript, and comments explain what is happening.</p>
+    <pre><code>// app.ts
+
+// 1. Typed variables
+// Declare variables with explicit types.  
+// If you try to assign a value of the wrong type later,
+// the compiler will give an error at compile time.
+let userName: string = &quot;Ada Lovelace&quot;;
+let age: number = 36;
+let isAdmin: boolean = false;
+
+// 2. Function with typed parameters and return value
+// This function returns a greeting.  
+// Both the parameter and the return type are annotated.
+function greet(name: string): string {
+  return `Hello, ${name}!`;
+}
+
+// 3. Interface – defines the shape of an object
+// Interfaces are a way to name the shape of an object.  
+// They describe which properties exist and what types they have.  
+// Interfaces are a cornerstone of TypeScript’s structural typing.
+interface Person {
+  firstName: string;
+  lastName: string;
+  age: number;
+}
+
+// 4. Class – implements the interface and uses access modifiers
+// Classes give you an object‑oriented way to construct objects.  TypeScript 
+// supports public and private fields.  Traditional JavaScript used prototype 
+// functions for reuse, but modern TypeScript allows you to use classes and 
+// then compiles them to JavaScript that runs in any browser.
+class Employee implements Person {
+  // private field – cannot be accessed outside the class
+  private id: number;
+  // readonly means this property can’t be reassigned after construction
+  readonly firstName: string;
+  readonly lastName: string;
+  age: number;
+
+  constructor(id: number, firstName: string, lastName: string, age: number) {
+    this.id = id;
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.age = age;
+  }
+
+  getFullName(): string {
+    return `${this.firstName} ${this.lastName}`;
+  }
+}
+
+// 5. Generic function
+// Generics let you write a function that works with many types.  
+// In languages like C# and Java, generics are a common tool for 
+// creating reusable components.  The identity function below simply
+// returns whatever it is given, but thanks to the generic type parameter
+// &lt;T&gt; it preserves the type of its argument.
+function identity&lt;T&gt;(value: T): T {
+  return value;
+}
+
+// 6. Example function to demonstrate compile‑time type checking
+// This function calculates the area of a rectangle.  Both parameters must be numbers.
+function calculateArea(width: number, height: number): number {
+  return width * height;
+}
+
+// 7. Main function to run the demo when the button is clicked
+function runDemo() {
+  const outputDiv = document.getElementById(&quot;output&quot;) as HTMLDivElement;
+  outputDiv.innerHTML = &quot;&quot;;
+
+  // Use the greet function
+  const greeting = greet(userName);
+  outputDiv.innerHTML += `&lt;p&gt;${greeting}&lt;/p&gt;`;
+
+  // Create an employee and display their full name
+  const employee = new Employee(1, &quot;Grace&quot;, &quot;Hopper&quot;, 85);
+  outputDiv.innerHTML += `&lt;p&gt;Employee: ${employee.getFullName()}, age ${employee.age}&lt;/p&gt;`;
+
+  // Demonstrate generic function
+  const numEcho = identity&lt;number&gt;(42);
+  const strEcho = identity&lt;string&gt;(&quot;TypeScript&quot;);
+  outputDiv.innerHTML += `&lt;p&gt;identity(42) returns ${numEcho}, identity(&quot;TypeScript&quot;) returns ${strEcho}&lt;/p&gt;`;
+
+  // Calculate area
+  const area = calculateArea(5, 3);
+  outputDiv.innerHTML += `&lt;p&gt;Area of a 5×3 rectangle is ${area}&lt;/p&gt;`;
+
+  // Uncomment the following line to see TypeScript catch a mistake:
+  // const badArea = calculateArea(&quot;five&quot;, 3);
+  // If you remove the comment, the compiler will report an error because the first argument
+  // is a string.  JavaScript would only fail at runtime.
+}
+
+// Add event listener to button.  TypeScript knows that the element may be null, so we use
+// a non‑null assertion (!) to tell the compiler that the element exists.
+document.getElementById(&quot;runDemo&quot;)!.addEventListener(&quot;click&quot;, runDemo);</code></pre>
+    <p>Let’s unpack some of the terms used above:</p>
+    <ul>
+    <li><strong>Variables with types:</strong> By specifying
+    <code>string</code>, <code>number</code> and <code>boolean</code>,
+    the compiler verifies that <code>userName</code>, <code>age</code>
+    and <code>isAdmin</code> are only used in ways consistent with those
+    types. If you try to assign a string to a number variable, the
+    compiler will display an error. This is different from JavaScript,
+    which would not complain until the code runs.</li>
+    <li><strong>Functions with typed parameters and return
+    values:</strong> The <code>greet</code> function’s parameter and
+    return type are both annotated. This helps the compiler verify that
+    callers pass a string and that the returned value is also a
+    string.</li>
+    <li><strong>Interfaces:</strong> An interface describes the “shape”
+    of an object, listing required and optional properties. Interfaces
+    help define contracts between parts of your code.</li>
+    <li><strong>Classes and access modifiers:</strong> The
+    <code>Employee</code> class implements the <code>Person</code>
+    interface. It uses <code>private</code> to hide the <code>id</code>
+    property and <code>readonly</code> for properties that shouldn’t be
+    reassigned. TypeScript compiles these classes to JavaScript using
+    syntax that works in all browsers.</li>
+    <li><strong>Generics:</strong> The <code>identity</code> function
+    uses a generic type parameter <code>&lt;T&gt;</code> so it can
+    accept and return any type while preserving the type
+    information.</li>
+    <li><strong>Compile‑time error demonstration:</strong> The
+    <code>calculateArea</code> function expects numbers. If you
+    uncomment the line with <code>"five"</code> you will see a compiler
+    error, because a string is not assignable to a number. JavaScript
+    would not detect this error until runtime.</li>
+    </ul>
+    <h2 id="step-3-compile-the-typescript">Step 3 – Compile the
+    TypeScript</h2>
+    <p>To transform your TypeScript code into plain JavaScript, run the
+    following command in the <code>typescript-demo</code> folder:</p>
+    <pre><code>tsc app.ts</code></pre>
+    <p>This produces a file named <code>app.js</code> in the same
+    directory. If you enabled <code>"strict": true</code> in
+    <code>tsconfig.json</code>, the compiler will also enforce
+    additional checks such as preventing the use of variables before
+    they are assigned.</p>
+    <p>Open <code>app.js</code> to see the generated JavaScript. Notice
+    that all type annotations, interfaces and access modifiers have been
+    removed – the compiled output is standard JavaScript that will run
+    anywhere. For example, the class definition becomes a constructor
+    function with prototype methods. TypeScript’s features exist only at
+    compile time; they do not change the runtime behaviour of your
+    code.</p>
+    <h2 id="step-4-run-the-application">Step 4 – Run the
+    application</h2>
+    <p>Open <code>index.html</code> in your web browser (double‑click
+    the file or drag it into the browser window). You should see the
+    heading, description and a “Run Demo” button. Click the button to
+    execute the <code>runDemo</code> function. The output appears in the
+    <code>output</code> <code>&lt;div&gt;</code>, and you can also open
+    the developer console to view any logged messages.</p>
+    <p>Try modifying the code and recompiling. For example, change
+    <code>age</code> to a string (e.g., <code>age = "thirty";</code>).
+    When you run <code>tsc app.ts</code> again, the compiler will
+    produce an error because it detects a type mismatch. With JavaScript
+    you would only see a problem at runtime when the code tries to
+    perform numeric operations.</p>
+    <p><img src="../imgs/web18-client.png" width="400px" alt="client"></p>
+    <h2
+    id="step-5-comparing-typescript-with-javascript">Step 5 – Comparing
+    TypeScript with JavaScript</h2>
+    <p>Consider the following JavaScript code:</p>
+    <pre><code>// JavaScript: dynamic typing can lead to runtime errors
+let price = 9.99;   // price is a number
+price = &quot;cheap&quot;;   // price is now a string
+console.log(price * 2);  // prints NaN because a string cannot be multiplied</code></pre>
+    <p>In JavaScript, the variable <code>price</code> is dynamically
+    typed – it can hold any type. Assigning a string to
+    <code>price</code> is allowed, but when you later try to multiply it
+    by 2 you get <code>NaN</code> (Not a Number) at runtime.</p>
+    <p>Now look at the same logic written in TypeScript:</p>
+    <pre><code>// TypeScript: compile‑time type checking prevents mistakes
+let priceTs: number = 9.99;
+// priceTs = &quot;cheap&quot;;  // Uncommenting this line causes a compile error: &quot;Type &#39;string&#39; is not assignable to type &#39;number&#39;&quot;
+console.log(priceTs * 2);</code></pre>
+    <p>Here the compiler knows that <code>priceTs</code> must be a
+    number. If you uncomment the line assigning a string,
+    <code>tsc</code> will stop with an error. This shows how TypeScript
+    catches mistakes early.</p>
+    <h2 id="step-6-exploring-more-features">Step 6 – Exploring more
+    features</h2>
+    <p>The example above barely scratches the surface of TypeScript’s
+    capabilities. Some additional features you can explore include:</p>
+    <ul>
+    <li><strong>Type inference:</strong> In many cases TypeScript can
+    infer the type of a variable based on its initial value, allowing
+    you to omit explicit type annotations.</li>
+    <li><strong>Union and literal types:</strong> You can specify that a
+    variable may be one of several types (e.g.,
+    <code>number | string</code>) or constrain it to specific literal
+    values (e.g., <code>'small' | 'medium' | 'large'</code>).</li>
+    <li><strong>Enumerations (enums):</strong> Enums let you define a
+    set of named constants.</li>
+    <li><strong>Generics in classes and interfaces:</strong> You can
+    create generic classes or interfaces similar to the
+    <code>identity</code> function to build flexible data
+    structures.</li>
+    <li><strong>Modules and namespaces:</strong> TypeScript supports
+    <code>import</code> and <code>export</code> syntax to organize code
+    across files and take advantage of modern module systems.</li>
+    </ul>
+    <h2 id="conclusion">Conclusion</h2>
+    <p>In this tutorial you set up a simple web project that uses
+    TypeScript, wrote a few typed variables and functions, defined an
+    interface and a class with access modifiers, and experimented with a
+    generic function. You compiled your TypeScript file to JavaScript
+    using the <code>tsc</code> compiler and saw how type annotations and
+    interfaces vanish after compilation. By comparing the TypeScript and
+    JavaScript versions of a small snippet, you learned how static
+    typing catches errors during development rather than allowing them
+    to sneak into production.</p>
+
+    <footer>
+      &copy; <span id="year"></span> <a href="https://cantus.us/msac/" target="_blank">Sable Cantus</a> | 
+      <a href="https://msac-cisw.github.io/cisw17-demos/">Web Demos</a>
+    </footer>
+    <script>
+      const currentYear = new Date().getFullYear();
+      document.getElementById("year").textContent = currentYear;
+    </script>
+  </body>
+</html>
