@@ -43,6 +43,13 @@
       "status": "active"
     },
     {
+      "title": "WEB17 Simple NodeJS Application and Website",
+      "description": "Build a nodejs server and website.",
+      "filename": "demos/web17-simple-nodejs.html",
+      "icon": "📄",
+      "status": "active"
+    },
+    {
       "title": "Future Project",
       "description": "Stay tuned for updates",
       "filename": "",
