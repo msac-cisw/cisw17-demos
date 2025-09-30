@@ -57,6 +57,13 @@
       "status": "active"
     },
     {
+      "title": "DOCKER01 Simple Webserver & PHP",
+      "description": "Use Docker to build and deploy a simple webserver and PHP. .",
+      "filename": "demos/docker01-simple-webserver.html",
+      "icon": "🐳",
+      "status": "active"
+    },
+    {
       "title": "Future Project",
       "description": "Stay tuned for updates",
       "filename": "",

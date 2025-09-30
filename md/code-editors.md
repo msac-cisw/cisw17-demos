@@ -92,14 +92,24 @@ Another good option for macOS...
 
 BBEdit offers a 30 day full featured trial and then resorts to a very usable free license.
 
+### The Power Users Choice: Neovim
+
+* Available on: macOS, Windows, and Linux
+* Website: [https://neovim.io](https://neovim.io)
+
+Modal, fast, and flexible command line editor. Lives in the terminal. Once you learn the keybindings you will unlock editor power not available in other editors.
+
+### Sublime Text
+
+* Available on: macOS, Windows, and Linux
+* Website: [https://www.sublimetext.com](https://www.sublimetext.com)
+
+Sublime Text is a lightweight, high-performance code editor known for its speed, elegant interface, and powerful features like multi-caret editing, split views, and a rich ecosystem of plugins. It’s highly customizable, making it a favorite for developers who want a flexible editor that stays fast even with large projects.
+
 ---
 
 
 ## 🆚 Code Editors vs. Word Processors
-
-### ❌ Why Not Use Word Processors for Code?
-
-Word processors like Microsoft Word, Google Docs, or Apple Pages are designed for document formatting—not for programming. They insert invisible characters (like curly quotes, auto-indents, and rich formatting) that can break your code or make it unreadable by compilers and interpreters.
 
 ### ✅ Why We Use Code Editors
 
@@ -112,3 +122,7 @@ Code editors are purpose-built for writing and maintaining source code. They:
 * Help reduce syntax and logical errors with tools like linting and autocomplete
 
 If you’re writing code, always use a code editor. Word processors may look nicer at first—but they’ll almost certainly corrupt your code.
+
+### ❌ Why Not Use Word Processors for Code?
+
+Word processors like Microsoft Word, Google Docs, or Apple Pages are designed for document formatting—not for programming. They insert invisible characters (like curly quotes, auto-indents, and rich formatting) that can break your code or make it unreadable by compilers and interpreters.

@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="" >
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Web Demos</title>
+    <link rel="icon" type="image/png" href="../imgs/logo.png" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    <link rel="stylesheet" href="../page-styles.css" />
+  </head>
+
+  <body>
+    <h1 id="docker01-simple-docker-web-server-php">DOCKER01 – Simple
+    Docker Web Server &amp; PHP</h1>
+    <p>This tutorial introduces Docker as a flexible development tool.
+    You will learn how to run a basic static web server in a container,
+    add PHP support on top of it, and use bind mounts to edit files
+    locally while the container is running. Each step is broken down
+    with explanations, commands and sample files.</p>
+    <h2 id="objectives">Objectives</h2>
+    <ul>
+    <li>Build a minimal Docker image for serving a single HTML
+    page.</li>
+    <li>Understand <strong>Docker images</strong>,
+    <strong>containers</strong> and <strong>ports</strong>.</li>
+    <li>Use <strong>bind mounts</strong> for live editing of project
+    files.</li>
+    <li>Extend the static server with <strong>PHP</strong> using the
+    official <code>php:apache</code> image.</li>
+    <li>Learn the basics of port mapping and volumes by running
+    containers on a host port so you can access them via
+    <code>localhost</code>.</li>
+    </ul>
+    <p><strong>Tools Needed</strong></p>
+    <ul>
+    <li><a href="https://www.docker.com"><strong>Docker</strong></a>
+    installed on your system (Docker Desktop or the Docker Engine)</li>
+    <li>A <strong>terminal</strong> or command‑line shell</li>
+    <li>A <a href="code-editors.html">code editor</a></li>
+    <li>A <strong>web browser</strong> to view your pages</li>
+    </ul>
+    <h2 id="what-is-docker">What is Docker?</h2>
+    <p>Docker is a containerization platform. A <strong>Docker
+    image</strong> is like a blueprint or class: it defines everything
+    needed (code, runtime, libraries) to run an application. Images are
+    immutable and ensure that the same environment runs on every
+    machine. A <strong>container</strong> is the running instance of an
+    image; you can start, stop, or delete containers using the Docker
+    CLI. Containers are isolated from each other and the host, so you
+    must explicitly expose ports to access services.</p>
+    <h2 id="step-1-project-setup">Step 1 – Project Setup</h2>
+    <p>Create a working folder called <code>docker‑webserver</code>.
+    Inside this folder make a <code>site-content</code> directory for
+    your website files. Then create a simple <code>index.html</code>
+    page in <code>site-content</code> with some placeholder content.</p>
+    <div class="sourceCode" id="cb1"><pre
+    class="sourceCode html"><code class="sourceCode html"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- docker‑webserver/site-content/index.html --&gt;</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;!DOCTYPE</span> html<span class="dt">&gt;</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">html</span><span class="ot"> lang</span><span class="op">=</span><span class="st">&quot;en&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">head</span><span class="dt">&gt;</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">meta</span><span class="ot"> charset</span><span class="op">=</span><span class="st">&quot;UTF-8&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">title</span><span class="dt">&gt;</span>Docker Web Server<span class="dt">&lt;/</span><span class="kw">title</span><span class="dt">&gt;</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">style</span><span class="dt">&gt;</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    body { <span class="kw">font-family</span><span class="ch">:</span> <span class="dv">sans-serif</span><span class="op">;</span> <span class="kw">max-width</span><span class="ch">:</span> <span class="dv">640</span><span class="dt">px</span><span class="op">;</span> <span class="kw">margin</span><span class="ch">:</span> <span class="dv">0</span> <span class="bu">auto</span><span class="op">;</span> <span class="kw">padding</span><span class="ch">:</span> <span class="dv">2</span><span class="dt">rem</span><span class="op">;</span> }</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    h1 { <span class="kw">color</span><span class="ch">:</span> <span class="cn">navy</span><span class="op">;</span> <span class="kw">text-align</span><span class="ch">:</span> <span class="dv">center</span><span class="op">;</span> }</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;/</span><span class="kw">style</span><span class="dt">&gt;</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">head</span><span class="dt">&gt;</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">body</span><span class="dt">&gt;</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">h1</span><span class="dt">&gt;</span>Welcome to my Docker‑powered web site!<span class="dt">&lt;/</span><span class="kw">h1</span><span class="dt">&gt;</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">p</span><span class="dt">&gt;</span>This page is being served from within a Docker container.  Edit this file locally and refresh your browser to see changes when using bind mounts.<span class="dt">&lt;/</span><span class="kw">p</span><span class="dt">&gt;</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">body</span><span class="dt">&gt;</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">html</span><span class="dt">&gt;</span></span></code></pre></div>
+    <h2 id="step-2-create-a-dockerfile-for-a-static-site">Step 2 –
+    Create a Dockerfile for a static site</h2>
+    <p>To run a web server we need an image. We will use the lightweight
+    <strong>Nginx</strong> image (<code>nginx:1‑alpine</code>) from
+    Docker Hub. Create a file named <code>Dockerfile</code> in
+    <code>docker‑webserver</code> with the following contents:</p>
+    <div class="sourceCode" id="cb2"><pre
+    class="sourceCode dockerfile"><code class="sourceCode dockerfile"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># docker‑webserver/Dockerfile</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Use the official Nginx image as a base.  The `alpine` tag reduces size.</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> nginx:1-alpine</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Copy the website files into the Nginx document root</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="kw">COPY</span> site-content/ /usr/share/nginx/html</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Expose port 80 (the default Nginx port)</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="kw">EXPOSE</span> 80</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="kw">CMD</span> [<span class="st">&quot;nginx&quot;</span>, <span class="st">&quot;-g&quot;</span>, <span class="st">&quot;daemon off;&quot;</span>]</span></code></pre></div>
+    <p><strong>Explanation:</strong></p>
+    <ul>
+    <li><code>FROM nginx:1-alpine</code> tells Docker to start from the
+    official Nginx image. The <code>1-alpine</code> variant is small and
+    includes an Alpine Linux base.</li>
+    <li><code>COPY site-content/ /usr/share/nginx/html</code> copies
+    your local <code>site-content</code> folder into the container’s
+    default document root. When Nginx starts, it will serve the HTML
+    page we created.</li>
+    <li><code>EXPOSE 80</code> declares that the container listens on
+    port 80, but it doesn’t publish it. We will publish a host port when
+    we run the container.</li>
+    </ul>
+    <h2 id="step-3-build-and-run-the-static-site">Step 3 – Build and run
+    the static site</h2>
+    <p>Open a terminal and navigate to the <code>docker‑webserver</code>
+    directory. Run the following command to build the image and tag it
+    as <code>simple-webserver</code>:</p>
+    <div class="sourceCode" id="cb3"><pre
+    class="sourceCode sh"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> build <span class="at">-t</span> simple-webserver .</span></code></pre></div>
+    <p>After the build completes, run a container in detached mode
+    (background) and map your host’s port 8080 to the container’s
+    port 80:</p>
+    <div class="sourceCode" id="cb4"><pre
+    class="sourceCode sh"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">-d</span> <span class="at">--name</span> simple-webserver <span class="at">-p</span> 8080:80 simple-webserver</span></code></pre></div>
+    <p>The <code>-p 8080:80</code> option publishes port 80 inside the
+    container to port 8080 on the host. Without publishing a port, the
+    service is inaccessible from the host due to container isolation.
+    Open a browser and navigate to <code>http://localhost:8080</code> –
+    you should see your welcome page.</p>
+    <p><img src="../imgs/docker01-simple.png" width="400px" alt="simple"></p>
+    <p>To stop and remove the container when you’re done, run:</p>
+    <div class="sourceCode" id="cb5"><pre
+    class="sourceCode sh"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> rm <span class="at">-f</span> simple-webserver</span></code></pre></div>
+    <h2 id="step-4-live-editing-with-bind-mounts">Step 4 – Live editing
+    with bind mounts</h2>
+    <p>Rebuilding the image every time you change a file is inefficient
+    during development. Instead, use a <strong>bind mount</strong> to
+    share your project directory with the container. Bind mounts let the
+    container see file changes immediately.</p>
+    <p>From inside <code>docker‑webserver</code> run the following
+    command:</p>
+    <div class="sourceCode" id="cb6"><pre
+    class="sourceCode sh"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">-d</span> <span class="at">--name</span> dev-webserver <span class="at">-p</span> 8080:80 <span class="dt">\</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">--mount</span> type=bind,src=<span class="st">&quot;</span><span class="va">$(</span><span class="bu">pwd</span><span class="va">)</span><span class="st">/site-content&quot;</span>,target=/usr/share/nginx/html <span class="dt">\</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  nginx:1-alpine</span></code></pre></div>
+    <p>This command mounts your local <code>site-content</code>
+    directory into the container’s document root. Now whenever you edit
+    <code>index.html</code>, refreshing the browser will show your
+    changes instantly. When you’re finished, remove the container with
+    <code>docker rm -f dev-webserver</code>.</p>
+    <p><img src="../imgs/docker01-edited.png" width="400px" alt="edited"></p>
+    <h3 id="bind-mounts-vs-volumes">Bind mounts vs volumes</h3>
+    <p>Docker supports two types of mounts: <strong>bind mounts</strong>
+    and <strong>volumes</strong>. A bind mount shares a specific host
+    directory with the container; you decide the host path, and changes
+    propagate in both directions. Volumes are managed by Docker and live
+    outside the host filesystem, which is useful for storing persistent
+    data but not ideal for editing source code. In development
+    scenarios, bind mounts provide a fast feedback loop.</p>
+    <h2 id="step-5-add-php-support">Step 5 – Add PHP support</h2>
+    <p>Static pages are limiting; let’s extend the container to process
+    PHP scripts. The <strong>official <code>php:apache</code>
+    image</strong> includes PHP and the Apache HTTP Server, allowing you
+    to serve dynamic pages out of the box. The Docker guide notes that
+    you can containerize a PHP application and serve it via Apache.
+    We’ll create a new <code>php-webserver</code> image based on
+    this.</p>
+    <ol type="1">
+    <li><p><strong>Create a project folder.</strong> Inside
+    <code>docker‑webserver</code> create <code>php-site</code> and place
+    an <code>index.php</code> file inside:</p>
+    <div class="sourceCode" id="cb7"><pre
+    class="sourceCode php"><code class="sourceCode php"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;!--</span> docker‑webserver<span class="op">/</span>php<span class="op">-</span>site<span class="op">/</span>index<span class="op">.</span>php <span class="op">-</span>-&gt;</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;</span><span class="ot">?</span>php</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="va">$currentTime</span> <span class="op">=</span> <span class="fu">date</span>(<span class="st">&#39;Y-m-d H:i:s&#39;</span>)<span class="ot">;</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="kw">?&gt;</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;!</span><span class="cn">DOCTYPE</span> html<span class="op">&gt;</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;</span>html lang<span class="op">=</span><span class="st">&quot;en&quot;</span><span class="op">&gt;</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;</span>head<span class="op">&gt;</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>  <span class="op">&lt;</span>meta charset<span class="op">=</span><span class="st">&quot;UTF-8&quot;</span><span class="op">&gt;</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>  <span class="op">&lt;</span>title<span class="op">&gt;</span>Docker <span class="cn">PHP</span> Server<span class="op">&lt;/</span>title<span class="op">&gt;</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>  <span class="op">&lt;</span>style<span class="op">&gt;</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>    body { font<span class="op">-</span>family<span class="ot">:</span> sans<span class="op">-</span>serif<span class="ot">;</span> <span class="fu">max</span><span class="op">-</span>width<span class="ot">:</span> <span class="er">640</span>px<span class="ot">;</span> margin<span class="ot">:</span> <span class="dv">0</span> auto<span class="ot">;</span> padding<span class="ot">:</span> <span class="er">2</span>rem<span class="ot">;</span> }</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>    h1 { color<span class="ot">:</span> darkgreen<span class="ot">;</span> text<span class="op">-</span>align<span class="ot">:</span> center<span class="ot">;</span> }</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>  <span class="op">&lt;/</span>style<span class="op">&gt;</span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;/</span>head<span class="op">&gt;</span></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;</span>body<span class="op">&gt;</span></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>  <span class="op">&lt;</span>h1<span class="op">&gt;</span>Hello from <span class="cn">PHP</span><span class="op">!&lt;/</span>h1<span class="op">&gt;</span></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>  <span class="op">&lt;</span>p<span class="op">&gt;</span>The <span class="fu">current</span> server <span class="fu">time</span> is <span class="op">&lt;</span>strong<span class="op">&gt;&lt;</span><span class="ot">?</span>php <span class="kw">echo</span> <span class="va">$currentTime</span><span class="ot">;</span> <span class="kw">?&gt;</span><span class="op">&lt;/</span>strong<span class="op">&gt;.&lt;/</span>p<span class="op">&gt;</span></span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;/</span>body<span class="op">&gt;</span></span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;/</span>html<span class="op">&gt;</span></span></code></pre></div></li>
+    <li><p><strong>Write a PHP Dockerfile.</strong> In
+    <code>docker‑webserver</code> create a <code>Dockerfile.php</code>
+    with the following contents:</p>
+    <div class="sourceCode" id="cb8"><pre
+    class="sourceCode dockerfile"><code class="sourceCode dockerfile"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># docker‑webserver/Dockerfile.php</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Use the official PHP image that bundles Apache</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> php:8.2-apache</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Copy the PHP site into Apache&#39;s document root</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="kw">COPY</span> php-site/ /var/www/html/</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Enable any PHP extensions you need; for example, mysqli or pdo_mysql</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="kw">RUN</span> <span class="ex">docker-php-ext-install</span> pdo pdo_mysql</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="kw">EXPOSE</span> 80</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="kw">CMD</span> [<span class="st">&quot;apache2-foreground&quot;</span>]</span></code></pre></div>
+    <p>The <code>php:8.2-apache</code> image combines a Debian base,
+    Apache web server and PHP 8.2. The Docker guide’s
+    <strong>docker init</strong> workflow selects <em>“PHP with
+    Apache”</em> and version 8.2, which is exactly what we are using.
+    The <code>RUN docker-php-ext-install</code> line demonstrates how to
+    enable additional PHP extensions if your project needs a database
+    driver; you can remove it for a simple site.</p></li>
+    <li><p><strong>Build and run the PHP container.</strong> Build the
+    new image and run it on port 8081:</p>
+    <div class="sourceCode" id="cb9"><pre
+    class="sourceCode sh"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> build <span class="at">-t</span> php-webserver <span class="at">-f</span> Dockerfile.php .</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">-d</span> <span class="at">--name</span> php-webserver <span class="at">-p</span> 8081:80 php-webserver</span></code></pre></div></li>
+    <li><p><strong>Visit the PHP site.</strong> Open your browser to
+    <code>http://localhost:8081/index.php</code>. You should see “Hello
+    from PHP!” and the current time. To stop the container, run
+    <code>docker rm -f php-webserver</code>.</p></li>
+    </ol>
+    <p><img src="../imgs/docker01-php.png" width="400px" alt="php"></p>
+    <h3 id="modifying-php-configuration">Modifying PHP
+    configuration</h3>
+    <p>You can mount your <code>php-site</code> directory into the PHP
+    container using a bind mount to see changes instantly:</p>
+    <div class="sourceCode" id="cb10"><pre
+    class="sourceCode sh"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">-d</span> <span class="at">--name</span> php-dev <span class="at">-p</span> 8081:80 <span class="dt">\</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">--mount</span> type=bind,src=<span class="st">&quot;</span><span class="va">$(</span><span class="bu">pwd</span><span class="va">)</span><span class="st">/php-site&quot;</span>,target=/var/www/html <span class="dt">\</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  php:8.2-apache</span></code></pre></div>
+    <p>This command uses the official <code>php:8.2-apache</code> image
+    directly and mounts the local <code>php-site</code> folder into
+    <code>/var/www/html</code>. Edit <code>index.php</code> and refresh
+    the browser to see updates.</p>
+    <p><img src="../imgs/docker01-php2.png" width="400px" alt="php2"></p>
+    <h2 id="step-6-organize-with-docker-compose-optional">Step 6 –
+    Organize with Docker Compose (optional)</h2>
+    <p>For multi‑service applications you can use
+    <strong>Docker Compose</strong>. Compose lets you define services,
+    networks and volumes in a single YAML file and bring them up with
+    one command. In the Nginx example earlier, a Compose file defined a
+    service, selected the <code>nginx:1‑alpine</code> image, mapped
+    ports and mounted a directory. Compose files also support multiple
+    services and dependencies (for example, Nginx plus a backend
+    API).</p>
+    <p>To adapt our PHP example to Compose, create a
+    <code>docker-compose.yml</code>:</p>
+    <div class="sourceCode" id="cb11"><pre
+    class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">version</span><span class="kw">:</span><span class="at"> </span><span class="st">&#39;3.8&#39;</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">services</span><span class="kw">:</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">php</span><span class="kw">:</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">image</span><span class="kw">:</span><span class="at"> php:8.2-apache</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">ports</span><span class="kw">:</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="st">&#39;8082:80&#39;</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">volumes</span><span class="kw">:</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> ./php-site:/var/www/html</span></span></code></pre></div>
+    <p>Then run <code>docker compose up -d</code> to start the service
+    and <code>docker compose down</code> to stop it. Compose
+    automatically handles port mapping and mount configuration, making
+    it easier to manage complex setups.</p>
+    <h2 id="summary">Summary</h2>
+    <p>In this tutorial you built a static website with Docker, learned
+    the difference between images and containers, used bind mounts for
+    live development, and extended the environment to serve PHP files.
+    With these skills you can start containerizing your own web projects
+    and confidently evolve them using Docker’s flexible toolset.</p>
+
+    <footer>
+      &copy; <span id="year"></span> <a href="https://cantus.us/msac/" target="_blank">Sable Cantus</a> | 
+      <a href="https://msac-cisw.github.io/cisw17-demos/">Web Demos</a>
+    </footer>
+    <script>
+      const currentYear = new Date().getFullYear();
+      document.getElementById("year").textContent = currentYear;
+    </script>
+  </body>
+</html>
