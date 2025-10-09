@@ -43,6 +43,13 @@
       "status": "active"
     },
     {
+      "title": "Intro to Git",
+      "description": "Create a local git repository, stage and commit changes.",
+      "filename": "demos/git-intro.html",
+      "icon": "⚙️",
+      "status": "active"
+    },
+    {
       "title": "WEB17 Simple NodeJS Application and Website",
       "description": "Build a nodejs server and website.",
       "filename": "demos/web17-simple-nodejs.html",

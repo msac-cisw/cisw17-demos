@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="" >
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Web Demos</title>
+    <link rel="icon" type="image/png" href="../imgs/logo.png" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    <link rel="stylesheet" href="../page-styles.css" />
+  </head>
+
+  <body>
+    <h1 id="introduction-to-git">Introduction to Git</h1>
+    <p><strong>Objectives</strong></p>
+    <p>Add &amp; commit files in a local repository.</p>
+    <p>View file history.</p>
+    <p><strong>Tools Needed</strong></p>
+    <ul>
+    <li>A <a href="code-editors.html">code editor</a></li>
+    <li>A Modern Web Browser</li>
+    <li><a href="https://git-scm.com/">Git installed on your
+    machine</a></li>
+    </ul>
+    <h2 id="overview">Overview</h2>
+    <p>Version control is an important tool in our workflow. We can use
+    tools, such as <a href="https://git-scm.com/">git</a>, to keep track
+    of our code, and all changes that are made. We can use git as an
+    individual developer, or as part of a team. Git is used to
+    contribute to others’ work as well.</p>
+    <blockquote>
+    <p>Git is a free and open source distributed version control system
+    designed to handle everything from small to very large projects with
+    speed and efficiency.</p>
+    </blockquote>
+    <p>The <strong>three stages</strong> of git are:</p>
+    <ul>
+    <li>Working directory</li>
+    <li>Staging area</li>
+    <li>Repository</li>
+    </ul>
+    <h2 id="install-git">Install Git</h2>
+    <p><strong>Do you already have git installed?</strong></p>
+    <p><em>Git is preinstalled on macOS and some linux operating
+    systems.</em></p>
+    <p>Let’s test by opening the command line interface and typing
+    <code>git --version</code>.</p>
+    <pre><code>% git --version
+git version 2.51.0</code></pre>
+    <h3 id="installing-git-windows">Installing Git ➡︎ Windows</h3>
+    <p>Open PowerShell and install the latest version using winget:</p>
+    <p><code>winget install --id Git.Git -e --source winget</code></p>
+    <h2 id="step-1-create-a-repository">Step 1 – Create a
+    Repository</h2>
+    <p>Let’s create our first repository. You will be working in the
+    command line. You may optionally use VS Code or another git desktop
+    tool.</p>
+    <blockquote>
+    <p>A Git repository is a folder that Git tracks for changes.<br />
+    The repository stores all your project’s history and versions.</p>
+    </blockquote>
+    <p>Create a project folder named <code>git-intro</code>.</p>
+    <p><code>mkdir git-intro</code></p>
+    <p>Navigate to the <code>git-intro</code> folder.</p>
+    <p><code>cd git-intro</code></p>
+    <p>Initialize a git repository.</p>
+    <p><code>git init</code></p>
+    <p><strong>Create a new file</strong></p>
+    <p>Create an <code>index.html</code> file.</p>
+    <p>Enter the code for a basic webpage. Make the title and h1 “Intro
+    to Git”.</p>
+    <p>Enter a paragraph of Lorem ipsum beneath the h1.</p>
+    <p>Type the command <code>ls</code> in the cli. You should see only
+    your <code>index.html</code> file listed.</p>
+    <p>Type the command <code>git status</code>. You should see the
+    following</p>
+    <pre>
+    % git status
+    On branch main
+
+    No commits yet
+
+    Untracked files:
+      (use "git add ..." to include in what will be committed)
+        index.html
+
+    nothing added to commit but untracked files present (use "git add" to track)
+    </pre>
+    <div
+    style="padding: 15px; background-color: #9efafd98; margin-bottom: 25px;">
+    <details>
+    <summary style="cursor: pointer;">
+    What is an Untracked File?
+    </summary>
+    <div style="border: thin solid #ffffffff; padding: 5px 15px;">
+    <p>
+    An <b>untracked</b> file is any file in your project folder that Git
+    is not yet tracking.
+    </p>
+    <p>
+    These are files you’ve created or copied into the folder, but
+    haven’t told Git to watch.
+    </p>
+    </div>
+    </details>
+    <details>
+    <summary style="cursor: pointer;">
+    What is a Tracked File?
+    </summary>
+    <div style="border: thin solid #F1F3F4; padding: 5px 15px;">
+    <p>
+    A <b>tracked</b> file is a file that Git is watching for changes.
+    </p>
+    <p>
+    To make a file tracked, you need to add it to the staging area.
+    </p>
+    </div>
+    </details>
+    </div>
+    <h2 id="step-2-stage-files">Step 2 – Stage Files</h2>
+    <p>The staging environment (or staging area) is like a waiting room
+    for your changes.</p>
+    <p>You use it to tell Git exactly which files you want to include in
+    your next commit.</p>
+    <p>This gives you control over what goes into your project
+    history.</p>
+    <p>Here are some key commands for staging:</p>
+    <ul>
+    <li><code>git add &lt;file&gt;</code> - Stage a file</li>
+    <li><code>git add --all or git add -A</code> - Stage all
+    changes</li>
+    <li><code>git status</code> - See what is staged</li>
+    <li><code>git restore --staged &lt;file&gt;</code> - Unstage a
+    file</li>
+    </ul>
+    <p>Add <code>index.html</code> to the staging area.</p>
+    <p><code>git add index.html</code></p>
+    <p>Check what is staged with <code>git status</code></p>
+    <pre>
+    % git status
+    On branch main
+
+    No commits yet
+
+    Changes to be committed:
+      (use "git rm --cached <file>..." to unstage)
+        new file:   index.html
+    </pre>
+    <h2 id="step-3-commit-changes">Step 3 – Commit Changes</h2>
+    <p>A <strong>commit</strong> is like a save point in your
+    project.</p>
+    <p>It records a snapshot of your files at a certain time, with a
+    message describing what changed.</p>
+    <p>You can always go back to a previous commit if you need to.</p>
+    <p>Here are some key commands for commits:</p>
+    <ul>
+    <li><code>git commit -m "message"</code> - Commit staged changes
+    with a message</li>
+    <li><code>git commit -a -m "message"</code> - Commit all tracked
+    changes (skip staging)</li>
+    <li><code>git log</code> - See commit history</li>
+    </ul>
+    <p>Save your staged changes.</p>
+    <pre><code>% git commit -m &quot;initial commit&quot;
+[main (root-commit) 6d07a52] initial commit
+ 1 file changed, 1 insertion(+)
+ create mode 100644 index.html</code></pre>
+    <h2 id="step-4-modify-and-commit-files">Step 4 – Modify and Commit
+    files</h2>
+    <p>Add a second paragraph of lorem ipsum to your
+    <strong>index.html</strong> file. Stage and commit the file as
+    above.</p>
+    <pre><code>% git add index.html
+% git commit -m &quot;second paragraph&quot;
+[main 0af3a09] second paragraph
+ 1 file changed, 2 insertions(+)</code></pre>
+    <h2 id="step-5-view-commit-history">Step 5 – View Commit
+    History</h2>
+    <p>Git keeps a detailed record of every change made to your
+    project.</p>
+    <p>You can use history commands to see what changed, when, and who
+    made the change.</p>
+    <p>This is useful for tracking progress, finding bugs, and
+    understanding your project’s evolution.</p>
+    <p>Key Commands for Viewing History</p>
+    <ul>
+    <li><code>git log</code> - Show full commit history</li>
+    <li><code>git log --oneline</code> - Show a summary of commits</li>
+    <li><code>git show &lt;commit&gt;</code> - Show details of a
+    specific commit</li>
+    <li><code>git diff</code> - See unstaged changes</li>
+    <li><code>git diff --staged</code> - See staged changes</li>
+    </ul>
+    <p>View your commit history.</p>
+    <pre>
+    % git log
+    commit 0af3a09cb8801a6fc0dc010b92cf49511f3b76a6 (HEAD -> main)
+    Author: /Sable <stoic-amigo-dimly@duck.com>
+    Date:   Tue Aug 19 16:13:07 2025 -0700
+
+        second paragraph
+
+    commit 6d07a521a6f2b75617e5115d45e3702922a28ddb
+    Author: /Sable <stoic-amigo-dimly@duck.com>
+    Date:   Tue Aug 19 16:09:15 2025 -0700
+
+        initial commit
+    </pre>
+    <h2 id="step-6-view-changes-between-commits">Step 6 – View Changes
+    Between Commits</h2>
+    <p>You can see what has changed in a file between commits using the
+    <strong>git diff</strong> command.</p>
+    <p><code>git diff &lt;commit_hash&gt; -- &lt;path/to/your/file&gt;</code></p>
+    <p>Try using <code>git log --oneline</code> to see shorter hash
+    values.</p>
+    <pre><code>git diff 0af3a09 -- index.html</code></pre>
+    <p>You can restore the version from the prior commit using
+    <code>git restore</code>.</p>
+    <pre><code>git restore --source 0af3a09 index.html</code></pre>
+    <p>.Be sure to use hash values from your own repository.</p>
+
+    <footer>
+      &copy; <span id="year"></span> <a href="https://cantus.us/msac/" target="_blank">Sable Cantus</a> | 
+      <a href="https://msac-cisw.github.io/cisw17-demos/">Web Demos</a>
+    </footer>
+    <script>
+      const currentYear = new Date().getFullYear();
+      document.getElementById("year").textContent = currentYear;
+    </script>
+  </body>
+</html>
