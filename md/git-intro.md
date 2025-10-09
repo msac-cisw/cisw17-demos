@@ -223,5 +223,5 @@ You can restore the version from the prior commit using `git restore`.
 git restore --source 0af3a09 index.html
 ```
 
-.Be sure to use hash values from your own repository.
+Be sure to use hash values from your own repository.
 
