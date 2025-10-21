@@ -50,6 +50,13 @@
       "status": "active"
     },
     {
+      "title": "WEB09 Random Quote Generator",
+      "description": "Create single page application that displays a random quote.",
+      "filename": "demos/web09-quote-generator.html",
+      "icon": "📄",
+      "status": "active"
+    },
+    {
       "title": "WEB17 Simple NodeJS Application and Website",
       "description": "Build a nodejs server and website.",
       "filename": "demos/web17-simple-nodejs.html",
