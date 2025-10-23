@@ -75,21 +75,11 @@
     <pre>
     <code>
     const quotes = [
-                {
-                    quote: "Programs must be written for people to read, and only incidentally for machines to execute. —Harold Abelson",
-                },
-                {
-                    quote: "Any fool can write code that a computer can understand. Good programmers write code that humans can understand. —Martin Fowler",
-                },
-                {
-                    quote: "Premature optimization is the root of all evil. —Donald Knuth"
-                },
-                {
-                    quote: "Talk is cheap. Show me the code. —Linus Torvalds"
-                },
-                {
-                    quote: "The best way to predict the future is to invent it. —Alan Kay"
-                }
+                "Programs must be written for people to read, and only incidentally for machines to execute. —Harold Abelson",
+                "Any fool can write code that a computer can understand. Good programmers write code that humans can understand. —Martin Fowler",
+                "Premature optimization is the root of all evil. —Donald Knuth"
+                "Talk is cheap. Show me the code. —Linus Torvalds"
+                "The best way to predict the future is to invent it. —Alan Kay"
             ]
     </code>
     </pre>
@@ -134,14 +124,12 @@
     the array of quotes.</p>
     <p>Enter this code in the console and see which quote is
     displayed.</p>
-    <p><code>console.log(quotes[i].quote)</code></p>
+    <p><code>console.log(quotes[i])</code></p>
     <ul>
     <li><code>quotes</code> is the variable defined in the
     <code>script</code> tag and contains our quotes</li>
     <li><code>i</code> is the generated number</li>
     <li>We use <code>[]</code> to access that index of the array</li>
-    <li><code>.quote</code> accesses the property named
-    <strong>quote</strong></li>
     </ul>
     <p>Finally, let’s update the quote on the webpage when it loads.</p>
     <p>We will tell JavaScript to go to the html document, get the
@@ -149,7 +137,7 @@
     <p>Enter these two lines in your script tag just below the quote
     array:</p>
     <pre><code>let i = Math.floor(Math.random() * quotes.length);
-document.getElementById(&quot;quote&quot;).innerText = quotes[i].quote;</code></pre>
+document.getElementById(&quot;quote&quot;).innerText = quotes[i];</code></pre>
     <p>Refresh your browser a few times. You should see the quote
     change. You might see the same quote twice in a row as we didn’t
     write code to prevent that and there are only 5 quotes.</p>

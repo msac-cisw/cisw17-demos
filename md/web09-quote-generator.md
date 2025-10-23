@@ -64,21 +64,11 @@ Enter the following code into the `<script>` tag on your page:
 <pre>
 <code>
 const quotes = [
-            {
-                quote: "Programs must be written for people to read, and only incidentally for machines to execute. —Harold Abelson",
-            },
-            {
-                quote: "Any fool can write code that a computer can understand. Good programmers write code that humans can understand. —Martin Fowler",
-            },
-            {
-                quote: "Premature optimization is the root of all evil. —Donald Knuth"
-            },
-            {
-                quote: "Talk is cheap. Show me the code. —Linus Torvalds"
-            },
-            {
-                quote: "The best way to predict the future is to invent it. —Alan Kay"
-            }
+            "Programs must be written for people to read, and only incidentally for machines to execute. —Harold Abelson",
+            "Any fool can write code that a computer can understand. Good programmers write code that humans can understand. —Martin Fowler",
+            "Premature optimization is the root of all evil. —Donald Knuth"
+            "Talk is cheap. Show me the code. —Linus Torvalds"
+            "The best way to predict the future is to invent it. —Alan Kay"
         ]
 </code>
 </pre>
@@ -129,12 +119,11 @@ Now that we have the number in memory, let's get that number from the array of q
 
 Enter this code in the console and see which quote is displayed.
 
-`console.log(quotes[i].quote)`
+`console.log(quotes[i])`
 
 - `quotes` is the variable defined in the `script` tag and contains our quotes
 - `i` is the generated number
 - We use `[]` to access that index of the array
-- `.quote` accesses the property named **quote**
 
 Finally, let's update the quote on the webpage when it loads.
 
@@ -144,7 +133,7 @@ Enter these two lines in your script tag just below the quote array:
 
 ```
 let i = Math.floor(Math.random() * quotes.length);
-document.getElementById("quote").innerText = quotes[i].quote;
+document.getElementById("quote").innerText = quotes[i];
 ```
 
 Refresh your browser a few times. You should see the quote change. You might see the same quote twice in a row as we didn't write code to prevent that and there are only 5 quotes.
