@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="" >
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Web Demos</title>
+    <link rel="icon" type="image/png" href="../imgs/logo.png" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    <link rel="stylesheet" href="../page-styles.css" />
+  </head>
+
+  <body>
+    <h1 id="a-silly-poem">A Silly Poem</h1>
+    <p><strong>Objectives</strong></p>
+    <p>Build a single page app that gets input from the user and
+    displays a silly poem.</p>
+    <p><strong>Tools Needed</strong></p>
+    <p>You will need a <a href="code-editors.html">code editor</a> and a
+    web browser.</p>
+    <h2 id="creating-a-silly-poem">Creating a Silly Poem</h2>
+    <p>This project demonstrates using <code>prompt()</code> to collect
+    user input. It then uses <strong>template literals</strong> to
+    create the poem that is displayed on the webpage.</p>
+    <h2 id="project-setup">Project Setup</h2>
+    <p>We will need a basic html page with two extra sections added. The
+    <code>&lt;style&gt;</code> tag in the header, and a
+    <code>&lt;script&gt;</code> tag at the end of the body.</p>
+    <p>Create a new file named <code>silly-poem.html</code> and type in
+    the following code:</p>
+    <pre>
+    <code>
+    &lt;!doctype html&gt;
+        &lt;html lang="en-US"&gt;
+        &lt;head&gt;
+            &lt;meta charset="utf-8" /&gt;
+            &lt;meta name="viewport" content="width=device-width" /&gt;
+            &lt;title&gt;A Silly Poem&lt;/title&gt;
+            &lt;style&gt;
+                &lt;!-- CSS goes here --&gt;
+            &lt;/style&gt;
+            
+        &lt;/head&gt;
+        &lt;body&gt;
+            &lt;h1&gt;A Silly Poem&lt;/h1&gt;
+            
+            &lt;script&gt;
+                // JavaScript goes here
+            &lt;/script&gt;
+        &lt;/body&gt;
+    &lt;/html&gt;
+    </code>
+    </pre>
+    <p>Let’s add a <strong>div</strong> for the poem, a
+    <strong>div</strong> for the instructions, and a button to start the
+    javascript function.</p>
+    <p>We will give the user some instructions as well when the page
+    loads.</p>
+    <pre><code>
+    &lt;div id="silly-poem"&gt;&lt;/div&gt;
+    &lt;div id="instructions"&gt;
+          &lt;p&gt;We are going to create a &lt;em&gt;silly&lt;/em&gt; poem. Click the button and enter words when prompted.&lt;/p&gt;
+          
+          &lt;p&gt;&lt;b&gt;Adjectives&lt;/b&gt; are desribing words.&lt;/p&gt;
+          &lt;p&gt;A &lt;b&gt;noun&lt;/b&gt; is a person, place, or thing.&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;button id="button"&gt;Generate Poem&lt;/button&gt;
+    </code></pre>
+    <p>Preview your webpage. You should see a simple (and unstyled)
+    page.</p>
+    <p><img src="../imgs/web10-1.png" width="400px"></p>
+    <h3 id="add-style">Add style</h3>
+    <p>Add the following css in the <strong>style</strong> tag in the
+    head.</p>
+    <pre><code>
+    body {
+      margin: auto;
+      max-width: 650px;
+      font-family:Verdana, Geneva, Tahoma, sans-serif;
+      font-size: 24px;
+      line-height: 1.5;
+    }
+    h1,
+    h2 {
+      text-align: center;
+    }
+    #button {
+      position: relative;
+      float: right;
+      font-size: 1.5em;
+      display: block;
+      background-color: lightyellow;
+    }
+    #button:hover {
+      background-color: lightskyblue;
+    }
+    #inst {
+      max-width: 70%;
+      margin: auto;
+    }
+    </code></pre>
+    <p>Your page should look like this now:</p>
+    <p><img src="../imgs/web10-2.png" width="400px"></p>
+    <h3 id="adding-functionality-with-javascript">Adding Functionality
+    with JavaScript</h3>
+    <p>We will create a function that will be triggered when the button
+    is clicked. The function will:</p>
+    <ul>
+    <li>Get user input for the words</li>
+    <li>Hide the instructions div</li>
+    <li>Hide the button</li>
+    <li>Insert the generated HTML in the silly-poem div</li>
+    <li>Display the silly-poem div</li>
+    </ul>
+    <pre>
+                                        ┌──────────────────┐
+                                        │  createPoem()    │
+                                        └──────────────────┘
+                                                  │
+            ┌─────────────────────────────────────┼─────────────────┐
+            ▼                                     ▼                 ▼
+    ┌─────────────────┐                  ┌──────────────┐  ┌────────────────┐
+    │ Hide            │                  │  Get User    │  │ Hide Button    │
+    │ #instructions   │                  │   Inputs     │  │                │
+    │ (set visibility)│                  │  (4 prompts) │  │ (set visibility│
+    └─────────────────┘                  └──────────────┘  └────────────────┘
+                                                  │
+                                                  │
+                                                  ▼
+                                          ┌────────────────────┐
+                                          │ Build Message      │
+                                          │ (template string)  │
+                                          └────────────────────┘
+                                                     │
+                                                     ▼
+                                          ┌────────────────────┐
+                                          │ Display in         │
+                                          │ #silly-poem        │
+                                          │ (innerHTML)        │
+                                          └────────────────────┘
+    </pre>
+    <p><strong>Define the variables</strong></p>
+    <p>We are going to build the JavaScript inside of the
+    <code>&lt;script&gt;</code> tag at the bottom of the page.</p>
+    <p>Let’s start by defining the variables needed: sillyPoem,
+    instructions, and button.</p>
+    <p>Then we will create a function named createPoem() that will
+    prompt the user for 3 adjectives and a plural noun. The function
+    will use <strong>template literals</strong> to substitute the text
+    inline.</p>
+    <p>Finally, we will add an event listener to the button that calls
+    the function when clicked.</p>
+    <details>
+    <summary style="cursor: pointer; border: 1px solid #D6D9DC; background-color: #f4fc5f7a; padding: 10px 10px 10px 20px; border-radius: 15px; margin-bottom: 2rem;">
+    What is a template literal?
+    </summary>
+    <p>
+    A <b>template literal</b> (sometimes called a template string) is a
+    special kind of string literal in JavaScript that lets you:
+    </p>
+    <ol>
+    <li>
+    Embed variables and expressions directly inside a string
+    </li>
+    <li>
+    Use multi-line strings easily
+    </li>
+    <li>
+    Create flexible, readable templates for building dynamic text
+    <li>
+    </ol>
+    <p>
+    They’re enclosed by backticks (`) instead of single (’) or double
+    (“) quotes.
+    </p>
+    </details>
+    <p>Enter the following JavaScript in the <code>&lt;script&gt;</code>
+    tag:</p>
+    <pre><code>
+    // define variables
+    const sillyPoem = document.getElementById('silly-poem');
+    const instructions = document.getElementById('instructions');
+    const button = document.getElementById('button');
+
+    // create a function for our silly poem
+    function createPoem() {
+        // hide the instructions
+        instructions.style.visibility = 'hidden';
+
+        // get the user input
+        const adj1 = prompt('Enter an adjective');
+        const adj2 = prompt('Enter another adjective');
+        const noun = prompt('Enter a PLURAL noun');
+        const adj3 = prompt('Enter one more adjective');
+
+        // create the silly poem
+        let message = `&lt;p&gt;Roses are &lt;b&gt;${adj1}&lt;/b&gt;.&lt;br&gt;`;
+        message += `Violets are &lt;b&gt;${adj2}&lt;/b&gt;.&lt;br&gt;`;
+        message += `&lt;b&gt;${noun}&lt;/b&gt; are &lt;b&gt;${adj3}&lt;/b&gt;,&lt;br&gt;`;
+        message += `and so are YOU!&lt;/p&gt;`;
+        
+        // display the silly poem
+        sillyPoem.innerHTML = message;
+
+        button.style.visibility = 'hidden';
+    }
+
+    // add an event listener to the button
+    button.addEventListener('click', createPoem);
+    </code></pre>
+    <h3 id="test-your-code">Test your code</h3>
+    <p>Click the button and start entering your silly words when
+    prompted.</p>
+    <p><img src="../imgs/web10-3.png" width="400px"></p>
+    <p>Your poem will display after you enter all the words.</p>
+    <p><img src="../imgs/web10-4.png" width="400px"></p>
+    <h2 id="going-further">Going Further</h2>
+    <p>Try to test that the user actually entered something and give
+    them a polite reminder message.</p>
+    <p>You might annoy your users if you give them too many pop-ups. Try
+    using an html form to collect the user information?</p>
+    <p>Try out different poems that are selected at random when you
+    press the button.</p>
+    <p>Add web fonts and simple animations to make the page feel a
+    little more fun.</p>
+
+    <footer>
+      &copy; <span id="year"></span> <a href="https://cantus.us/msac/" target="_blank">Sable Cantus</a> | 
+      <a href="../index.html" title="Go to the Web Demos menu">Web Demos</a>
+    </footer>
+    <script>
+      const currentYear = new Date().getFullYear();
+      document.getElementById("year").textContent = currentYear;
+    </script>
+  </body>
+</html>
