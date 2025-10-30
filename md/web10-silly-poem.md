@@ -139,9 +139,9 @@ We will create a function that will be triggered when the button is clicked. The
 
 We are going to build the JavaScript inside of the `<script>` tag at the bottom of the page.
 
-Let's start by defining the variables needed: sillyPoem, instructions, and button.
+Let's start by defining the variables needed: **sillyPoem**, **instructions**, and **button**.
 
-Then we will create a function named createPoem() that will prompt the user for 3 adjectives and a plural noun. The function will use **template literals** to substitute the text inline.
+Then we will create a function named `createPoem()` that will prompt the user for 3 adjectives and a plural noun. The function will use **template literals** to substitute the text inline.
 
 Finally, we will add an event listener to the button that calls the function when clicked.
 
@@ -168,6 +168,19 @@ const sillyPoem = document.getElementById('silly-poem');
 const instructions = document.getElementById('instructions');
 const button = document.getElementById('button');
 
+</code></pre>
+
+This first block of JavaScript defines the **constants** that will access the DOM.
+
+We are identifying the HTML documents by the id (e.g. #silly-poem) and assigning that to our variable.
+
+`document.getElementById('silly-poem')`
+
+First we tell JavaScript to go to the HTML document and then find the element, in this case a `<div>` with the id of **silly-poem**.
+
+Enter the next block of code below the variables in the `<script>` tag:
+
+<pre><code>
 // create a function for our silly poem
 function createPoem() {
     // hide the instructions
@@ -190,10 +203,59 @@ function createPoem() {
 
     button.style.visibility = 'hidden';
 }
+</code></pre>
 
+This is the code that gets the work done for you. Calling this function is what starts the poem process.
+
+What is happening in this function? Let's break down each block.
+
+First we hide the instructions `<div>` by changing the **style** visibility to hidden.
+
+`instructions.style.visibility = 'hidden';`
+
+Next we will use the **prompt()** function to ask the user to provide our silly words, one at a time, and then assign their entries to the variables.
+
+
+```
+const adj1 = prompt('Enter an adjective');
+const adj2 = prompt('Enter another adjective');
+const noun = prompt('Enter a PLURAL noun');
+const adj3 = prompt('Enter one more adjective');
+```
+
+You will see this text in the browser's popup window. You can change that to fit your audience or your humor.
+
+We start to build the poem with the users choices. We will build the poem into the variable **message** line by line using the **+=** operator.
+
+*Note the use of the backtick enabling us to use the template literal inline with our HTML.*
+
+```
+let message = `&lt;p&gt;Roses are &lt;b&gt;${adj1}&lt;/b&gt;.&lt;br&gt;`;
+message += `Violets are &lt;b&gt;${adj2}&lt;/b&gt;.&lt;br&gt;`;
+message += `&lt;b&gt;${noun}&lt;/b&gt; are &lt;b&gt;${adj3}&lt;/b&gt;,&lt;br&gt;`;
+message += `and so are YOU!&lt;/p&gt;`;
+```
+
+The poem is complete and stored in the **message** variable. Let's replace the **innerHTML** of the sillyPoem `<div>` with the poem
+
+`sillyPoem.innerHTML = message;`
+
+The last part of the function will hide the button itself.
+
+`button.style.visibility = 'hidden';`
+
+Finally we will attach the function to the button. Clicking the button will run our function.
+
+Enter the following code after the function in the `<script>` tag (Be sure it is after the closing } ):
+
+<pre><code>
 // add an event listener to the button
 button.addEventListener('click', createPoem);
 </code></pre>
+
+Save your file.
+
+The browser is now listening for a click (or tap) on the button to start the function that create's the poem.
 
 ### Test your code
 
