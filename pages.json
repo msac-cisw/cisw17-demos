@@ -57,6 +57,13 @@
       "status": "active"
     },
     {
+      "title": "WEB10 A Silly Poem",
+      "description": "Create single page application that creates a silly poem from user input.",
+      "filename": "demos/web10-silly-poem.html",
+      "icon": "📄",
+      "status": "active"
+    },
+    {
       "title": "WEB17 Simple NodeJS Application and Website",
       "description": "Build a nodejs server and website.",
       "filename": "demos/web17-simple-nodejs.html",
