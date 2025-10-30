@@ -146,7 +146,7 @@ Then we will create a function named createPoem() that will prompt the user for 
 Finally, we will add an event listener to the button that calls the function when clicked.
 
 <details>
-<summary style="cursor: pointer; border: 1px solid #D6D9DC; background-color: #f4fc5f7a; padding: 10px 10px 10px 20px; border-radius: 15px; margin-bottom: 2rem;">What is a template literal?
+<summary style="cursor: pointer; border: 1px solid #D6D9DC;  padding: 10px 10px 10px 20px; border-radius: 15px; margin-bottom: 2rem; background-color: #f4fc5f7a;">What is a template literal?
 </summary>
 
 <p>A <b>template literal</b> (sometimes called a template string) is a special kind of string literal in JavaScript that lets you:</p>
@@ -154,7 +154,7 @@ Finally, we will add an event listener to the button that calls the function whe
 <ol>
 	<li>Embed variables and expressions directly inside a string</li>
 	<li>Use multi-line strings easily</li>
-	<li>Create flexible, readable templates for building dynamic text<li>
+	<li>Create flexible, readable templates for building dynamic text</li>
 </ol>
 
 <p>They’re enclosed by backticks (`) instead of single (') or double (") quotes.</p>
