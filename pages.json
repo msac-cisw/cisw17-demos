@@ -64,6 +64,13 @@
       "status": "active"
     },
     {
+      "title": "WEB11 Let's Play Rock, Paper, Scissors!",
+      "description": "Create simple game of Rock, Paper, Scissors.",
+      "filename": "demos/web11-rps.html",
+      "icon": "📄",
+      "status": "active"
+    },
+    {
       "title": "WEB17 Simple NodeJS Application and Website",
       "description": "Build a nodejs server and website.",
       "filename": "demos/web17-simple-nodejs.html",
