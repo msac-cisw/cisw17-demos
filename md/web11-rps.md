@@ -4,7 +4,7 @@
 
 **Objectives**
 
-Build an where users click on buttons to play a game.
+Build a web application to play Rock, Paper, Scissors.
 
 **Tools Needed**
 
