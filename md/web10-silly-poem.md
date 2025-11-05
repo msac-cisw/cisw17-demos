@@ -51,7 +51,7 @@ We will give the user some instructions as well when the page loads.
 &lt;div id="instructions"&gt;
       &lt;p&gt;We are going to create a &lt;em&gt;silly&lt;/em&gt; poem. Click the button and enter words when prompted.&lt;/p&gt;
       
-      &lt;p&gt;&lt;b&gt;Adjectives&lt;/b&gt; are desribing words.&lt;/p&gt;
+      &lt;p&gt;&lt;b&gt;Adjectives&lt;/b&gt; are describing words.&lt;/p&gt;
       &lt;p&gt;A &lt;b&gt;noun&lt;/b&gt; is a person, place, or thing.&lt;/p&gt;
 &lt;/div&gt;
 &lt;button id="button"&gt;Generate Poem&lt;/button&gt;
