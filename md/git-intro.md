@@ -89,22 +89,21 @@ nothing added to commit but untracked files present (use "git add" to track)
 </pre>
 
 
-<div style="padding: 15px; background-color: #9efafd98; margin-bottom: 25px;">
 <details>
-<summary style="cursor: pointer;">What is an Untracked File?</summary>
+<summary>What is an Untracked File?</summary>
 <div style="border: thin solid #ffffffff; padding: 5px 15px;">
 <p>An <b>untracked</b> file is any file in your project folder that Git is not yet tracking.</p>
 <p>These are files you've created or copied into the folder, but haven't told Git to watch.</p>
 </div>
 </details>
 <details>
-<summary style="cursor: pointer;">What is a Tracked File?</summary>
+<summary>What is a Tracked File?</summary>
 <div style="border: thin solid #F1F3F4; padding: 5px 15px;">
 <p>A <b>tracked</b> file is a file that Git is watching for changes.</p>
 <p>To make a file tracked, you need to add it to the staging area.</p>
 </div>
 </details>
-</div>
+
 
 ## Step 2 – Stage Files
 

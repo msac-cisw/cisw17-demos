@@ -42,6 +42,21 @@ li code {
   padding: 5px;
 }
 
+/* Details styling */
+details {
+  background-color: #f4fc5f4e;
+  padding: 10px;
+  margin-bottom: 2rem;
+  border-radius: 10px;
+}
+/* keep native arrow and pointer behavior */
+details > summary {
+  cursor: pointer;
+  font-weight: 600;
+  list-style: revert; /* ensures the default disclosure arrow remains visible */
+  padding: 10px;
+}
+
 footer {
   text-align: center;
   font-size: 0.75em;

@@ -57,10 +57,8 @@ We will need space on the page for the buttons and for the results. Let's create
 </code>
 </pre>
 
-<div style="margin-left: 20px;">
 <details>
-<summary style="cursor: pointer; border: 1px solid yellow;  padding: 10px 10px 10px 20px; border-radius: 15px; margin-bottom: 2rem; background-color: #f4fc5f7a;">What is an HTML button?
-</summary>
+<summary>What is an HTML button?</summary>
 <p>An HTML button is an interactive element that users can click to trigger an action. Here's the breakdown:</p>
 <p>Basic syntax:</p>
 <pre>
@@ -132,9 +130,8 @@ Add the buttons to the empty div in the body.
 </code>
 </pre>
 
-<div style="margin-left: 20px;">
 <details>
-<summary style="cursor: pointer; border: 1px solid yellow;  padding: 10px 10px 10px 20px; border-radius: 15px; margin-bottom: 2rem; background-color: #f4fc5f7a;">
+<summary>
 How do I type emoji's into the HTML?
 </summary>
 <p>You can use keyboard shortcuts to open the emoji picker for your operating system, or copy and paste them from this page.</p>
@@ -148,7 +145,7 @@ How do I type emoji's into the HTML?
     <td style="border: 1px solid #ccc; padding: 10px;">windows key + .</td>
 </tr>
 </table>
-</details></div>
+</details>
 
 The basic application should be ready to go. Let's write the code for the game next.
 
@@ -287,9 +284,8 @@ results.innerHTML = message;
 </code>
 </pre>
 
-<div style="margin-left: 20px;">
 <details>
-<summary style="cursor: pointer; border: 1px solid yellow;  padding: 10px 10px 10px 20px; border-radius: 15px; margin-bottom: 2rem; background-color: #f4fc5f7a;">Show entire script.js code.</summary>
+<summary>Show entire script.js code.</summary>
 
 <pre>
 <code>
@@ -324,7 +320,7 @@ function playRPS(player_choice) {
 }
 </code>
 </pre>
-</details></div>
+</details>
 
 Test your page several times by clicking the buttons. Make sure that each button can generate a win, lose or tie.
 

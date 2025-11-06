@@ -178,6 +178,6 @@ Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta, quas
 
 
 <details>
-<summary style="cursor: pointer; font-size: large; border: 1px solid #D6D9DC; background-color: #f5f5f5; padding: 10px 10px 10px 20px; border-radius: 15px; margin-bottom: 2rem;">Click here to see the final page.</summary>
+<summary>Click here to see the final page.</summary>
 <img src="../imgs/web06-final.gif" width="400px" alt="final">
 </details>

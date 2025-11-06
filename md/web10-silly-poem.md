@@ -146,8 +146,7 @@ Then we will create a function named `createPoem()` that will prompt the user fo
 Finally, we will add an event listener to the button that calls the function when clicked.
 
 <details>
-<summary style="cursor: pointer; border: 1px solid #D6D9DC;  padding: 10px 10px 10px 20px; border-radius: 15px; margin-bottom: 2rem; background-color: #f4fc5f7a;">What is a template literal?
-</summary>
+<summary>What is a template literal?</summary>
 
 <p>A <b>template literal</b> (sometimes called a template string) is a special kind of string literal in JavaScript that lets you:</p>
 
