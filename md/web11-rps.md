@@ -49,7 +49,7 @@ We will need space on the page for the buttons and for the results. Let's create
 <pre>
 <code>
 &lt;div&gt;
-    &lt;-- We'll add buttons here --&gt;
+    &lt;!-- We'll add buttons here --&gt;
 &lt;/div&gt;
 &lt;div id="results"&gt;
     &lt;p&gt;Player picks.&lt;/p&gt;
@@ -186,7 +186,7 @@ This is the flow of our program.
     │  Display Result on Screen:      │
     │  • Computer's choice            │
     │  • Win/Lose/Tie message         │
-    │  • Emoji feedback 😀 😐 🙁       │
+    │  • Emoji feedback 😀 😐 🙁      │
     └─────────────────────────────────┘
 </pre>
 
