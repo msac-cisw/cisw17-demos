@@ -1,3 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Google+Sans+Code:ital,wght@0,300..800;1,300..800&display=swap');
+:root {
+    --dark-color: rgb(22, 22, 22);
+    --light-color: rgb(249, 249, 249);
+}
 body {
   margin: 1rem auto;
   max-width: 800px;
@@ -18,7 +23,7 @@ pre {
 
 code {
   font-size: 14px;
-  font-family: "Courier New", Courier, monospace;
+  font-family: "Google Sans Code", Courier, monospace;
 }
 
 pre,
@@ -31,6 +36,10 @@ img {
   display: block;
   margin: 0 auto;
 }
+video {
+  display: block;
+  margin: 0 auto;
+}
 
 li {
   margin-bottom: 0.5em;
@@ -40,6 +49,17 @@ li {
 li code {
   background-color: rgba(128, 128, 128, 0.11);
   padding: 5px;
+}
+.darkmode {
+    background-color: var(--dark-color);
+    color: var(--light-color);
+}
+
+.darkmode a {
+  color: var(--light-color);
+}
+.darkmode a:visited {
+  color: lightgray;
 }
 
 /* Details styling */
@@ -89,5 +109,18 @@ iframe {
   iframe {
     width: 100%;
     /* height: 200px; */
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: rgb(33,33,36);
+    color: rgb(226,226,226);
+  }
+    a {
+    color: var(--light-color);
+  }
+    a:visited {
+    color: lightgray;
   }
 }

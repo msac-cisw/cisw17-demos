@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="" >
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Web Demos</title>
+    <link rel="icon" type="image/png" href="../imgs/logo.png" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    <link rel="stylesheet" href="../page-styles.css" />
+  </head>
+
+  <body>
+    <div id="top">
+
+    </div>
+    <h1 id="press-d-to-toggle-dark-mode">Press ‘d’ to Toggle Dark
+    Mode</h1>
+    <p><strong>Objectives</strong></p>
+    <p>Toggle a <strong>darkmode</strong> class when the ‘d’ key is
+    pressed.</p>
+    <p><strong>Tools Needed</strong></p>
+    <p>You will need a <a href="code-editors.html">code editor</a> and a
+    web browser.</p>
+    <h2 id="why-darkmode">Why Darkmode?</h2>
+    <p>A light-on-dark color scheme uses light-colored text, icons, and
+    elements on a dark background. Some people prefer dark mode and
+    claim it reduces eye strain. Some people just think it’s cool.</p>
+    <h2 id="listening-for-keystrokes">Listening for Keystrokes</h2>
+    <p>Events happen on a webpage. Our code can respond to them. For
+    this project we will use the <strong>keydown</strong> event to
+    switch the body class to dark mode when the ‘d’ key is pressed.</p>
+    <h2 id="html-setup">HTML Setup</h2>
+    <p>Create a working folder for this project named
+    <strong>darkmode</strong>.</p>
+    <p>Create a basic html page with <strong>script.js</strong> and
+    <strong>style.css</strong>.</p>
+    <p>Create a new file named <code>darkmode.html</code>.</p>
+    <pre>
+    <code>
+    &lt;!doctype html&gt;
+        &lt;html lang="en-US"&gt;
+        &lt;head&gt;
+            &lt;meta charset="utf-8"&gt;
+            &lt;meta name="viewport" content="width=device-width"&gt;
+            &lt;title&gt;Toggle Dark Mode&lt;/title&gt;
+            &lt;link rel="stylesheet" href="style.css"&gt;
+            &lt;script src="script.js" defer &gt;&lt;/script&gt;
+        &lt;/head&gt;
+        &lt;body&gt;
+            &lt;h1&gt;Press 'd' to Toggle Dark Mode&lt;/h1&gt;
+            
+        &lt;/body&gt;
+    &lt;/html&gt;
+    </code>
+    </pre>
+    <h3 id="add-css">Add CSS</h3>
+    <p>We will define both a light and dark color. Then specify those
+    for the body and the darkmode class. We will put variables in the
+    root.</p>
+    <pre><code>
+    :root {
+        --dark-color: rgb(22, 22, 22);
+        --light-color: rgb(249, 249, 249);
+      }
+    body {
+        background-color: var(--light-color);
+        color: var(--dark-color);
+    }
+    .darkmode {
+        background-color: var(--dark-color);
+        color: var(--light-color);
+    }
+    </code></pre>
+    <p>The page will load with the specified light-color background and
+    dark color font by default.</p>
+    <h3 id="js">JS</h3>
+    <p>We are going to create a function named
+    <strong>toggleDarkMode()</strong> that will listen for the
+    <strong>keydown</strong> event and trigger the function.</p>
+    <p>Create the function:</p>
+    <pre><code>
+    function toggleDarkMode(event) {
+        // the e.keyCode for 'd' is 68
+        if ( event.keyCode == 68 ) {
+            document.body.classList.toggle('darkmode');
+        }
+    }
+    </code></pre>
+    <p>Notice that we are checking for a specific keyCode: 68. The
+    function will do nothing for other keys.</p>
+    <p>Add an event listener to the entire document.</p>
+    <pre><code>
+    document.addEventListener("keydown", toggleDarkMode);
+    </code></pre>
+    <p>Open in live-server and test your code.</p>
+    <video src="../imgs/web12-toggle.mp4" controls playsinline preload="metadata" width="400px">
+    <img src="../imgs/web12-toggle.gif" width="400" alt="darkmode toggling off and on">
+    </video>
+    <h2 id="going-further">Going Further</h2>
+    <ul>
+    <li>What more can you do with keyboard interaction?</li>
+    <li>How can you change the dark and light colors to something
+    different?</li>
+    <li>What if you wanted to press a button in addition to the
+    keydown?</li>
+    <li>Could you add different features for different keystrokes? Such
+    as blanking the screen?</li>
+    <li>What about having a secret code that opens a hidding link?</li>
+    <li>the prefers-color-scheme media query to switch to darkmode if
+    the user prefers it</li>
+    </ul>
+    <script>
+    function toggleDarkMode(event) {
+        // the e.keyCode for 'd' is 68
+        if ( event.keyCode == 68 ) {
+            document.body.classList.toggle('darkmode');
+        }
+    }
+
+    document.addEventListener("keydown", toggleDarkMode);
+
+    </script>
+    <p>
+    <a href="#top">Back to top.</a>
+    </p>
+
+    <footer>
+      &copy; <span id="year"></span> <a href="https://cantus.us/msac/" target="_blank">Sable Cantus</a> | 
+      <a href="../index.html" title="Go to the Web Demos menu">Web Demos</a>
+    </footer>
+    <script>
+      const currentYear = new Date().getFullYear();
+      document.getElementById("year").textContent = currentYear;
+    </script>
+  </body>
+</html>

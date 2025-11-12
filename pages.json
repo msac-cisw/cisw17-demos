@@ -71,6 +71,13 @@
       "status": "active"
     },
     {
+      "title": "WEB12 Press 'd' to Toggle Dark Mode",
+      "description": "Toggle **darkmode** when the 'd' key is pressed.",
+      "filename": "demos/web12-dark-mode.html",
+      "icon": "📄",
+      "status": "active"
+    },
+    {
       "title": "WEB17 Simple NodeJS Application and Website",
       "description": "Build a nodejs server and website.",
       "filename": "demos/web17-simple-nodejs.html",
