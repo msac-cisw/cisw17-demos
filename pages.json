@@ -93,9 +93,16 @@
     },
     {
       "title": "DOCKER01 Simple Webserver & PHP",
-      "description": "Use Docker to build and deploy a simple webserver and PHP. .",
+      "description": "Use Docker to build and deploy a simple webserver and PHP.",
       "filename": "demos/docker01-simple-web.html",
       "icon": "🐳",
+      "status": "active"
+    },
+    {
+      "title": "PY13 Hello, Flask",
+      "description": "Build a flask application that says hello to you by name.",
+      "filename": "demos/py13-hello-flask.html",
+      "icon": "🐍",
       "status": "active"
     },
     {

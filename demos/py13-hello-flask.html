@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="" >
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Web Demos</title>
+    <link rel="icon" type="image/png" href="../imgs/logo.png" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    <link rel="stylesheet" href="../page-styles.css" />
+  </head>
+
+  <body>
+    <div id="top">
+
+    </div>
+    <h1 id="hello-flask">Hello, Flask</h1>
+    <p><strong>Objectives</strong></p>
+    <p>Build a Hello, World web application using Flask.</p>
+    <p><strong>Tools Needed</strong></p>
+    <p>You will need a <a href="code-editors.html">code editor</a>, a
+    web browser, <a href="https://python.org">Python 3</a>, and <a
+    href="https://flask.palletsprojects.com/">Flask</a>.</p>
+    <h2 id="flask-setup">Flask Setup</h2>
+    <blockquote>
+    <p>Flask is a lightweight WSGI web application framework. It is
+    designed to make getting started quick and easy, with the ability to
+    scale up to complex applications. From the <a
+    href="https://flask.palletsprojects.com/en/stable/#user-s-guide">Flask
+    User Guide</a>.</p>
+    </blockquote>
+    <p>Create a working folder named <strong>hello-flask</strong> and
+    open it in your editor.</p>
+    <p>Create two files in the directory:</p>
+    <ol type="1">
+    <li>requirements.txt</li>
+    <li>app.py</li>
+    </ol>
+    <p>We will list required packages in
+    <strong>requirements.txt</strong> and build our application in
+    <strong>app.py</strong>.</p>
+    <p>This project only requires flask. Add the following line to
+    <strong>requirements.txt</strong>:</p>
+    <p><code>Flask</code></p>
+    <p>Open <strong>app.py</strong> and enter the following:</p>
+    <pre><code>
+    from flask import Flask
+
+    app = Flask(__name__)
+
+    @app.route("/hello")
+    def hello_world():
+        return "&lt;h1&gt;Hello, Flask!&lt;/h1&gt;"
+    </code></pre>
+    <p>What does this code do?</p>
+    <ul>
+    <li><strong>from flask import Flask</strong>: Import the Flask
+    class</li>
+    <li><strong>app = Flask(<strong>name</strong>)</strong>: Assigns
+    this file as the flask application</li>
+    <li><strong><span class="citation"
+    data-cites="app.route">@app.route</span>(“/hello”)</strong>: Create
+    a route for the browser at /hello. E.g. localhost:5000/hello</li>
+    <li><strong>def hello_world():</strong> This function returns the
+    code when the browser opens the route</li>
+    </ul>
+    <p>Notice that the <strong><span class="citation"
+    data-cites="decorator">@decorator</span></strong> is used in flask
+    to indicate a specific route (/hello). The function immediately
+    following the route will be triggered.</p>
+    <h2 id="run-the-flask-application">Run the Flask Application</h2>
+    <p>Open the terminal in your editor (or manually in your project
+    directory).</p>
+    <p>Make sure you have flask installed.</p>
+    <p><code>pip install -r requirements.txt</code></p>
+    <p>Start the flask server by entering <code>flask run</code> in the
+    terminal.</p>
+    <p>The server status will display:</p>
+    <pre>
+    hello-flask % flask run
+     * Debug mode: off
+    WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+     * Running on http://127.0.0.1:5000
+    Press CTRL+C to quit
+    </pre>
+    <p>You will be able to see what is going on with the server from
+    this log.</p>
+    <p>Open your browser to
+    <code>http://localhost:5000/hello</code>.</p>
+    <p>This is your local machine (e.g. 127.0.0.1) using port 5000 to
+    open /hello.</p>
+    <p>You should see your flask application running in the browser.</p>
+    <p><img src="../imgs/py13-hello1.png" width="400px"></p>
+    <p>You will see a log entry in the terminal as well.</p>
+    <pre>127.0.0.1 - - [14/Nov/2025 12:10:42] "GET /hello HTTP/1.1" 200 -</pre>
+    <p>Did you get an error? If you tried to open the URL without
+    <strong>/hello</strong> you will get the error page.</p>
+    <p><img src="../imgs/py13-error.png" width="400px"></p>
+    <p>You also see the <strong>404</strong> error in the log:</p>
+    <pre>127.0.0.1 - - [14/Nov/2025 12:14:06] "GET / HTTP/1.1" 404 -</pre>
+    <details>
+    <summary>
+    What is http code 404?
+    </summary>
+    <p>
+    There are several http codes that you might want to be familiar
+    with.
+    </p>
+    <table border="1" cellpadding="6" cellspacing="0">
+    <thead>
+    <tr>
+    <th>
+    Code
+    </th>
+    <th>
+    Meaning
+    </th>
+    <th>
+    Description
+    </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td>
+    200
+    </td>
+    <td>
+    OK
+    </td>
+    <td>
+    Request succeeded.
+    </td>
+    </tr>
+    <tr>
+    <td>
+    201
+    </td>
+    <td>
+    Created
+    </td>
+    <td>
+    New resource successfully created.
+    </td>
+    </tr>
+    <tr>
+    <td>
+    204
+    </td>
+    <td>
+    No Content
+    </td>
+    <td>
+    Request succeeded, no response body.
+    </td>
+    </tr>
+    <tr>
+    <td>
+    301
+    </td>
+    <td>
+    Moved Permanently
+    </td>
+    <td>
+    Resource has been permanently moved to a new URL.
+    </td>
+    </tr>
+    <tr>
+    <td>
+    302
+    </td>
+    <td>
+    Found
+    </td>
+    <td>
+    Temporary redirect to another URL.
+    </td>
+    </tr>
+    <tr>
+    <td>
+    304
+    </td>
+    <td>
+    Not Modified
+    </td>
+    <td>
+    Cached version is still valid; no new data.
+    </td>
+    </tr>
+    <tr>
+    <td>
+    400
+    </td>
+    <td>
+    Bad Request
+    </td>
+    <td>
+    Request is malformed or invalid.
+    </td>
+    </tr>
+    <tr>
+    <td>
+    401
+    </td>
+    <td>
+    Unauthorized
+    </td>
+    <td>
+    Authentication required or failed.
+    </td>
+    </tr>
+    <tr>
+    <td>
+    403
+    </td>
+    <td>
+    Forbidden
+    </td>
+    <td>
+    Request understood but not allowed.
+    </td>
+    </tr>
+    <tr>
+    <td>
+    404
+    </td>
+    <td>
+    Not Found
+    </td>
+    <td>
+    Resource not found.
+    </td>
+    </tr>
+    <tr>
+    <td>
+    405
+    </td>
+    <td>
+    Method Not Allowed
+    </td>
+    <td>
+    HTTP method not supported by the resource.
+    </td>
+    </tr>
+    <tr>
+    <td>
+    409
+    </td>
+    <td>
+    Conflict
+    </td>
+    <td>
+    Request conflicts with current state of the server.
+    </td>
+    </tr>
+    <tr>
+    <td>
+    429
+    </td>
+    <td>
+    Too Many Requests
+    </td>
+    <td>
+    Rate limit exceeded.
+    </td>
+    </tr>
+    <tr>
+    <td>
+    500
+    </td>
+    <td>
+    Internal Server Error
+    </td>
+    <td>
+    Generic server-side failure.
+    </td>
+    </tr>
+    <tr>
+    <td>
+    502
+    </td>
+    <td>
+    Bad Gateway
+    </td>
+    <td>
+    Upstream server returned an invalid response.
+    </td>
+    </tr>
+    <tr>
+    <td>
+    503
+    </td>
+    <td>
+    Service Unavailable
+    </td>
+    <td>
+    Server temporarily unable to handle the request.
+    </td>
+    </tr>
+    <tr>
+    <td>
+    504
+    </td>
+    <td>
+    Gateway Timeout
+    </td>
+    <td>
+    Upstream server took too long to respond.
+    </td>
+    </tr>
+    </tbody>
+    </table>
+    </details>
+    <p>There is no route in our application for the root directory,
+    <strong>“/”</strong>. Let’s create one.</p>
+    <h3 id="adding-a-route">Adding a Route</h3>
+    <p>Stop your flask server by typing CTRL+C in the terminal.</p>
+    <p>Create a “homepage” at the route <strong>“/”</strong> with a form
+    to enter a name. Then the page will redirect to
+    <strong>“/hello”</strong>.</p>
+    <p>We will flasks built-in template engine to show the html
+    file.</p>
+    <p>Import <strong>render_template</strong> and then use it to return
+    <strong>index.html</strong>.</p>
+    <p>Edit <strong>app.py</strong></p>
+    <pre><code>
+    from flask import Flask, render_template
+
+    app = Flask(__name__)
+
+    @app.route("/")
+    def index():
+        return render_template("index.html")
+
+    @app.route("/hello")
+    def hello_world():
+        return "&lt;h1&gt;Hello, Flask!&lt;/h1&gt;"
+    </code></pre>
+    <p>We have added:</p>
+    <ul>
+    <li><strong>render_template</strong> imports the flask templating
+    engine</li>
+    <li><strong><span class="citation"
+    data-cites="app.route">@app.route</span>(“/”)</strong>: Tells flask
+    what to do when the base URL is opened</li>
+    <li><strong>return render_template(“index.html”)</strong>: Tells
+    flask to look for the template file named index.html.</li>
+    </ul>
+    <p>Flask templates let you separate HTML from Python logic by using
+    Jinja2 files in a <strong>templates/</strong> folder, where you pass
+    data from your routes into template files rendered with
+    <code>render_template()</code>.</p>
+    <p>Create the <strong>templates/</strong> directory.</p>
+    <p><code>mkdir templates</code></p>
+    <p>The project folder should look like this now:</p>
+    <pre>
+    .hello-flask
+    ├── app.py
+    ├── requirements.txt
+    └── templates
+    </pre>
+    <p>Inside the templates folder, create a <a
+    href="web00-basic-html.html">basic html page</a> named
+    <strong>index.html</strong> with a <strong>title</strong> and an
+    <strong>h1</strong> that contain “Hello, Flask!”.</p>
+    <p>Use the <code>flask run</code> command and open your browser to
+    <code>http://localhost:5000</code></p>
+    <p>You should see <strong>index.html</strong>.</p>
+    <p><img src="../imgs/py13-index1.png" width="400px"></p>
+    <p>We now have 2 working routes that display similar output.</p>
+    <div id="user-input">
+
+    </div>
+    <h3 id="getting-and-displaying-user-input">Getting and Displaying
+    User Input</h3>
+    <p>We will change <strong>index.html</strong> to be a form that asks
+    you to enter your name.</p>
+    <p>Then we will route to <strong>“/hello”</strong> and display a
+    custom message.</p>
+    <p>Stop your flask server by typing CTRL+C in your terminal.</p>
+    <p><strong>Update index.html</strong></p>
+    <p>Remove the <strong>h1</strong> and enter this simple form into
+    the body tag.</p>
+    <pre><code>
+    &lt;form action="/hello" method="GET"&gt;
+        Enter your name:
+        &lt;input name="name" type="text" autofocus autocomplete="off"&gt;
+        &lt;button type="Submit"&gt;Say hello.&lt;/button&gt;
+    &lt;/form&gt;
+    </code></pre>
+    <ul>
+    <li><code>action="/hello"</code>: Send a GET request to the
+    <strong>/hello</strong> route</li>
+    <li><code>&lt;input name="name" type="text" autofocus autocomplete="off"&gt;</code>:
+    Accept text input. This input has name of “name”.</li>
+    <li><code>&lt;button type="Submit"&gt;Say hello.&lt;/button&gt;</code>:
+    Submit button to send the GET request.</li>
+    </ul>
+    <details>
+    <summary>
+    What is a GET request?
+    </summary>
+    <p>
+    A GET request retrieves data from the server using URL parameters
+    and does not change server state, while a POST request sends data in
+    the request body to create or modify resources on the server.
+    </p>
+    <p>
+    GET requests send the data in the URL - it’s visible to the user.
+    For example:
+    </p>
+    <pre>http://localhost:5000/hello/?name=Sammy</pre>
+    </details>
+    <p>Restart flask by pressing the up arrow or typing
+    <code>flask run</code> into the terminal.</p>
+    <p>The <strong>Say hello</strong> button will direct the browser to
+    the correct route, but it isn’t using the name yet. You will still
+    see the <strong>h1</strong> from the route in
+    <strong>app.py</strong>.</p>
+    <p><img src="../imgs/py13-index2.png" width="400px"></p>
+    <h3 id="create-hello.html">Create hello.html</h3>
+    <p>Update the <strong>“/hello”</strong> route to return a webpage
+    named <strong>hello.html</strong>.</p>
+    <pre><code>
+    @app.route("/hello")
+    def hello_world():
+        return render_template("hello.html")
+    </code></pre>
+    <p>Create a file named <strong>hello.html</strong> in the
+    <strong>templates</strong> directory. You can use the <a
+    href="web00-basic-html.html">basic html page</a> as a guide.</p>
+    <p>Add a <strong>title</strong> and an <strong>h1</strong> that
+    contain “Hello, Flask!”.</p>
+    <p>Restart flask by typing the up arrow or <code>flask run</code> in
+    the terminal. Refresh the browser page.</p>
+    <p>The project directory looks like this currently:</p>
+    <pre>
+    .hello-flask
+    ├── app.py
+    ├── requirements.txt
+    └── templates
+        ├── hello.html
+        └── index.html
+    </pre>
+    <p>Fix any errors that you may find before continuing.</p>
+    <p><em>Why aren’t we seeing the name we entered in the hello
+    file?</em></p>
+    <div id="sanitize">
+
+    </div>
+    <h3 id="sanitize-and-pass-user-data">Sanitize and Pass User
+    Data</h3>
+    <p>We are ready to GET the name value passed from
+    <strong>index.html</strong>. We will use python to assign the
+    <strong>name</strong> value to a variable and pass that to
+    <strong>hello.html</strong>. We display that value in html with
+    <code>{{ name }}</code>.</p>
+    <pre>
+     ┌──────────────┐        GET name         ┌───────────────────────┐
+     │  index.html  │ ----------------------> │    Flask Route        │
+     └──────────────┘                         │  name = request.args  │
+                                              │  render_template()    │
+                                              └─────────┬─────────────┘
+                                                        │ passes name
+                                                        ▼
+                                              ┌───────────────────────┐
+                                              │     hello.html        │
+                                              │  displays {{ name }}  │
+                                              └───────────────────────┘
+
+    </pre>
+    <p>We <em>must</em> sanitize all user-provided data. Values rendered
+    in the output must be escaped to protect from injection attacks.</p>
+    <p>Stop your flask server if it is running by typing CTRL+C in the
+    terminal.</p>
+    <p>Add an import for <strong>escape</strong> and
+    <strong>request</strong> in <strong>app.py</strong></p>
+    <pre><code>
+    from flask import Flask, render_template, request
+    from markupsafe import escape
+    </code></pre>
+    <ul>
+    <li><strong>request</strong>: lets you access incoming data from the
+    client</li>
+    <li><strong>escape</strong>:safely converts special characters to
+    HTML entities to prevent code injection</li>
+    </ul>
+    <p>Update the <strong>hello()</strong> function to:</p>
+    <ul>
+    <li>Check if <strong>name</strong> is in the GET request and assign
+    that value to <strong>name</strong></li>
+    <li>Assign <strong>World</strong> if there is no value</li>
+    <li>pass the escaped <strong>name</strong> to hello.html</li>
+    </ul>
+    <p>Update to this:</p>
+    <pre><code>
+    @app.route("/hello")
+    def hello():
+        if request.args.get('name'):
+            name = request.args.get('name')
+        else:
+            name = "World"
+        return render_template( "hello.html", name=escape(name) )
+    </code></pre>
+    <p>Now python will send the name typed into the form on index.html
+    to a variable available to hello.html. This will display in the
+    URL.</p>
+    <p><code>http://localhost:5000/hello/?name=Sammy</code></p>
+    <p>Update <strong>hello.html</strong> to use the Jinja variable
+    <code>{{ name }}</code>.</p>
+    <p>Change the <strong>h1</strong> as follows:</p>
+    <pre><code>
+    &lt;h1&gt;Hello, {{ name }}&lt;/h1&gt;
+    </code></pre>
+    <p>Save the file. Start flask by typing the up arrow or
+    <code>flask run</code> in the terminal.</p>
+    <p>Test your code several times with both a blank value (to test for
+    World) and various names.</p>
+    <p><img src="../imgs/py13-end1.png" width="400px"></p>
+    <p><img src="../imgs/py13-end2.png" width="400px"></p>
+    <p>Here is the complete <strong>app.py</strong> code:</p>
+    <pre><code>
+    from flask import Flask, render_template, request
+    from markupsafe import escape
+
+    app = Flask(__name__)
+
+    @app.route("/")
+    def index():
+        return render_template("index.html")
+
+    @app.route("/hello")
+    def hello():
+        if request.args.get('name'):
+            name = request.args.get('name')
+        else:
+            name = "World"
+        return render_template( "hello.html", name=escape(name) )
+    </code></pre>
+    <p>🎉 Congratulations, you have built a flask app. 🎉</p>
+    <h2 id="going-further">Going Further</h2>
+    <ul>
+    <li>Use jinja templates instead of typing basic html in every
+    page</li>
+    <li>Add <code>/static/</code> files for CSS and images</li>
+    <li>Try using <code>POST</code> instead of <code>GET</code> to pass
+    data to the server</li>
+    <li>Store persistent data in <code>sqlite3</code></li>
+    </ul>
+    <p>
+    <a href="#top">Back to top.</a>
+    </p>
+
+    <footer>
+      &copy; <span id="year"></span> <a href="https://cantus.us/msac/" target="_blank">Sable Cantus</a> | 
+      <a href="../index.html" title="Go to the Web Demos menu">Web Demos</a>
+    </footer>
+    <script>
+      const currentYear = new Date().getFullYear();
+      document.getElementById("year").textContent = currentYear;
+    </script>
+  </body>
+</html>
