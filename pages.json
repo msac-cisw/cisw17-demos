@@ -72,7 +72,7 @@
     },
     {
       "title": "WEB12 Press 'd' to Toggle Dark Mode",
-      "description": "Toggle **darkmode** when the 'd' key is pressed.",
+      "description": "Toggle darkmode when the 'd' key is pressed.",
       "filename": "demos/web12-dark-mode.html",
       "icon": "📄",
       "status": "active"
