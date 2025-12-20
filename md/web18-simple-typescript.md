@@ -1,6 +1,6 @@
 # WEB18 – Simple TypeScript Application
 
-## Objectives
+**Objectives**
 
 In this demo you will build a small web project using **TypeScript**.  Along the way you will learn why developers increasingly choose TypeScript over JavaScript.  By the end you will be able to:
 

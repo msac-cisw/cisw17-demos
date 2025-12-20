@@ -2,7 +2,7 @@
 
 This tutorial introduces Docker as a flexible development tool.  You will learn how to run a basic static web server in a container, add PHP support on top of it, and use bind mounts to edit files locally while the container is running.  Each step is broken down with explanations, commands and sample files.
 
-## Objectives
+**Objectives**
 
 - Build a minimal Docker image for serving a single HTML page.
 - Understand **Docker images**, **containers** and **ports**. 

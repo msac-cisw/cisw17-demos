@@ -1,6 +1,6 @@
 # WEB17 – Simple Node.js Application & Website
 
-## Objectives
+**Objectives**
 
 This tutorial walks through building a very simple **Node.js** application and connecting a basic web page to it.  Along the way you will learn what Node.js and Express are, why a `package.json` file is important and how to use the modern **Fetch API** to communicate between your front end and back end.  The tutorial assumes that you already know basic HTML and CSS.
 
