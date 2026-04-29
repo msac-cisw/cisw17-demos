@@ -13,7 +13,7 @@ A code editor is a software tool used by developers to write and edit source cod
 
 Code editors can range from minimal text-based tools to sophisticated environments with debugging and version control built in.
 
-## ✅ Key Features of Modern Code Editors
+## Key Features of Modern Code Editors
 
 <table style="width: 100%; border-collapse: collapse; font-family: Arial, sans-serif; font-size: 14px;">
   <thead>
@@ -46,7 +46,7 @@ Code editors can range from minimal text-based tools to sophisticated environmen
   </tbody>
 </table>
 
-## 💻 Free Code Editor for macOS and Windows
+## Free Code Editors for macOS and Windows
 
 ### Visual Studio Code (VS Code)
 
@@ -60,6 +60,17 @@ Code editors can range from minimal text-based tools to sophisticated environmen
 * Debugging support built-in
 
 VS Code is widely regarded for its balance of power and speed, and it’s a go-to editor for many developers around the world.
+
+### Zed
+
+* Available on: macOS, Windows, and Linux
+* Website: [https://zed.dev](https://zed.dev)
+* Download: [https://zed.dev/download](https://zed.dev/download)
+* Linux install script: [https://zed.dev/install.sh](https://zed.dev/install.sh)
+* Fast, collaborative, and built for modern workflows
+* Built in Rust for speed and responsiveness
+
+Zed is a modern code editor that emphasizes speed, collaboration, and a streamlined editing experience.
 
 ### Windows: Notepad++
 
@@ -99,19 +110,29 @@ BBEdit offers a 30 day full featured trial and then resorts to a very usable fre
 
 Modal, fast, and flexible command line editor. Lives in the terminal. Once you learn the keybindings you will unlock editor power not available in other editors.
 
-### Sublime Text
+### Sublime Text (Paid option)
 
 * Available on: macOS, Windows, and Linux
 * Website: [https://www.sublimetext.com](https://www.sublimetext.com)
 
 Sublime Text is a lightweight, high-performance code editor known for its speed, elegant interface, and powerful features like multi-caret editing, split views, and a rich ecosystem of plugins. It’s highly customizable, making it a favorite for developers who want a flexible editor that stays fast even with large projects.
 
+### AI-Assisted Editors
+
+If you would like to try an AI-first editor, these are three popular options to try:
+
+* **Cursor** – Available on macOS, Windows, and Linux. Website: [https://cursor.com](https://cursor.com). Download: [https://cursor.com/download](https://cursor.com/download)
+* **Windsurf** – Available on macOS, Windows, and Linux. Website: [https://windsurf.com](https://windsurf.com). Download: [https://windsurf.com/download](https://windsurf.com/download)
+* **Antigravity** – Website: [https://antigravity.google](https://antigravity.google). Check the official site for the latest download options.
+
+Many other editors also include AI features through built-in tools or extensions, so you can start with whichever editor you like.
+
 ---
 
 
-## 🆚 Code Editors vs. Word Processors
+## Code Editors vs. Word Processors
 
-### ✅ Why We Use Code Editors
+### Why We Use Code Editors
 
 Code editors are purpose-built for writing and maintaining source code. They:
 
