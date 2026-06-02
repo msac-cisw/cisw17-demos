@@ -1,6 +1,6 @@
 ## Build a Python Study Time Log
 
-In this ungraded activity, you will build a small graphical user interface, or GUI, with Python and `tkinter`. The app will let you type what you are studying, add it to a study log, edit an entry in a popup window, and remove entries you no longer need.
+You will build a small graphical user interface, or GUI, with Python and `tkinter`. The app will let you type what you are studying, add it to a study log, edit an entry in a popup window, and remove entries you no longer need.
 
 <div role="note" aria-label="Activity overview" style="border: 2px solid #9ec5e8; border-left: 8px solid #2f5597; padding: 1rem; margin: 1rem 0; background-color: #f7fbff; color: #1f2933;">
   <p style="margin-top: 0;"><strong>Estimated time:</strong> 45 to 60 minutes</p>
@@ -14,7 +14,7 @@ Your first version will keep entries only while the program is open. When you cl
 <p><img src="../imgs/gui1.png" alt="A blank Study Time Log window with a text box, Add Entry button, empty log list, and action buttons." loading="lazy" style="max-width: 100%; height: auto; border: 1px solid #d6e9f8; border-radius: 6px;"></p>
 
 <table style="border-collapse: collapse; width: 100%; margin: 16px 0;">
-  <caption style="text-align: left; font-weight: bold; padding-bottom: 0.5rem;">How this activity connects to Chapter 12</caption>
+  <caption style="text-align: left; font-weight: bold; padding-bottom: 0.5rem;">You Will Practice</caption>
   <thead>
     <tr style="background: #2f5597; color: #ffffff;">
       <th scope="col" style="border: 1px solid #2f5597; padding: 10px; text-align: left;">Chapter idea</th>
