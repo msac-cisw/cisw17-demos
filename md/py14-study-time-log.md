@@ -47,7 +47,8 @@ Create a new folder for this activity. Then create and activate a virtual enviro
 
 <p><strong>Mac or Linux:</strong></p>
 
-<pre><code>mkdir study-time-log
+<pre><code>
+mkdir study-time-log
 cd study-time-log
 python3 -m venv .venv
 source .venv/bin/activate
@@ -55,7 +56,8 @@ python --version</code></pre>
 
 <p><strong>Windows:</strong></p>
 
-<pre><code>mkdir study-time-log
+<pre><code>
+mkdir study-time-log
 cd study-time-log
 py -m venv .venv
 .venv\Scripts\activate
@@ -75,7 +77,8 @@ In Part 1, the app can add, edit, and remove entries. The entries are stored in 
 
 Add this code to `study_time_log.py`:
 
-<pre><code>import tkinter as tk
+<pre><code>
+import tkinter as tk
 from tkinter import messagebox
 
 root = tk.Tk()
@@ -89,7 +92,7 @@ root.mainloop()</code></pre>
 
 Run the program:
 
-<pre><code>python study_time_log.py</code></pre>
+<pre><code>python3 study_time_log.py</code></pre>
 
 You should see a blank window. Close the window before you move to the next step.
 
@@ -97,7 +100,8 @@ You should see a blank window. Close the window before you move to the next step
 
 Replace your file with this starter layout. This version creates the visible parts of the GUI.
 
-<pre><code>import tkinter as tk
+<pre><code>
+import tkinter as tk
 from tkinter import messagebox
 
 root = tk.Tk()
@@ -144,16 +148,17 @@ Buttons do not do anything by themselves. In a GUI program, you write a function
 
 Add this function above the line that creates `title_label`:
 
-<pre><code>def add_entry():
+<pre><code>
+def add_entry():
     study_text = entry_box.get().strip()
 
-    if study_text == "":
-        status_label.config(text="Type an entry first.")
-        return
+if study_text == "":
+    status_label.config(text="Type an entry first.")
+    return
 
-    log_listbox.insert(tk.END, study_text)
-    entry_box.delete(0, tk.END)
-    status_label.config(text="Entry added.")</code></pre>
+log_listbox.insert(tk.END, study_text)
+entry_box.delete(0, tk.END)
+status_label.config(text="Entry added.")</code></pre>
 
 Then change your `add_button` line so it includes `command=add_entry`:
 
@@ -167,15 +172,16 @@ Run the program. Type something into the entry box and click **Add Entry**.
 
 Add this function below `add_entry`:
 
-<pre><code>def remove_entry():
+<pre><code>
+def remove_entry():
     selected = log_listbox.curselection()
 
-    if len(selected) == 0:
-        status_label.config(text="Select an entry to remove.")
-        return
+if len(selected) == 0:
+    status_label.config(text="Select an entry to remove.")
+    return
 
-    log_listbox.delete(selected[0])
-    status_label.config(text="Entry removed.")</code></pre>
+log_listbox.delete(selected[0])
+status_label.config(text="Entry removed.")</code></pre>
 
 Then update the remove button:
 
@@ -189,41 +195,42 @@ Editing needs a little more code because the user needs a place to type the new 
 
 Add this function below `remove_entry`:
 
-<pre><code>def edit_entry():
+<pre><code>
+def edit_entry():
     selected = log_listbox.curselection()
 
-    if len(selected) == 0:
-        status_label.config(text="Select an entry to edit.")
+if len(selected) == 0:
+    status_label.config(text="Select an entry to edit.")
+    return
+
+selected_index = selected[0]
+current_text = log_listbox.get(selected_index)
+
+edit_window = tk.Toplevel(root)
+edit_window.title("Edit Entry")
+edit_window.geometry("560x220")
+
+edit_label = tk.Label(edit_window, text="Update your study entry:", font=BIG_FONT)
+edit_label.pack(pady=12)
+
+edit_box = tk.Entry(edit_window, font=BIG_FONT, width=35)
+edit_box.insert(0, current_text)
+edit_box.pack(pady=8)
+
+def save_edit():
+    new_text = edit_box.get().strip()
+
+    if new_text == "":
+        messagebox.showwarning("Missing text", "Please type an entry.")
         return
 
-    selected_index = selected[0]
-    current_text = log_listbox.get(selected_index)
+    log_listbox.delete(selected_index)
+    log_listbox.insert(selected_index, new_text)
+    status_label.config(text="Entry updated.")
+    edit_window.destroy()
 
-    edit_window = tk.Toplevel(root)
-    edit_window.title("Edit Entry")
-    edit_window.geometry("560x220")
-
-    edit_label = tk.Label(edit_window, text="Update your study entry:", font=BIG_FONT)
-    edit_label.pack(pady=12)
-
-    edit_box = tk.Entry(edit_window, font=BIG_FONT, width=35)
-    edit_box.insert(0, current_text)
-    edit_box.pack(pady=8)
-
-    def save_edit():
-        new_text = edit_box.get().strip()
-
-        if new_text == "":
-            messagebox.showwarning("Missing text", "Please type an entry.")
-            return
-
-        log_listbox.delete(selected_index)
-        log_listbox.insert(selected_index, new_text)
-        status_label.config(text="Entry updated.")
-        edit_window.destroy()
-
-    save_button = tk.Button(edit_window, text="Save Changes", font=BIG_FONT, command=save_edit)
-    save_button.pack(pady=12)</code></pre>
+save_button = tk.Button(edit_window, text="Save Changes", font=BIG_FONT, command=save_edit)
+save_button.pack(pady=12)</code></pre>
 
 Then update the edit button:
 
@@ -245,12 +252,14 @@ Now upgrade the app so it can save and load entries. You will also add a timesta
 
 At the top of your file, add these imports:
 
-<pre><code>import json
+<pre><code>
+import json
 from datetime import datetime</code></pre>
 
 Near your font variables, add this file name:
 
-<pre><code>DATA_FILE = "study_log.json"
+<pre><code>
+DATA_FILE = "study_log.json"
 entries = []</code></pre>
 
 ### Step 7: Display entries from a list
@@ -259,7 +268,8 @@ In the final version, the listbox will show items from the `entries` list. Each 
 
 Add these helper functions:
 
-<pre><code>def format_entry(entry):
+<pre><code>
+def format_entry(entry):
     return f"{entry['created_at']} - {entry['text']}"
 
 def refresh_listbox():
@@ -274,7 +284,8 @@ Change your app so the functions work with the `entries` list instead of only ch
 
 When you add an entry, append a dictionary:
 
-<pre><code>new_entry = {
+<pre><code>
+new_entry = {
     "text": study_text,
     "created_at": datetime.now().strftime("%Y-%m-%d %I:%M %p")
 }
@@ -284,19 +295,22 @@ refresh_listbox()</code></pre>
 
 When you remove an entry, remove it from the list:
 
-<pre><code>entries.pop(selected[0])
+<pre><code>
+entries.pop(selected[0])
 refresh_listbox()</code></pre>
 
 When you edit an entry, update the text value:
 
-<pre><code>entries[selected_index]["text"] = new_text
+<pre><code>
+entries[selected_index]["text"] = new_text
 refresh_listbox()</code></pre>
 
 ### Step 9: Save and load the JSON file
 
 Add these two functions:
 
-<pre><code>def save_entries():
+<pre><code>
+def save_entries():
     with open(DATA_FILE, "w", encoding="utf-8") as file:
         json.dump(entries, file, indent=4)
 
@@ -316,7 +330,8 @@ def load_entries():
 
 Add two more buttons in the `button_frame`:
 
-<pre><code>save_button = tk.Button(button_frame, text="Save Log", font=BIG_FONT, command=save_entries)
+<pre><code>
+save_button = tk.Button(button_frame, text="Save Log", font=BIG_FONT, command=save_entries)
 save_button.grid(row=1, column=0, padx=8, pady=8)
 
 load_button = tk.Button(button_frame, text="Load Log", font=BIG_FONT, command=load_entries)
@@ -369,7 +384,8 @@ Answer these questions in your own words:
 <details style="border: 1px solid #9ec5e8; border-radius: 6px; padding: 1rem; margin: 1rem 0; background-color: #f7fbff;">
   <summary style="font-weight: 700; color: #2f5597;">Show the full challenge version code</summary>
 
-<pre><code>import json
+<pre><code>
+import json
 import tkinter as tk
 from datetime import datetime
 from tkinter import messagebox

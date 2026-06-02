@@ -99,7 +99,8 @@
     <p>
     <strong>Mac or Linux:</strong>
     </p>
-    <pre><code>mkdir study-time-log
+    <pre><code>
+    mkdir study-time-log
     cd study-time-log
     python3 -m venv .venv
     source .venv/bin/activate
@@ -107,7 +108,8 @@
     <p>
     <strong>Windows:</strong>
     </p>
-    <pre><code>mkdir study-time-log
+    <pre><code>
+    mkdir study-time-log
     cd study-time-log
     py -m venv .venv
     .venv\Scripts\activate
@@ -129,7 +131,8 @@
     <h3 id="step-1-import-tkinter-and-create-the-window">Step 1: Import
     tkinter and create the window</h3>
     <p>Add this code to <code>study_time_log.py</code>:</p>
-    <pre><code>import tkinter as tk
+    <pre><code>
+    import tkinter as tk
     from tkinter import messagebox
 
     root = tk.Tk()
@@ -141,14 +144,15 @@
 
     root.mainloop()</code></pre>
     <p>Run the program:</p>
-    <pre><code>python study_time_log.py</code></pre>
+    <pre><code>python3 study_time_log.py</code></pre>
     <p>You should see a blank window. Close the window before you move
     to the next step.</p>
     <h3 id="step-2-add-labels-an-entry-box-buttons-and-a-listbox">Step
     2: Add labels, an entry box, buttons, and a listbox</h3>
     <p>Replace your file with this starter layout. This version creates
     the visible parts of the GUI.</p>
-    <pre><code>import tkinter as tk
+    <pre><code>
+    import tkinter as tk
     from tkinter import messagebox
 
     root = tk.Tk()
@@ -193,16 +197,17 @@
     write a function and connect the button to that function.</p>
     <p>Add this function above the line that creates
     <code>title_label</code>:</p>
-    <pre><code>def add_entry():
+    <pre><code>
+    def add_entry():
         study_text = entry_box.get().strip()
 
-        if study_text == "":
-            status_label.config(text="Type an entry first.")
-            return
+    if study_text == "":
+        status_label.config(text="Type an entry first.")
+        return
 
-        log_listbox.insert(tk.END, study_text)
-        entry_box.delete(0, tk.END)
-        status_label.config(text="Entry added.")</code></pre>
+    log_listbox.insert(tk.END, study_text)
+    entry_box.delete(0, tk.END)
+    status_label.config(text="Entry added.")</code></pre>
     <p>Then change your <code>add_button</code> line so it includes
     <code>command=add_entry</code>:</p>
     <pre><code>add_button = tk.Button(root, text="Add Entry", font=BIG_FONT, command=add_entry)</code></pre>
@@ -214,15 +219,16 @@
     <h3 id="step-4-make-the-remove-selected-button-work">Step 4: Make
     the Remove Selected button work</h3>
     <p>Add this function below <code>add_entry</code>:</p>
-    <pre><code>def remove_entry():
+    <pre><code>
+    def remove_entry():
         selected = log_listbox.curselection()
 
-        if len(selected) == 0:
-            status_label.config(text="Select an entry to remove.")
-            return
+    if len(selected) == 0:
+        status_label.config(text="Select an entry to remove.")
+        return
 
-        log_listbox.delete(selected[0])
-        status_label.config(text="Entry removed.")</code></pre>
+    log_listbox.delete(selected[0])
+    status_label.config(text="Entry removed.")</code></pre>
     <p>Then update the remove button:</p>
     <pre><code>remove_button = tk.Button(button_frame, text="Remove Selected", font=BIG_FONT, command=remove_entry)</code></pre>
     <p>Run the program. Add a few entries, select one, and click
@@ -233,41 +239,42 @@
     to type the new text. A popup window is a good fit for this
     feature.</p>
     <p>Add this function below <code>remove_entry</code>:</p>
-    <pre><code>def edit_entry():
+    <pre><code>
+    def edit_entry():
         selected = log_listbox.curselection()
 
-        if len(selected) == 0:
-            status_label.config(text="Select an entry to edit.")
+    if len(selected) == 0:
+        status_label.config(text="Select an entry to edit.")
+        return
+
+    selected_index = selected[0]
+    current_text = log_listbox.get(selected_index)
+
+    edit_window = tk.Toplevel(root)
+    edit_window.title("Edit Entry")
+    edit_window.geometry("560x220")
+
+    edit_label = tk.Label(edit_window, text="Update your study entry:", font=BIG_FONT)
+    edit_label.pack(pady=12)
+
+    edit_box = tk.Entry(edit_window, font=BIG_FONT, width=35)
+    edit_box.insert(0, current_text)
+    edit_box.pack(pady=8)
+
+    def save_edit():
+        new_text = edit_box.get().strip()
+
+        if new_text == "":
+            messagebox.showwarning("Missing text", "Please type an entry.")
             return
 
-        selected_index = selected[0]
-        current_text = log_listbox.get(selected_index)
+        log_listbox.delete(selected_index)
+        log_listbox.insert(selected_index, new_text)
+        status_label.config(text="Entry updated.")
+        edit_window.destroy()
 
-        edit_window = tk.Toplevel(root)
-        edit_window.title("Edit Entry")
-        edit_window.geometry("560x220")
-
-        edit_label = tk.Label(edit_window, text="Update your study entry:", font=BIG_FONT)
-        edit_label.pack(pady=12)
-
-        edit_box = tk.Entry(edit_window, font=BIG_FONT, width=35)
-        edit_box.insert(0, current_text)
-        edit_box.pack(pady=8)
-
-        def save_edit():
-            new_text = edit_box.get().strip()
-
-            if new_text == "":
-                messagebox.showwarning("Missing text", "Please type an entry.")
-                return
-
-            log_listbox.delete(selected_index)
-            log_listbox.insert(selected_index, new_text)
-            status_label.config(text="Entry updated.")
-            edit_window.destroy()
-
-        save_button = tk.Button(edit_window, text="Save Changes", font=BIG_FONT, command=save_edit)
-        save_button.pack(pady=12)</code></pre>
+    save_button = tk.Button(edit_window, text="Save Changes", font=BIG_FONT, command=save_edit)
+    save_button.pack(pady=12)</code></pre>
     <p>Then update the edit button:</p>
     <pre><code>edit_button = tk.Button(button_frame, text="Edit Selected", font=BIG_FONT, command=edit_entry)</code></pre>
     <p>Run the program. Add an entry, select it, and click <strong>Edit
@@ -291,10 +298,12 @@
     <h3 id="step-6-add-imports-and-a-file-name">Step 6: Add imports and
     a file name</h3>
     <p>At the top of your file, add these imports:</p>
-    <pre><code>import json
+    <pre><code>
+    import json
     from datetime import datetime</code></pre>
     <p>Near your font variables, add this file name:</p>
-    <pre><code>DATA_FILE = "study_log.json"
+    <pre><code>
+    DATA_FILE = "study_log.json"
     entries = []</code></pre>
     <h3 id="step-7-display-entries-from-a-list">Step 7: Display entries
     from a list</h3>
@@ -302,7 +311,8 @@
     <code>entries</code> list. Each item will be a dictionary with a
     <code>text</code> value and a <code>created_at</code> value.</p>
     <p>Add these helper functions:</p>
-    <pre><code>def format_entry(entry):
+    <pre><code>
+    def format_entry(entry):
         return f"{entry['created_at']} - {entry['text']}"
 
     def refresh_listbox():
@@ -315,7 +325,8 @@
     <p>Change your app so the functions work with the
     <code>entries</code> list instead of only changing the listbox.</p>
     <p>When you add an entry, append a dictionary:</p>
-    <pre><code>new_entry = {
+    <pre><code>
+    new_entry = {
         "text": study_text,
         "created_at": datetime.now().strftime("%Y-%m-%d %I:%M %p")
     }
@@ -323,15 +334,18 @@
     entries.append(new_entry)
     refresh_listbox()</code></pre>
     <p>When you remove an entry, remove it from the list:</p>
-    <pre><code>entries.pop(selected[0])
+    <pre><code>
+    entries.pop(selected[0])
     refresh_listbox()</code></pre>
     <p>When you edit an entry, update the text value:</p>
-    <pre><code>entries[selected_index]["text"] = new_text
+    <pre><code>
+    entries[selected_index]["text"] = new_text
     refresh_listbox()</code></pre>
     <h3 id="step-9-save-and-load-the-json-file">Step 9: Save and load
     the JSON file</h3>
     <p>Add these two functions:</p>
-    <pre><code>def save_entries():
+    <pre><code>
+    def save_entries():
         with open(DATA_FILE, "w", encoding="utf-8") as file:
             json.dump(entries, file, indent=4)
 
@@ -349,7 +363,8 @@
         refresh_listbox()
         status_label.config(text="Entries loaded.")</code></pre>
     <p>Add two more buttons in the <code>button_frame</code>:</p>
-    <pre><code>save_button = tk.Button(button_frame, text="Save Log", font=BIG_FONT, command=save_entries)
+    <pre><code>
+    save_button = tk.Button(button_frame, text="Save Log", font=BIG_FONT, command=save_entries)
     save_button.grid(row=1, column=0, padx=8, pady=8)
 
     load_button = tk.Button(button_frame, text="Load Log", font=BIG_FONT, command=load_entries)
@@ -430,7 +445,8 @@
     <summary style="font-weight: 700; color: #2f5597;">
     Show the full challenge version code
     </summary>
-    <pre><code>import json
+    <pre><code>
+    import json
     import tkinter as tk
     from datetime import datetime
     from tkinter import messagebox
