@@ -106,6 +106,13 @@
       "status": "active"
     },
     {
+      "title": "PY14 Build a Python Study Time Logger",
+      "description": "Build a study time logger in python using tkinker.",
+      "filename": "demos/py14-study-time-log.html",
+      "icon": "🐍",
+      "status": "active"
+    },
+    {
       "title": "Future Project",
       "description": "Stay tuned for updates",
       "filename": "",
