@@ -112,10 +112,64 @@ Add a style tag in the **head**.
 
 <img src="../imgs/web03-styled.png" width="400px">
 
+
+<details style="margin: 10px; padding: 10px;">
+<summary style="cursor: pointer;">Check your work. View the project code.</summary>
+<pre><code>
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Happy or Sad&lt;/title&gt;
+    &lt;style&gt;
+          body {
+            margin: 0 auto;
+            width: 600px;
+            font-size: 18px;
+            text-align: center;
+          }
+          button {
+            font-size: 1.1em;
+            padding: 10px 20px;
+            margin-bottom: 25px;
+            cursor: pointer;
+          }
+          button:hover {
+            background-color: #f4f413e1;
+            cursor: pointer;
+          }
+          #mood {
+            font-size: 10em;
+          }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;How are you feeling?&lt;/h1&gt;
+    &lt;button
+        onclick="document.getElementById('mood').textContent='😀'"
+    &gt;
+        I feel happy!
+    &lt;/button&gt;
+
+    &lt;button
+        onclick="document.getElementById('mood').textContent='☹️'"
+    &gt;
+        I feel sad.
+    &lt;/button&gt;
+
+    &lt;div id="mood"&gt;&lt;/div&gt;
+    
+&lt;/body&gt;
+&lt;/html&gt;
+
+</code></pre></details>
+
+
 ## Going further
 
-What other emotions would you add?
+How would you add another emotion? What would you add?
 
-How would you use animated gifs or images instead of the emoji?
+How would you an animated gif instead of an emoji?
 
-Which would be cuter: puppies or kittens?
+Which would be cuter: puppies or kittens? Try it!
