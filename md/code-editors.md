@@ -13,6 +13,17 @@ A code editor is a software tool used by developers to write and edit source cod
 
 Code editors can range from minimal text-based tools to sophisticated environments with debugging and version control built in.
 
+## Start here
+
+If you need an editor for these tutorials, start with [Visual Studio Code (VS Code)](https://code.visualstudio.com/download). Basic HTML editing and syntax highlighting are built in.
+
+1. Install VS Code and create a folder named `web-practice`.
+2. In VS Code, choose **File → Open Folder** and select `web-practice`.
+3. Create a file named `index.html` in that folder. Type `<h1>Hello, web!</h1>` and save the file.
+4. Find `index.html` in Finder or File Explorer and open it in your browser. You should see **Hello, web!** as a large heading.
+
+Ready to build a complete page? Continue to [WEB00 – A Basic HTML Page](web00-basic-html.html).
+
 ## Key Features of Modern Code Editors
 
 <table style="width: 100%; border-collapse: collapse; font-family: Arial, sans-serif; font-size: 14px;">
@@ -46,14 +57,14 @@ Code editors can range from minimal text-based tools to sophisticated environmen
   </tbody>
 </table>
 
-## Free Code Editors for macOS and Windows
+## No-Cost Code Editors for macOS and Windows
 
 ### Visual Studio Code (VS Code)
 
 * Available on: macOS, Windows, and Linux
 * Website: [https://code.visualstudio.com](https://code.visualstudio.com)
 * Developed by: Microsoft
-* Free and open-source
+* Free to use and built on the open-source Code OSS project. Microsoft distributes VS Code under its own product license. [VS Code licensing FAQ](https://code.visualstudio.com/docs/supporting/faq#licensing)
 * Git integration (version control)
 * Vast library of extensions (e.g., Python, Java, C++)
 * IntelliSense (smart code completion)
@@ -84,24 +95,9 @@ Zed is a modern code editor that emphasizes speed, collaboration, and a streamli
 
 Notepad++ is an excellent choice for beginners or anyone who wants a no-frills editor that opens instantly and just works. It’s also popular for scripting, configuration files, and quick code edits.
 
-### macOS: TextMate
+### macOS: BBEdit
 
-* Available on: macOS only
-* Website: [https://macromates.com](https://macromates.com)
-* License: Free and open source
-* Native macOS look and feel
-* Syntax highlighting for dozens of languages
-* Powerful snippet and macro system
-* Works well with Unix tools (great for scripting and automation)
-* Lightweight and quick to launch
-
-TextMate is designed specifically for macOS, blending in seamlessly with the system UI and philosophy. It’s beloved by many developers and power users for tasks like writing scripts, quick edits, and even full development with custom bundles.
-
-Another good option for macOS...
-
-**BBEdit** – Longtime macOS classic, free version available with robust features. [https://www.barebones.com/products/bbedit/](https://www.barebones.com/products/bbedit/)
-
-BBEdit offers a 30 day full featured trial and then resorts to a very usable free license.
+BBEdit is a macOS editor for code and plain text. After the 30-day full-featured trial, you can continue using it in Free Mode. [BBEdit website](https://www.barebones.com/products/bbedit/)
 
 ### The Power Users Choice: Neovim
 
@@ -110,19 +106,18 @@ BBEdit offers a 30 day full featured trial and then resorts to a very usable fre
 
 Modal, fast, and flexible command line editor. Lives in the terminal. Once you learn the keybindings you will unlock editor power not available in other editors.
 
-### Sublime Text (Paid option)
+## Sublime Text (Paid option)
 
 * Available on: macOS, Windows, and Linux
 * Website: [https://www.sublimetext.com](https://www.sublimetext.com)
 
 Sublime Text is a lightweight, high-performance code editor known for its speed, elegant interface, and powerful features like multi-caret editing, split views, and a rich ecosystem of plugins. It’s highly customizable, making it a favorite for developers who want a flexible editor that stays fast even with large projects.
 
-### AI-Assisted Editors
+## AI-Assisted Editors
 
-If you would like to try an AI-first editor, these are three popular options to try:
+If you would like to try an AI-first editor, here are two options.
 
 * **Cursor** – Available on macOS, Windows, and Linux. Website: [https://cursor.com](https://cursor.com). Download: [https://cursor.com/download](https://cursor.com/download)
-* **Windsurf** – Available on macOS, Windows, and Linux. Website: [https://windsurf.com](https://windsurf.com). Download: [https://windsurf.com/download](https://windsurf.com/download)
 * **Antigravity** – Website: [https://antigravity.google](https://antigravity.google). Check the official site for the latest download options.
 
 Many other editors also include AI features through built-in tools or extensions, so you can start with whichever editor you like.
@@ -144,6 +139,10 @@ Code editors are purpose-built for writing and maintaining source code. They:
 
 If you’re writing code, always use a code editor. Word processors may look nicer at first—but they’ll almost certainly corrupt your code.
 
-### ❌ Why Not Use Word Processors for Code?
+### Why Not Use Word Processors for Code?
 
 Word processors like Microsoft Word, Google Docs, or Apple Pages are designed for document formatting—not for programming. They insert invisible characters (like curly quotes, auto-indents, and rich formatting) that can break your code or make it unreadable by compilers and interpreters.
+
+## Conclusion
+
+Choose a code editor that runs on your computer and feels comfortable for writing HTML, CSS, and JavaScript. For these tutorials, the essentials are saving plain-text files with the correct extensions and using syntax highlighting to make your code easier to read.

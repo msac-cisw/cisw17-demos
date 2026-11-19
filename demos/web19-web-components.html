@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en" >
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Web Demos</title>
+    <link rel="icon" type="image/png" href="../imgs/logo.png" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    <link rel="stylesheet" href="../page-styles.css" />
+  </head>
+
+  <body>
+    <h1 id="web19-build-your-first-web-component">WEB19 – Build Your
+    First Web Component</h1>
+    <p>Build a <code>&lt;log-viewer&gt;</code> element that shows the
+    contents of a text file and checks for changes every five seconds. A
+    <strong>custom element</strong> is an HTML tag whose behavior you
+    define in JavaScript. You can use the tag more than once, and each
+    copy gets its own display.</p>
+    <p><strong>Objectives</strong></p>
+    <ul>
+    <li>Register a custom HTML element with JavaScript.</li>
+    <li>Use a template and shadow DOM to give each viewer its own markup
+    and styles.</li>
+    <li>Read a local text file with <code>fetch()</code> and check for
+    changes on a timer.</li>
+    </ul>
+    <p>You’ll use familiar HTML, CSS, and JavaScript. If you’ve written
+    a function and used <code>querySelector()</code> or
+    <code>textContent</code>, you have enough JavaScript to start. The
+    examples introduce classes and <code>fetch()</code> as you need
+    them.</p>
+    <p><strong>Tools Needed</strong></p>
+    <ul>
+    <li>A <a href="code-editors.html">code editor</a> and a web
+    browser</li>
+    <li>A local web server. Use your editor’s server or run the server
+    in Step 1 with Python 3 and a terminal.</li>
+    </ul>
+    <h2 id="step-1-set-up-the-project">Step 1 – Set up the project</h2>
+    <p>Create a folder called <code>web19-log-viewer</code> and open it
+    in your <a href="code-editors.html">code editor</a>. Create these
+    three files inside it. Keep them in the same folder.</p>
+    <pre class="text"><code>web19-log-viewer/
+  index.html
+  log-viewer.js
+  log.txt</code></pre>
+    <p>Paste this into <strong>index.html</strong>. The script tag at
+    the bottom loads the JavaScript after the browser has read the
+    <code>&lt;log-viewer&gt;</code> tag.</p>
+    <div class="sourceCode" id="cb2"><pre
+    class="sourceCode html"><code class="sourceCode html"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;!doctype</span> html<span class="dt">&gt;</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">html</span><span class="ot"> lang</span><span class="op">=</span><span class="st">&quot;en&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">head</span><span class="dt">&gt;</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">meta</span><span class="ot"> charset</span><span class="op">=</span><span class="st">&quot;utf-8&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">meta</span><span class="ot"> name</span><span class="op">=</span><span class="st">&quot;viewport&quot;</span><span class="ot"> content</span><span class="op">=</span><span class="st">&quot;width=device-width, initial-scale=1&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">title</span><span class="dt">&gt;</span>Log Viewer Demo<span class="dt">&lt;/</span><span class="kw">title</span><span class="dt">&gt;</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">head</span><span class="dt">&gt;</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">body</span><span class="dt">&gt;</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">h1</span><span class="dt">&gt;</span>Log Viewer Demo<span class="dt">&lt;/</span><span class="kw">h1</span><span class="dt">&gt;</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">log-viewer</span><span class="dt">&gt;&lt;/</span><span class="kw">log-viewer</span><span class="dt">&gt;</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">script</span><span class="ot"> src</span><span class="op">=</span><span class="st">&quot;log-viewer.js&quot;</span><span class="dt">&gt;&lt;/</span><span class="kw">script</span><span class="dt">&gt;</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">body</span><span class="dt">&gt;</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">html</span><span class="dt">&gt;</span></span></code></pre></div>
+    <p>Paste these sample lines into <strong>log.txt</strong> and save
+    it as plain text.</p>
+    <pre class="text"><code>10:15 App started
+10:16 Loaded the settings
+10:17 Ready for requests</code></pre>
+    <p>Open the project through a <strong>local web server</strong> so
+    that <code>fetch()</code> can request <code>log.txt</code> over
+    HTTP. If your editor already has a local server, use it to serve
+    this folder. With Python 3, you can open a terminal in the project
+    folder and run one of these commands.</p>
+    <p><strong>macOS or Linux</strong></p>
+    <div class="sourceCode" id="cb4"><pre
+    class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> <span class="at">-m</span> http.server 8000 <span class="at">--bind</span> 127.0.0.1</span></code></pre></div>
+    <p><strong>Windows</strong></p>
+    <div class="sourceCode" id="cb5"><pre
+    class="sourceCode powershell"><code class="sourceCode powershell"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>py <span class="op">-</span>m http<span class="op">.</span><span class="fu">server</span> <span class="dv">8000</span> <span class="op">--</span>bind <span class="dv">127.0</span><span class="op">.</span><span class="dv">0.1</span></span></code></pre></div>
+    <p>Leave the terminal running and open <a
+    href="http://127.0.0.1:8000/">http://127.0.0.1:8000/</a> in your
+    browser. If port 8000 is in use, try 8001 in both the command and
+    the address. Check that your browser address starts with
+    <code>http://</code> or <code>https://</code>. Double-clicking the
+    HTML file opens a <code>file://</code> address, where the browser
+    can block the request for <code>log.txt</code>.</p>
+    <p><strong>Check your work.</strong> You should see the <strong>Log
+    Viewer Demo</strong> heading. The custom tag is still empty because
+    <code>log-viewer.js</code> is empty.</p>
+    <h2 id="step-2-register-the-custom-element">Step 2 – Register the
+    custom element</h2>
+    <p>Paste this into <strong>log-viewer.js</strong>, save it, and
+    reload the page.</p>
+    <div class="sourceCode" id="cb6"><pre
+    class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> LogViewer <span class="kw">extends</span> <span class="bu">HTMLElement</span> {</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">connectedCallback</span>() {</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">this</span><span class="op">.</span><span class="at">textContent</span> <span class="op">=</span> <span class="st">&#39;The log viewer is ready.&#39;</span><span class="op">;</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>customElements<span class="op">.</span><span class="fu">define</span>(<span class="st">&#39;log-viewer&#39;</span><span class="op">,</span> LogViewer)<span class="op">;</span></span></code></pre></div>
+    <ul>
+    <li>A <strong>class</strong> groups the code that describes an
+    object. <code>extends HTMLElement</code> gives your class the
+    features of a regular HTML element.</li>
+    <li><code>customElements.define()</code> tells the browser which
+    class to use for the <code>&lt;log-viewer&gt;</code> tag. Use a
+    lowercase name with a hyphen, and register it once.</li>
+    <li>The browser calls <code>connectedCallback()</code> when the
+    element connects to the page. Inside the method, <code>this</code>
+    refers to the particular <code>&lt;log-viewer&gt;</code> being
+    connected.</li>
+    </ul>
+    <p><strong>Check your work.</strong> Look for <strong>The log viewer
+    is ready.</strong> below the heading. If the message is missing,
+    make sure you saved the file and try a hard reload. If it still
+    doesn’t appear, check the Console in your browser’s developer tools
+    and confirm that the script filename and the custom tag match the
+    code exactly.</p>
+    <h2 id="step-3-give-the-component-its-own-html-and-css">Step 3 –
+    Give the component its own HTML and CSS</h2>
+    <p>Replace <strong>all</strong> of <strong>log-viewer.js</strong>
+    with this version. Keep this version for the rest of the lesson.</p>
+    <div class="sourceCode" id="cb7"><pre
+    class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> template <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">createElement</span>(<span class="st">&#39;template&#39;</span>)<span class="op">;</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>template<span class="op">.</span><span class="at">innerHTML</span> <span class="op">=</span> <span class="vs">`</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;style&gt;</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="vs">    :host {</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="vs">      display: block;</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="vs">      padding: 1rem;</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="vs">      border: 1px solid #65758b;</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="vs">      border-radius: 0.5rem;</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="vs">    }</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="vs">    h2 {</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="vs">      margin-top: 0;</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="vs">    }</span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a><span class="vs">    pre {</span></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a><span class="vs">      white-space: pre-wrap;</span></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a><span class="vs">      overflow-wrap: anywhere;</span></span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a><span class="vs">    }</span></span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;/style&gt;</span></span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;h2&gt;Log Viewer&lt;/h2&gt;</span></span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;pre class=&quot;log-content&quot;&gt;Waiting for log data…&lt;/pre&gt;</span></span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;p class=&quot;log-status&quot;&gt;Status: Ready&lt;/p&gt;</span></span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a><span class="vs">`</span><span class="op">;</span></span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> LogViewer <span class="kw">extends</span> <span class="bu">HTMLElement</span> {</span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">constructor</span>() {</span>
+<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a>    <span class="kw">super</span>()<span class="op">;</span></span>
+<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a>    <span class="kw">this</span><span class="op">.</span><span class="fu">attachShadow</span>({ <span class="dt">mode</span><span class="op">:</span> <span class="st">&#39;open&#39;</span> })<span class="op">;</span></span>
+<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a>    <span class="kw">this</span><span class="op">.</span><span class="at">shadowRoot</span><span class="op">.</span><span class="fu">append</span>(template<span class="op">.</span><span class="at">content</span><span class="op">.</span><span class="fu">cloneNode</span>(<span class="kw">true</span>))<span class="op">;</span></span>
+<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-34"><a href="#cb7-34" aria-hidden="true" tabindex="-1"></a>customElements<span class="op">.</span><span class="fu">define</span>(<span class="st">&#39;log-viewer&#39;</span><span class="op">,</span> LogViewer)<span class="op">;</span></span></code></pre></div>
+    <p>The backticks let you write the HTML and CSS across several
+    lines. A <code>&lt;template&gt;</code> holds that markup until you
+    use it. <code>template.content.cloneNode(true)</code> copies the
+    whole template, including its nested elements, so each viewer gets
+    its own copy.</p>
+    <p>The browser runs the <strong>constructor</strong> when it creates
+    the custom element. <code>super()</code> sets up the built-in HTML
+    element and must run before you use <code>this</code>.
+    <code>attachShadow()</code> gives the element its own DOM tree,
+    called the <strong>shadow DOM</strong>. The template’s styles apply
+    inside that tree, and <code>:host</code> styles the
+    <code>&lt;log-viewer&gt;</code> tag itself. Page-level CSS selectors
+    do not reach inside the shadow tree, though inherited styles such as
+    fonts can carry through. With <code>mode: 'open'</code>, you can
+    access the tree as <code>this.shadowRoot</code>.</p>
+    <p><strong>Check your work.</strong> Save and reload. You should see
+    a bordered box with <strong>Log Viewer</strong>, <strong>Waiting for
+    log data…</strong>, and <strong>Status: Ready</strong>. Inspect
+    <code>&lt;log-viewer&gt;</code> in your browser’s developer tools
+    and expand <code>#shadow-root</code> to see the copied markup.</p>
+    <h2 id="step-4-load-the-text-file-once">Step 4 – Load the text file
+    once</h2>
+    <p>In <strong>log-viewer.js</strong>, paste these two methods
+    <strong>inside</strong> the <code>LogViewer</code> class, after the
+    constructor and before the class’s final closing brace. Leave
+    <code>customElements.define()</code> below the class.</p>
+    <div class="sourceCode" id="cb8"><pre
+    class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">connectedCallback</span>() {</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">this</span><span class="op">.</span><span class="fu">loadLog</span>()<span class="op">;</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  <span class="kw">async</span> <span class="fu">loadLog</span>() {</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> content <span class="op">=</span> <span class="kw">this</span><span class="op">.</span><span class="at">shadowRoot</span><span class="op">.</span><span class="fu">querySelector</span>(<span class="st">&#39;.log-content&#39;</span>)<span class="op">;</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> status <span class="op">=</span> <span class="kw">this</span><span class="op">.</span><span class="at">shadowRoot</span><span class="op">.</span><span class="fu">querySelector</span>(<span class="st">&#39;.log-status&#39;</span>)<span class="op">;</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span> {</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>      <span class="kw">const</span> response <span class="op">=</span> <span class="cf">await</span> <span class="fu">fetch</span>(<span class="st">&#39;log.txt&#39;</span><span class="op">,</span> { <span class="dt">cache</span><span class="op">:</span> <span class="st">&#39;no-store&#39;</span> })<span class="op">;</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>      <span class="cf">if</span> (<span class="op">!</span>response<span class="op">.</span><span class="at">ok</span>) {</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>        <span class="cf">throw</span> <span class="kw">new</span> <span class="bu">Error</span>(<span class="vs">`HTTP </span><span class="sc">${</span>response<span class="op">.</span><span class="at">status</span><span class="sc">}</span><span class="vs">`</span>)<span class="op">;</span></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>      }</span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>      <span class="kw">const</span> text <span class="op">=</span> <span class="cf">await</span> response<span class="op">.</span><span class="fu">text</span>()<span class="op">;</span></span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>      content<span class="op">.</span><span class="at">textContent</span> <span class="op">=</span> text <span class="op">||</span> <span class="st">&#39;The log file is empty.&#39;</span><span class="op">;</span></span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>      <span class="kw">const</span> time <span class="op">=</span> <span class="kw">new</span> <span class="bu">Date</span>()<span class="op">.</span><span class="fu">toLocaleTimeString</span>()<span class="op">;</span></span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>      status<span class="op">.</span><span class="at">textContent</span> <span class="op">=</span> <span class="vs">`Last checked at </span><span class="sc">${</span>time<span class="sc">}</span><span class="vs">`</span><span class="op">;</span></span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>    } <span class="cf">catch</span> (error) {</span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>      content<span class="op">.</span><span class="at">textContent</span> <span class="op">=</span> <span class="st">&#39;Could not load log.txt.&#39;</span><span class="op">;</span></span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>      status<span class="op">.</span><span class="at">textContent</span> <span class="op">=</span> <span class="vs">`Error: </span><span class="sc">${</span>error<span class="op">.</span><span class="at">message</span><span class="sc">}</span><span class="vs">`</span><span class="op">;</span></span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a>  }</span></code></pre></div>
+    <ol type="1">
+    <li><code>connectedCallback()</code> starts the first load.
+    <code>this.shadowRoot.querySelector()</code> finds the two places in
+    this viewer that need updating.</li>
+    <li><code>async</code> lets this method use <code>await</code>. The
+    first <code>await</code> waits for the server’s response. The second
+    waits for the body of that response as text.
+    <code>cache: 'no-store'</code> asks the browser to skip its cached
+    copy.</li>
+    <li>A missing file can return a response with an HTTP status of
+    <code>404</code>. Check <code>response.ok</code> and throw an error
+    if the status indicates failure. The <code>catch</code> block shows
+    the problem in the viewer.</li>
+    <li><code>textContent</code> displays the log as plain text,
+    including any angle brackets. The <code>&lt;pre&gt;</code> element
+    preserves line breaks.</li>
+    </ol>
+    <p><strong>Check your work.</strong> Save and reload. You should see
+    the three log entries and <strong>Last checked at</strong> with the
+    current time. If you get a <code>404</code>, open
+    <code>log.txt</code> directly by changing the end of your browser
+    address to <code>/log.txt</code> on the Python server. Check the
+    folder and spelling, including whether the editor saved it as
+    <code>log.txt.txt</code>.</p>
+    <h2 id="step-5-check-for-changes-every-five-seconds">Step 5 – Check
+    for changes every five seconds</h2>
+    <p>Replace <strong>only</strong> the
+    <code>connectedCallback()</code> method with the two methods below.
+    Leave the constructor and <code>loadLog()</code> in place.</p>
+    <div class="sourceCode" id="cb9"><pre
+    class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">connectedCallback</span>() {</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">this</span><span class="op">.</span><span class="fu">loadLog</span>()<span class="op">;</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">this</span><span class="op">.</span><span class="at">intervalId</span> <span class="op">=</span> <span class="pp">setInterval</span>(() <span class="kw">=&gt;</span> <span class="kw">this</span><span class="op">.</span><span class="fu">loadLog</span>()<span class="op">,</span> <span class="dv">5000</span>)<span class="op">;</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">disconnectedCallback</span>() {</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>    <span class="pp">clearInterval</span>(<span class="kw">this</span><span class="op">.</span><span class="at">intervalId</span>)<span class="op">;</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>  }</span></code></pre></div>
+    <p><code>setInterval()</code> schedules the next check and gives you
+    a timer ID. The browser calls <code>disconnectedCallback()</code>
+    when the component leaves the page. Use the saved ID with
+    <code>clearInterval()</code> to stop future checks.</p>
+    <p>A slow request can take longer than five seconds. To skip the
+    next check while a request is still running, add these lines at the
+    <strong>start</strong> of <code>loadLog()</code>, before the
+    <code>querySelector()</code> lines.</p>
+    <div class="sourceCode" id="cb10"><pre
+    class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="kw">this</span><span class="op">.</span><span class="at">loading</span>) <span class="cf">return</span><span class="op">;</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">this</span><span class="op">.</span><span class="at">loading</span> <span class="op">=</span> <span class="kw">true</span><span class="op">;</span></span></code></pre></div>
+    <p>Then replace the <code>catch</code> block and its preceding brace
+    with the lines below. The <code>finally</code> block runs after
+    success or failure, so the next scheduled check can start a new
+    request.</p>
+    <div class="sourceCode" id="cb11"><pre
+    class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>    } <span class="cf">catch</span> (error) {</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>      content<span class="op">.</span><span class="at">textContent</span> <span class="op">=</span> <span class="st">&#39;Could not load log.txt.&#39;</span><span class="op">;</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>      status<span class="op">.</span><span class="at">textContent</span> <span class="op">=</span> <span class="vs">`Error: </span><span class="sc">${</span>error<span class="op">.</span><span class="at">message</span><span class="sc">}</span><span class="vs">`</span><span class="op">;</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    } <span class="cf">finally</span> {</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>      <span class="kw">this</span><span class="op">.</span><span class="at">loading</span> <span class="op">=</span> <span class="kw">false</span><span class="op">;</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>    }</span></code></pre></div>
+    <p><strong>Check your work.</strong> Save <code>log-viewer.js</code>
+    and reload once. With the browser tab open, add a line to
+    <strong>log.txt</strong> and save it. Within about five seconds, the
+    new line should appear on its own. If your editor reloads the page
+    when you save, switch to the Python server for this check.</p>
+    <p>Here’s the finished viewer with the original sample log.</p>
+    <p><img src="../imgs/web19-log-viewer.png" width="484" style="max-width: 100%; height: auto;" alt="Log Viewer Demo showing three sample log entries and a Last checked at timestamp."></p>
+    <h2 id="test-your-finished-viewer">Test your finished viewer</h2>
+    <ol type="1">
+    <li><strong>Missing file.</strong> Rename <code>log.txt</code> to
+    <code>log-backup.txt</code>. Wait for the viewer to show an error,
+    then rename the file back. The log should reappear on the next
+    successful check.</li>
+    <li><strong>Reuse.</strong> Add a second
+    <code>&lt;log-viewer&gt;&lt;/log-viewer&gt;</code> line in
+    <strong>index.html</strong> before the script tag. Reload and check
+    that both boxes display the log.</li>
+    <li><strong>Customize.</strong> Change the border color in the
+    template’s <code>:host</code> rule. Reload and look for the new
+    color on both boxes.</li>
+    </ol>
+    <p>When you’re done, stop the Python server by pressing
+    <strong>Ctrl+C</strong> in the terminal where you started it.</p>
+    <h2 id="conclusion">Conclusion</h2>
+    <p>You turned <code>&lt;log-viewer&gt;</code> into a reusable HTML
+    tag by registering a JavaScript class. Each viewer copies the same
+    template into its own shadow DOM, so it has its own content and
+    styles. You used <code>fetch()</code> to read a text file, refreshed
+    it on a timer, and stopped the timer when the viewer left the page.
+    Adding a second tag showed how you can reuse the whole component
+    with one line of HTML.</p>
+    <h2 id="further-reading">Further reading</h2>
+    <ul>
+    <li><a
+    href="https://developer.mozilla.org/en-US/docs/Web/API/Web_components/Using_custom_elements">Using
+    custom elements</a></li>
+    <li><a
+    href="https://developer.mozilla.org/en-US/docs/Web/API/Web_components/Using_shadow_DOM">Using
+    shadow DOM</a></li>
+    <li><a
+    href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch">Using
+    the Fetch API</a></li>
+    </ul>
+
+    <footer>
+      &copy; <span id="year"></span> <a href="https://cantus.us/msac/" target="_blank">Sable Cantus</a> |
+      <a href="../index.html" title="Go to the Web Demos menu">Web Demos</a>
+    </footer>
+    <script>
+      const currentYear = new Date().getFullYear();
+      document.getElementById("year").textContent = currentYear;
+    </script>
+  </body>
+</html>

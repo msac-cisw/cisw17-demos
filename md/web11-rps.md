@@ -359,11 +359,11 @@ body {
 <img src="../imgs/web11-lose.png" width="400px" title="RPS lose" alt="RPS lose">
 <img src="../imgs/web11-tie.png" width="400px" title="RPS tie" alt="RPS tie">
 
-🎉 Congratulations! 🎉
+## Conclusion
 
-Have fun playing your game and sharing with your friends!
+You built a game that compares the player’s choice with a random computer choice. JavaScript decides whether the round is a win, loss, or tie and displays the result on the page.
 
-## Going Further
+## Next steps
 
 How would you customize your game further? What would make this a better playing experience?
 

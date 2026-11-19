@@ -13,6 +13,7 @@ In this demo you will build a small web project using **TypeScript**.  Along the
 **Tools Needed**
 
 - You will need a [code editor](code-editors.html)
+- A terminal
 - A modern web browser (Chrome, Firefox, etc.).
 - A recent installation of [**Node.js**](https://nodejs.org/en/download/) and the **npm** package manager (these are installed together).
 - The **typescript compiler**
@@ -244,9 +245,13 @@ Now look at the same logic written in TypeScript:
 
 Here the compiler knows that `priceTs` must be a number.  If you uncomment the line assigning a string, `tsc` will stop with an error.  This shows how TypeScript catches mistakes early.
 
-## Step 6 – Exploring more features
+## Conclusion
 
-The example above barely scratches the surface of TypeScript’s capabilities.  Some additional features you can explore include:
+You wrote typed variables and functions, defined an interface and a class, and tried a generic function. You ran `tsc` to turn the TypeScript into JavaScript and used a small example to see how the compiler catches a type error before the code runs.
+
+## Next steps
+
+Explore these TypeScript features in your project as you add to it.
 
 - **Type inference:** In many cases TypeScript can infer the type of a variable based on its initial value, allowing you to omit explicit type annotations.
 - **Union and literal types:** You can specify that a variable may be one of several types (e.g., `number | string`) or constrain it to specific literal values (e.g., `'small' | 'medium' | 'large'`).
@@ -254,6 +259,6 @@ The example above barely scratches the surface of TypeScript’s capabilities.  
 - **Generics in classes and interfaces:** You can create generic classes or interfaces similar to the `identity` function to build flexible data structures.
 - **Modules and namespaces:** TypeScript supports `import` and `export` syntax to organize code across files and take advantage of modern module systems.
 
-## Conclusion
+## Further reading
 
-In this tutorial you set up a simple web project that uses TypeScript, wrote a few typed variables and functions, defined an interface and a class with access modifiers, and experimented with a generic function.  You compiled your TypeScript file to JavaScript using the `tsc` compiler and saw how type annotations and interfaces vanish after compilation.  By comparing the TypeScript and JavaScript versions of a small snippet, you learned how static typing catches errors during development rather than allowing them to sneak into production.
+- [The TypeScript Handbook](https://www.typescriptlang.org/docs/handbook/intro.html)

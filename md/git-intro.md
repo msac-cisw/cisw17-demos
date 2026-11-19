@@ -10,8 +10,9 @@ View file history.
 **Tools Needed**
 
 - A [code editor](code-editors.html)
-- A Modern Web Browser
+- A web browser
 - [Git installed on your machine](https://git-scm.com/)
+- A terminal
 
 ## Overview
 
@@ -224,3 +225,6 @@ git restore --source 0af3a09 index.html
 
 Be sure to use hash values from your own repository.
 
+## Conclusion
+
+You created a local Git repository, staged changes, and saved them in commits. You used `git log` to find earlier commits and `git diff` to see what changed in a file.

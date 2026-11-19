@@ -211,7 +211,13 @@ You will need to put your page online for your phone to automatically use it. Co
         <p>Your custom local webpage will now open as the homepage whenever you launch a new Firefox window.</p>
     </details>
 
-## Extra Credit
+## Conclusion
+
+You made a personal homepage by grouping your links into lists and styling them with CSS. You can keep the page useful by updating its bookmarks as your needs change.
+
+## Next steps
+
+### Extra Credit
 
 Try splitting your page into columns by adding a **main** tag around your bookmarks and defining the columns in css.
 

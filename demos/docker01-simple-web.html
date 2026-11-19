@@ -236,8 +236,14 @@
     <code>/var/www/html</code>. Edit <code>index.php</code> and refresh
     the browser to see updates.</p>
     <p><img src="../imgs/docker01-php2.png" width="400px" alt="php2"></p>
-    <h2 id="step-6-organize-with-docker-compose-optional">Step 6 –
-    Organize with Docker Compose (optional)</h2>
+    <h2 id="conclusion">Conclusion</h2>
+    <p>You built and ran a static site in a Docker container, mapped a
+    host port to the web server, and used a bind mount to see local
+    edits in the browser. You also used a PHP image to serve a page that
+    runs code on the server.</p>
+    <h2 id="next-steps">Next steps</h2>
+    <h3 id="organize-with-docker-compose">Organize with Docker
+    Compose</h3>
     <p>For multi‑service applications you can use
     <strong>Docker Compose</strong>. Compose lets you define services,
     networks and volumes in a single YAML file and bring them up with
@@ -254,22 +260,16 @@
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">php</span><span class="kw">:</span></span>
 <span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">image</span><span class="kw">:</span><span class="at"> php:8.2-apache</span></span>
 <span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">ports</span><span class="kw">:</span></span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="st">&#39;8082:80&#39;</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">- </span><span class="st">&#39;8082:80&#39;</span></span>
 <span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">volumes</span><span class="kw">:</span></span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> ./php-site:/var/www/html</span></span></code></pre></div>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">- </span><span class="at">./php-site:/var/www/html</span></span></code></pre></div>
     <p>Then run <code>docker compose up -d</code> to start the service
     and <code>docker compose down</code> to stop it. Compose
     automatically handles port mapping and mount configuration, making
     it easier to manage complex setups.</p>
-    <h2 id="summary">Summary</h2>
-    <p>In this tutorial you built a static website with Docker, learned
-    the difference between images and containers, used bind mounts for
-    live development, and extended the environment to serve PHP files.
-    With these skills you can start containerizing your own web projects
-    and confidently evolve them using Docker’s flexible toolset.</p>
 
     <footer>
-      &copy; <span id="year"></span> <a href="https://cantus.us/msac/" target="_blank">Sable Cantus</a> | 
+      &copy; <span id="year"></span> <a href="https://cantus.us/msac/" target="_blank">Sable Cantus</a> |
       <a href="../index.html" title="Go to the Web Demos menu">Web Demos</a>
     </footer>
     <script>

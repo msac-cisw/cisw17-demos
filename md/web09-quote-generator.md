@@ -164,7 +164,11 @@ The `font-size: 3rem` sets the font size to 3 times the font size of the root (h
 
 <img src="../imgs/web09-styled.gif" width="400px">
 
-## Taking it further
+## Conclusion
+
+You stored quotes in an array, picked a random index, and displayed the selected quote on the page. Refresh the page a few times to see how the same JavaScript can show different text.
+
+## Next steps
 
 You can improve on this page in many ways. Here are some ideas
 
@@ -173,4 +177,4 @@ You can improve on this page in many ways. Here are some ideas
 3. Load a new quote when a button is pushed
 4. Use CSS animation when the quote is displayed
 5. Call random quotes from an api such as [Zen Quotes](https://zenquotes.io/)
-6. Upate the quote every minute
+6. Update the quote every minute

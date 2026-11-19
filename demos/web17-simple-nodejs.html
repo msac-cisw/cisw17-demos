@@ -28,6 +28,7 @@
     <p><strong>Tools Needed</strong></p>
     <ul>
     <li>You will need a <a href="code-editors.html">code editor</a></li>
+    <li>A terminal</li>
     <li>A recent installation of <a
     href="https://nodejs.org/en/download/"><strong>Node.js</strong></a>
     and the <strong>npm</strong> package manager (these are installed
@@ -215,15 +216,11 @@
     when to fetch the data.<br />
     </li>
     <li>Inside the <code>&lt;script&gt;</code> tag we use the
-    <strong>Fetch API</strong>. MDN describes fetch as a modern
-    replacement for <code>XMLHttpRequest</code>; it is a promise‑based
-    global function that makes HTTP requests and returns a
-    <strong>Response</strong> object <a
-    href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch#:~:text=Using%20the%20Fetch%20API">oai_citation:9‡developer.mozilla.org</a>.
-    We call <code>fetch('/api/greet')</code> and await the response. If
-    the request is successful we call <code>response.json()</code> to
-    parse the JSON body; otherwise we throw an error. The result is
-    displayed inside the <code>&lt;p&gt;</code> element.</li>
+    <strong>Fetch API</strong>. We call <code>fetch('/api/greet')</code>
+    and await the response. If the request succeeds, we use
+    <code>response.json()</code> to read the JSON body and show the
+    result inside the <code>&lt;p&gt;</code> element. If the request
+    fails, we throw an error.</li>
     </ul></li>
     <li><p><strong>Add basic styling.</strong> Edit
     <code>public/style.css</code> with some simple CSS to center the
@@ -268,11 +265,8 @@
     will call the <code>/api/greet</code> route, receive a JSON response
     and update the paragraph text.</p>
     <p>The Fetch API call returns a <strong>Promise</strong> that
-    resolves with a <code>Response</code> object; we then parse the
-    response body with <code>response.json()</code> and update the DOM.
-    MDN notes that <code>fetch()</code> returns a promise that can be
-    fulfilled with a Response representing the server’s response <a
-    href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch#:~:text=Using%20the%20Fetch%20API">oai_citation:10‡developer.mozilla.org</a>.</p></li>
+    resolves with a <code>Response</code> object. The page reads that
+    response and updates the DOM.</p></li>
     </ol>
     <p><img src="../imgs/web17-client1.png" width="400px" alt="client 1"></p>
     <p><img src="../imgs/web17-client2.png" width="400px" alt="client 2"></p>
@@ -310,7 +304,12 @@
     applications. Node.js handles I/O asynchronously and does not block
     the event loop, so the server remains responsive even when handling
     multiple simultaneous requests.</p>
-    <h2 id="next-steps">Next Steps</h2>
+    <h2 id="conclusion">Conclusion</h2>
+    <p>You built an Express server that serves a web page and provides a
+    JSON response at <code>/api/greet</code>. When you click the button,
+    JavaScript in the browser requests that response and uses it to
+    update the page.</p>
+    <h2 id="next-steps">Next steps</h2>
     <ul>
     <li><strong>Add more routes</strong>: Create new endpoints that
     return data such as the current date/time or random numbers. You can
@@ -331,15 +330,18 @@
     <code>cors</code> package to enable requests from different
     origins.</li>
     </ul>
-    <p>This simple project demonstrates the fundamentals of building a
-    Node.js back end and connecting it to a front‑end web page. From
-    here you can explore more features of Express, add middleware for
-    authentication, integrate a templating engine (like Pug or EJS), or
-    build a single‑page application with a framework like React or
+    <p>As the project grows, try Express middleware, a templating engine
+    such as Pug or EJS, or a front-end framework such as React or
     Vue.</p>
+    <h2 id="further-reading">Further reading</h2>
+    <ul>
+    <li><a
+    href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch">Using
+    the Fetch API</a></li>
+    </ul>
 
     <footer>
-      &copy; <span id="year"></span> <a href="https://cantus.us/msac/" target="_blank">Sable Cantus</a> | 
+      &copy; <span id="year"></span> <a href="https://cantus.us/msac/" target="_blank">Sable Cantus</a> |
       <a href="../index.html" title="Go to the Web Demos menu">Web Demos</a>
     </footer>
     <script>

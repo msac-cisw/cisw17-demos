@@ -1,16 +1,13 @@
 <!DOCTYPE html>
-<html lang="" >
+<html lang="en" >
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Web Demos</title>
     <link rel="icon" type="image/png" href="../imgs/logo.png" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
-    <script>hljs.highlightAll();</script>
     <link rel="stylesheet" href="../page-styles.css" />
   </head>
 
@@ -21,8 +18,13 @@
     <h1 id="press-d-to-toggle-dark-mode">Press ‘d’ to Toggle Dark
     Mode</h1>
     <p><strong>Objectives</strong></p>
-    <p>Toggle a <strong>darkmode</strong> class when the ‘d’ key is
-    pressed.</p>
+    <p>Toggle a <strong>darkmode</strong> class on the
+    <code>&lt;html&gt;</code> element when the ‘d’ key is pressed.</p>
+    <p>Try it on this lesson page. Press <strong>d</strong> or use the
+    button to switch between light and dark.</p>
+    <button class="theme-toggle" id="theme-toggle" type="button">
+    Toggle dark mode
+    </button>
     <p><strong>Tools Needed</strong></p>
     <p>You will need a <a href="code-editors.html">code editor</a> and a
     web browser.</p>
@@ -33,75 +35,80 @@
     <h2 id="listening-for-keystrokes">Listening for Keystrokes</h2>
     <p>Events happen on a webpage. Our code can respond to them. For
     this project we will use the <strong>keydown</strong> event to
-    switch the body class to dark mode when the ‘d’ key is pressed.</p>
+    toggle a class on the root element, <code>&lt;html&gt;</code>, when
+    the ‘d’ key is pressed.</p>
     <h2 id="html-setup">HTML Setup</h2>
     <p>Create a working folder for this project named
     <strong>darkmode</strong>.</p>
     <p>Create a basic html page with <strong>script.js</strong> and
     <strong>style.css</strong>.</p>
     <p>Create a new file named <code>darkmode.html</code>.</p>
-    <pre>
-    <code>
-    &lt;!doctype html&gt;
-        &lt;html lang="en-US"&gt;
-        &lt;head&gt;
-            &lt;meta charset="utf-8"&gt;
-            &lt;meta name="viewport" content="width=device-width"&gt;
-            &lt;title&gt;Toggle Dark Mode&lt;/title&gt;
-            &lt;link rel="stylesheet" href="style.css"&gt;
-            &lt;script src="script.js" defer &gt;&lt;/script&gt;
-        &lt;/head&gt;
-        &lt;body&gt;
-            &lt;h1&gt;Press 'd' to Toggle Dark Mode&lt;/h1&gt;
-            
-        &lt;/body&gt;
-    &lt;/html&gt;
-    </code>
-    </pre>
+    <div class="sourceCode" id="cb1"><pre
+    class="sourceCode html theme-example"><code class="sourceCode html"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;!doctype</span> html<span class="dt">&gt;</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">html</span><span class="ot"> lang</span><span class="op">=</span><span class="st">&quot;en-US&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">head</span><span class="dt">&gt;</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">meta</span><span class="ot"> charset</span><span class="op">=</span><span class="st">&quot;utf-8&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">meta</span><span class="ot"> name</span><span class="op">=</span><span class="st">&quot;viewport&quot;</span><span class="ot"> content</span><span class="op">=</span><span class="st">&quot;width=device-width&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">title</span><span class="dt">&gt;</span>Toggle Dark Mode<span class="dt">&lt;/</span><span class="kw">title</span><span class="dt">&gt;</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">link</span><span class="ot"> rel</span><span class="op">=</span><span class="st">&quot;stylesheet&quot;</span><span class="ot"> href</span><span class="op">=</span><span class="st">&quot;style.css&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">script</span><span class="ot"> src</span><span class="op">=</span><span class="st">&quot;script.js&quot;</span><span class="ot"> defer</span><span class="dt">&gt;&lt;/</span><span class="kw">script</span><span class="dt">&gt;</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">head</span><span class="dt">&gt;</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">body</span><span class="dt">&gt;</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">h1</span><span class="dt">&gt;</span>Press &#39;d&#39; to Toggle Dark Mode<span class="dt">&lt;/</span><span class="kw">h1</span><span class="dt">&gt;</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">body</span><span class="dt">&gt;</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">html</span><span class="dt">&gt;</span></span></code></pre></div>
     <h3 id="add-css">Add CSS</h3>
-    <p>We will define both a light and dark color. Then specify those
-    for the body and the darkmode class. We will put variables in the
-    root.</p>
-    <pre><code>
-    :root {
-        --dark-color: rgb(22, 22, 22);
-        --light-color: rgb(249, 249, 249);
-      }
-    body {
-        background-color: var(--light-color);
-        color: var(--dark-color);
-    }
-    .darkmode {
-        background-color: var(--dark-color);
-        color: var(--light-color);
-    }
-    </code></pre>
-    <p>The page will load with the specified light-color background and
-    dark color font by default.</p>
+    <p>Put the colors and the default theme on <code>:root</code>, which
+    selects the <code>&lt;html&gt;</code> element. The
+    <code>darkmode</code> class switches the whole page to the dark
+    colors. The <code>color-scheme</code> property also tells the
+    browser how to style controls and scrollbars.</p>
+    <div class="sourceCode" id="cb2"><pre
+    class="sourceCode css theme-example"><code class="sourceCode css"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="in">:root</span> {</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="va">--dark-color</span><span class="ch">:</span> <span class="fu">rgb(</span><span class="dv">22</span><span class="op">,</span> <span class="dv">22</span><span class="op">,</span> <span class="dv">22</span><span class="fu">)</span><span class="op">;</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="va">--light-color</span><span class="ch">:</span> <span class="fu">rgb(</span><span class="dv">249</span><span class="op">,</span> <span class="dv">249</span><span class="op">,</span> <span class="dv">249</span><span class="fu">)</span><span class="op">;</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">color-scheme</span><span class="ch">:</span> <span class="dv">light</span><span class="op">;</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">background-color</span><span class="ch">:</span> <span class="fu">var(</span><span class="va">--light-color</span><span class="fu">)</span><span class="op">;</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">color</span><span class="ch">:</span> <span class="fu">var(</span><span class="va">--dark-color</span><span class="fu">)</span><span class="op">;</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="in">:root</span><span class="fu">.darkmode</span> {</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">color-scheme</span><span class="ch">:</span> <span class="dv">dark</span><span class="op">;</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    <span class="kw">background-color</span><span class="ch">:</span> <span class="fu">var(</span><span class="va">--dark-color</span><span class="fu">)</span><span class="op">;</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    <span class="kw">color</span><span class="ch">:</span> <span class="fu">var(</span><span class="va">--light-color</span><span class="fu">)</span><span class="op">;</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+    <p>Your practice page starts in light mode. This lesson page starts
+    with your system preference.</p>
     <h3 id="js">JS</h3>
     <p>We are going to create a function named
     <strong>toggleDarkMode()</strong> that will listen for the
     <strong>keydown</strong> event and trigger the function.</p>
     <p>Create the function:</p>
-    <pre><code>
-    function toggleDarkMode(event) {
-        // the e.keyCode for 'd' is 68
-        if ( event.keyCode == 68 ) {
-            document.body.classList.toggle('darkmode');
-        }
-    }
-    </code></pre>
-    <p>Notice that we are checking for a specific keyCode: 68. The
-    function will do nothing for other keys.</p>
+    <div class="sourceCode" id="cb3"><pre
+    class="sourceCode javascript theme-example"><code class="sourceCode javascript"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">toggleDarkMode</span>(<span class="bu">event</span>) {</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="bu">event</span><span class="op">.</span><span class="fu">key</span><span class="op">.</span><span class="fu">toLowerCase</span>() <span class="op">===</span> <span class="st">&#39;d&#39;</span> <span class="op">&amp;&amp;</span> <span class="op">!</span><span class="bu">event</span><span class="op">.</span><span class="at">repeat</span>) {</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>        <span class="bu">document</span><span class="op">.</span><span class="at">documentElement</span><span class="op">.</span><span class="at">classList</span><span class="op">.</span><span class="fu">toggle</span>(<span class="st">&#39;darkmode&#39;</span>)<span class="op">;</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+    <p><code>event.key</code> gives us the key that was pressed.
+    <code>event.repeat</code> lets us skip repeated events when the key
+    is held down. <code>document.documentElement</code> refers to
+    <code>&lt;html&gt;</code>, so the class goes on the same element we
+    styled with <code>:root</code>.</p>
     <p>Add an event listener to the entire document.</p>
-    <pre><code>
-    document.addEventListener("keydown", toggleDarkMode);
-    </code></pre>
-    <p>Open in live-server and test your code.</p>
+    <div class="sourceCode" id="cb4"><pre
+    class="sourceCode javascript theme-example"><code class="sourceCode javascript"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="bu">document</span><span class="op">.</span><span class="fu">addEventListener</span>(<span class="st">&quot;keydown&quot;</span><span class="op">,</span> toggleDarkMode)<span class="op">;</span></span></code></pre></div>
+    <p>Open your practice page in a browser. Press <strong>d</strong>
+    once to turn dark mode on, then press it again to return to light
+    mode.</p>
     <video src="../imgs/web12-toggle.mp4" controls playsinline preload="metadata" width="400px">
     <img src="../imgs/web12-toggle.gif" width="400" alt="darkmode toggling off and on">
     </video>
-    <h2 id="going-further">Going Further</h2>
+    <h2 id="conclusion">Conclusion</h2>
+    <p>You used a keyboard event to toggle a class on the HTML element.
+    CSS uses that class to switch the page colors, and
+    <code>color-scheme</code> lets browser controls follow the chosen
+    theme.</p>
+    <h2 id="next-steps">Next steps</h2>
     <ul>
     <li>What more can you do with keyboard interaction?</li>
     <li>How can you change the dark and light colors to something
@@ -110,27 +117,31 @@
     keydown?</li>
     <li>Could you add different features for different keystrokes? Such
     as blanking the screen?</li>
-    <li>What about having a secret code that opens a hidding link?</li>
-    <li>the prefers-color-scheme media query to switch to darkmode if
-    the user prefers it</li>
+    <li>Could a sequence of keystrokes reveal a hidden link?</li>
+    <li>How could you use the <code>prefers-color-scheme</code> media
+    query to follow the user’s system preference?</li>
     </ul>
     <script>
-    function toggleDarkMode(event) {
-        // the e.keyCode for 'd' is 68
-        if ( event.keyCode == 68 ) {
-            document.body.classList.toggle('darkmode');
-        }
+    function toggleLessonTheme() {
+        const root = document.documentElement;
+        const systemTheme = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        const currentTheme = root.dataset.theme || systemTheme;
+        root.dataset.theme = currentTheme === 'dark' ? 'light' : 'dark';
     }
 
-    document.addEventListener("keydown", toggleDarkMode);
-
+    document.getElementById('theme-toggle').addEventListener('click', toggleLessonTheme);
+    document.addEventListener('keydown', (event) => {
+        if (event.key.toLowerCase() === 'd' && !event.repeat && !event.metaKey && !event.ctrlKey && !event.altKey) {
+            toggleLessonTheme();
+        }
+    });
     </script>
     <p>
     <a href="#top">Back to top.</a>
     </p>
 
     <footer>
-      &copy; <span id="year"></span> <a href="https://cantus.us/msac/" target="_blank">Sable Cantus</a> | 
+      &copy; <span id="year"></span> <a href="https://cantus.us/msac/" target="_blank">Sable Cantus</a> |
       <a href="../index.html" title="Go to the Web Demos menu">Web Demos</a>
     </footer>
     <script>

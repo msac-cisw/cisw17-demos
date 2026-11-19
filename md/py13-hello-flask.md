@@ -8,7 +8,7 @@ Build a Hello, World web application using Flask.
 
 **Tools Needed**
 
-You will need a [code editor](code-editors.html), a web browser, [Python 3](https://python.org), and [Flask](https://flask.palletsprojects.com/).
+You will need a [code editor](code-editors.html), a terminal, a web browser, and [Python 3](https://python.org). You'll install [Flask](https://flask.palletsprojects.com/) during setup.
 
 ## Flask Setup
 
@@ -419,11 +419,13 @@ def hello():
     return render_template( "hello.html", name=escape(name) )
 </code></pre>
 
-🎉 Congratulations, you have built a flask app. 🎉
+## Conclusion
 
-## Going Further
+You built a Flask app that takes a name from a form and displays a greeting. You used routes to handle browser requests, supplied a default greeting for a blank name, and rendered the result with a template.
 
-- Use jinja templates instead of typing basic html in every page
+## Next steps
+
+- Use a shared Jinja base template for the HTML that appears on every page
 - Add `/static/` files for CSS and images
 - Try using `POST` instead of `GET` to pass data to the server
 - Store persistent data in `sqlite3`

@@ -22,7 +22,6 @@ Edit the `pages.json` file and add a new entry:
   "title": "Your Page Title",
   "description": "Brief description of what this page does",
   "filename": "your-page.html",
-  "icon": "🎨",
   "status": "active"
 }
 ```
@@ -30,9 +29,8 @@ Edit the `pages.json` file and add a new entry:
 ### Configuration Options
 
 - **title**: The display name for your page
-- **description**: A brief description shown on the card
+- **description**: A brief description shown in the course index
 - **filename**: The HTML file to link to (leave empty for coming soon pages)
-- **icon**: An emoji or icon to display
 - **status**: Either "active" or "coming-soon"
 
 ## Example
@@ -44,7 +42,6 @@ Edit the `pages.json` file and add a new entry:
       "title": "My New Demo",
       "description": "An awesome interactive demo",
       "filename": "demo.html",
-      "icon": "✨",
       "status": "active"
     }
   ]

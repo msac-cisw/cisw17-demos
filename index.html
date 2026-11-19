@@ -3,30 +3,30 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light dark" />
     <title>Web Demos</title>
     <link rel="icon" type="image/png" href="imgs/logo.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;family=Lora:wght@600;700&amp;display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="page-styles.css" />
     <link rel="stylesheet" href="styles.css" />
     <script src="script.js" defer></script>
   </head>
 
-  <body>
-    <div class="container">
-      <header>
-        <h1>Web Demos</h1>
-        <!-- <p class="subtitle">Click on a page to view the demo.</p> -->
-      </header>
+  <body class="course-index">
+    <main>
+      <h1>Web Demos</h1>
+      <p class="course-intro">Step-by-step tutorials for building on the web.</p>
+      <ul class="lesson-list" id="lesson-list" aria-label="Course demos" role="list"></ul>
+      <p id="lesson-status" role="status"></p>
+      <noscript><p>Enable JavaScript to load the course demos.</p></noscript>
+    </main>
 
-      <main>
-        <section class="pages-grid" id="pages-grid">
-          <!-- Pages will be loaded dynamically -->
-        </section>
-      </main>
-
-      <footer>&copy; <span id="year"></span> <a href="https://cantus.us/msac/" target="_blank">Sable Cantus</a></footer>
-      <script>
-        const currentYear = new Date().getFullYear();
-        document.getElementById("year").textContent = currentYear;
-      </script>
-    </div>
+    <footer>&copy; <span id="year"></span> <a href="https://cantus.us/msac/" target="_blank">Sable Cantus</a></footer>
+    <script>
+      const currentYear = new Date().getFullYear();
+      document.getElementById("year").textContent = currentYear;
+    </script>
   </body>
 </html>

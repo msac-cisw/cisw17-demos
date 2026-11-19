@@ -7,6 +7,7 @@ This tutorial walks through building a very simple **Node.js** application and c
 **Tools Needed**
 
 - You will need a [code editor](code-editors.html)
+- A terminal
 - A recent installation of [**Node.js**](https://nodejs.org/en/download/) and the **npm** package manager (these are installed together).  
 - A modern web browser (Chrome, Firefox, etc.).
 
@@ -148,7 +149,7 @@ The web page will live in a folder named **public** (the same folder we configur
 
    - The `<link>` tag includes a separate `style.css` file for styling.  
    - A `<button>` is provided so users can decide when to fetch the data.  
-   - Inside the `<script>` tag we use the **Fetch API**.  MDN describes fetch as a modern replacement for `XMLHttpRequest`; it is a promise‑based global function that makes HTTP requests and returns a **Response** object [oai_citation:9‡developer.mozilla.org](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch#:~:text=Using%20the%20Fetch%20API).  We call `fetch('/api/greet')` and await the response.  If the request is successful we call `response.json()` to parse the JSON body; otherwise we throw an error.  The result is displayed inside the `<p>` element.
+   - Inside the `<script>` tag we use the **Fetch API**. We call `fetch('/api/greet')` and await the response. If the request succeeds, we use `response.json()` to read the JSON body and show the result inside the `<p>` element. If the request fails, we throw an error.
 
 3. **Add basic styling.** Edit `public/style.css` with some simple CSS to center the page and style the button:
 
@@ -185,7 +186,7 @@ The web page will live in a folder named **public** (the same folder we configur
 
 2. **Open the web page.** In your browser navigate to `http://localhost:3000/`.  Because Express serves static files from the `public` folder, the `index.html` file will load automatically.  You should see the page title and a button.  When you click the button, the browser will call the `/api/greet` route, receive a JSON response and update the paragraph text.
 
-   The Fetch API call returns a **Promise** that resolves with a `Response` object; we then parse the response body with `response.json()` and update the DOM.  MDN notes that `fetch()` returns a promise that can be fulfilled with a Response representing the server’s response [oai_citation:10‡developer.mozilla.org](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch#:~:text=Using%20the%20Fetch%20API).
+   The Fetch API call returns a **Promise** that resolves with a `Response` object. The page reads that response and updates the DOM.
 
 <img src="../imgs/web17-client1.png" width="400px" alt="client 1">
 
@@ -208,11 +209,19 @@ Node.js enables you to run JavaScript on the server side, while the browser stil
 
 Understanding this flow will help you build more complex applications.  Node.js handles I/O asynchronously and does not block the event loop, so the server remains responsive even when handling multiple simultaneous requests.
 
-## Next Steps
+## Conclusion
+
+You built an Express server that serves a web page and provides a JSON response at `/api/greet`. When you click the button, JavaScript in the browser requests that response and uses it to update the page.
+
+## Next steps
 
 - **Add more routes**: Create new endpoints that return data such as the current date/time or random numbers.  You can even serve HTML fragments and insert them into the page.  
 - **Use POST requests**: Modify the client to send JSON data to the server using `fetch('/api/echo', { method: 'POST', body: JSON.stringify({ message: 'Hello' }), headers: { 'Content-Type': 'application/json' }})` and handle it in your server with `app.post()`.  
 - **Persist data**: Explore databases like SQLite or MongoDB to store information rather than keeping everything in memory.  
 - **Learn about CORS**: If you serve your client from a different domain or port than your server, browsers enforce cross‑origin resource sharing policies.  Express provides the `cors` package to enable requests from different origins.
 
-This simple project demonstrates the fundamentals of building a Node.js back end and connecting it to a front‑end web page.  From here you can explore more features of Express, add middleware for authentication, integrate a templating engine (like Pug or EJS), or build a single‑page application with a framework like React or Vue.
+As the project grows, try Express middleware, a templating engine such as Pug or EJS, or a front-end framework such as React or Vue.
+
+## Further reading
+
+- [Using the Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch)

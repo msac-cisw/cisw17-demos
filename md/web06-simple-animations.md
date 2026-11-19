@@ -126,7 +126,7 @@ Add the class to your h1: `<h1 class="slideIn">`.
 **Example (reload the page to view again):**
 
 <div class="example">
-<h3 class="slideIn">Simple Animations</h1>
+<h3 class="slideIn">Simple Animations</h3>
 </div>
 
 ## Step 3 – Fade the paragraphs in
@@ -181,3 +181,7 @@ Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta, quas
 <summary>Click here to see the final page.</summary>
 <img src="../imgs/web06-final.gif" width="400px" alt="final">
 </details>
+
+## Conclusion
+
+You used CSS keyframes to slide a heading into view and fade in paragraphs. The keyframes describe what changes, and the animation classes apply those changes to specific elements.

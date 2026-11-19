@@ -2,9 +2,19 @@
 
 You will build a small graphical user interface, or GUI, with Python and `tkinter`. The app will let you type what you are studying, add it to a study log, edit an entry in a popup window, and remove entries you no longer need.
 
+**Objectives**
+
+- Build a study log with a window, buttons, and a list of entries.
+- Practice event-driven programming by writing functions that add, edit, or remove entries when the user clicks buttons.
+- In the challenge, save and load entries using a JSON file.
+
+**Tools Needed**
+
+- [Python 3](https://www.python.org/) with `tkinter` available
+- A [code editor](code-editors.html) and a terminal
+
 <div role="note" aria-label="Activity overview" style="border: 2px solid #9ec5e8; border-left: 8px solid #2f5597; padding: 1rem; margin: 1rem 0; background-color: #f7fbff; color: #1f2933;">
-  <p style="margin-top: 0;"><strong>Estimated time:</strong> 45 to 60 minutes</p>
-  <p style="margin-bottom: 0;"><strong>Goal:</strong> Practice event-driven programming by writing functions that respond when the user clicks buttons or selects items.</p>
+  <p style="margin: 0;"><strong>Estimated time:</strong> 45 to 60 minutes</p>
 </div>
 
 ## What You Will Build
@@ -536,8 +546,10 @@ status_label.pack(pady=15)
 root.mainloop()</code></pre>
 </details>
 
-## Wrap-Up
+## Conclusion
 
 You have built a simple event-driven GUI application. The important idea is that the program waits for the user to do something, such as clicking a button, and then responds by running the connected function.
+
+## Next steps
 
 In a larger project, you could add more features such as categories, total study minutes, a search box, or automatic saving when the window closes.

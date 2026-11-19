@@ -98,3 +98,7 @@ The *defer* statement will load the file *after* the page loads.
 &lt;/html&gt;
 </code>
 </pre>
+
+## Conclusion
+
+You created a basic HTML page with a title, a heading, and body content. You can reuse the template for future pages and link a stylesheet or JavaScript file when you need one.

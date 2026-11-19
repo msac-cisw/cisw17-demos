@@ -23,8 +23,10 @@
     <p>Build a Hello, World web application using Flask.</p>
     <p><strong>Tools Needed</strong></p>
     <p>You will need a <a href="code-editors.html">code editor</a>, a
-    web browser, <a href="https://python.org">Python 3</a>, and <a
-    href="https://flask.palletsprojects.com/">Flask</a>.</p>
+    terminal, a web browser, and <a href="https://python.org">Python
+    3</a>. You’ll install <a
+    href="https://flask.palletsprojects.com/">Flask</a> during
+    setup.</p>
     <h2 id="flask-setup">Flask Setup</h2>
     <blockquote>
     <p>Flask is a lightweight WSGI web application framework. It is
@@ -541,11 +543,15 @@
             name = "World"
         return render_template( "hello.html", name=escape(name) )
     </code></pre>
-    <p>🎉 Congratulations, you have built a flask app. 🎉</p>
-    <h2 id="going-further">Going Further</h2>
+    <h2 id="conclusion">Conclusion</h2>
+    <p>You built a Flask app that takes a name from a form and displays
+    a greeting. You used routes to handle browser requests, supplied a
+    default greeting for a blank name, and rendered the result with a
+    template.</p>
+    <h2 id="next-steps">Next steps</h2>
     <ul>
-    <li>Use jinja templates instead of typing basic html in every
-    page</li>
+    <li>Use a shared Jinja base template for the HTML that appears on
+    every page</li>
     <li>Add <code>/static/</code> files for CSS and images</li>
     <li>Try using <code>POST</code> instead of <code>GET</code> to pass
     data to the server</li>
@@ -556,7 +562,7 @@
     </p>
 
     <footer>
-      &copy; <span id="year"></span> <a href="https://cantus.us/msac/" target="_blank">Sable Cantus</a> | 
+      &copy; <span id="year"></span> <a href="https://cantus.us/msac/" target="_blank">Sable Cantus</a> |
       <a href="../index.html" title="Go to the Web Demos menu">Web Demos</a>
     </footer>
     <script>

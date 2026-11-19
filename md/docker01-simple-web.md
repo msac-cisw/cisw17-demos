@@ -189,7 +189,13 @@ This command uses the official `php:8.2-apache` image directly and mounts the lo
 
 <img src="../imgs/docker01-php2.png" width="400px" alt="php2">
 
-## Step 6 – Organize with Docker Compose (optional)
+## Conclusion
+
+You built and ran a static site in a Docker container, mapped a host port to the web server, and used a bind mount to see local edits in the browser. You also used a PHP image to serve a page that runs code on the server.
+
+## Next steps
+
+### Organize with Docker Compose
 
 For multi‑service applications you can use **Docker Compose**.  Compose lets you define services, networks and volumes in a single YAML file and bring them up with one command.  In the Nginx example earlier, a Compose file defined a service, selected the `nginx:1‑alpine` image, mapped ports and mounted a directory.  Compose files also support multiple services and dependencies (for example, Nginx plus a backend API).
 
@@ -207,7 +213,3 @@ services:
 ```
 
 Then run `docker compose up -d` to start the service and `docker compose down` to stop it.  Compose automatically handles port mapping and mount configuration, making it easier to manage complex setups.
-
-## Summary
-
-In this tutorial you built a static website with Docker, learned the difference between images and containers, used bind mounts for live development, and extended the environment to serve PHP files.  With these skills you can start containerizing your own web projects and confidently evolve them using Docker’s flexible toolset.

@@ -1,15 +1,53 @@
 @import url('https://fonts.googleapis.com/css2?family=Google+Sans+Code:ital,wght@0,300..800;1,300..800&display=swap');
 :root {
-    --dark-color: rgb(22, 22, 22);
-    --light-color: rgb(249, 249, 249);
+  color-scheme: light dark;
+  --page-background: Canvas;
+  --page-text: CanvasText;
+  --page-muted: CanvasText;
+  --page-link: LinkText;
+  --page-rule: GrayText;
+  background-color: var(--page-background);
+  color: var(--page-text);
 }
+
+@supports (color: light-dark(white, black)) {
+  :root {
+    --page-background: light-dark(#fff, #212124);
+    --page-text: light-dark(#333, #e2e2e2);
+    --page-muted: light-dark(#545c66, #bbc2cb);
+    --page-link: light-dark(#285781, #a5c9ec);
+    --page-rule: light-dark(#dce1e6, #454851);
+  }
+}
+
+:root[data-theme="light"] {
+  color-scheme: light;
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+}
+
+a {
+  color: var(--page-link);
+}
+
+:where(a, button):focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+}
+
+.theme-toggle {
+  font: inherit;
+  padding: 0.4rem 0.75rem;
+}
+
 body {
   margin: 1rem auto;
   max-width: 800px;
   padding: 0 2rem;
   font-family: "Inter", Tahoma, sans-serif;
   line-height: 1.3;
-  color: #333;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -23,6 +61,20 @@ h2 {
 pre {
   background-color: rgba(128, 128, 128, 0.11);
   padding: 10px;
+}
+
+.theme-example :is(.bu, .cf, .dt, .fu, .kw) {
+  color: var(--page-link);
+}
+
+.theme-example :is(.ch, .st) {
+  color: var(--page-text);
+  color: light-dark(#17634e, #95d9bf);
+}
+
+.theme-example :is(.at, .dv, .ot, .va) {
+  color: var(--page-text);
+  color: light-dark(#853457, #efa9cb);
 }
 
 code {
@@ -54,18 +106,6 @@ li code {
   background-color: rgba(128, 128, 128, 0.11);
   padding: 5px;
 }
-.darkmode {
-    background-color: var(--dark-color);
-    color: var(--light-color);
-}
-
-.darkmode a {
-  color: var(--light-color);
-}
-.darkmode a:visited {
-  color: lightgray;
-}
-
 /* Details styling */
 details {
   background-color: #f4fc5f4e;
@@ -84,7 +124,7 @@ details > summary {
 footer {
   text-align: center;
   font-size: 0.75em;
-  opacity: 0.5;
+  color: var(--page-muted);
   padding: 2em 0;
   margin-top: 3em;
   font-style: italic;
@@ -113,18 +153,5 @@ iframe {
   iframe {
     width: 100%;
     /* height: 200px; */
-  }
-}
-
-@media (prefers-color-scheme: dark) {
-  body {
-    background-color: rgb(33,33,36);
-    color: rgb(226,226,226);
-  }
-    a {
-    color: var(--light-color);
-  }
-    a:visited {
-    color: lightgray;
   }
 }

@@ -266,9 +266,13 @@ Your poem will display after you enter all the words.
 
 <img src="../imgs/web10-4.png" width="400px">
 
-## Going Further
+## Conclusion
 
-Try to test that the user actually entered something and give them a polite reminder message.
+You collected words with `prompt()`, inserted them into a template literal, and displayed the finished poem. A click event listener runs the poem function when the reader presses the button.
+
+## Next steps
+
+Test that the user actually entered something and give them a polite reminder message.
 
 You might annoy your users if you give them too many pop-ups. Try using an html form to collect the user information?
 

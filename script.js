@@ -1,50 +1,42 @@
+function createLessonItem(page) {
+    const item = document.createElement('li');
+    const heading = document.createElement('h2');
+    const description = document.createElement('p');
+
+    if (page.status === 'active' && page.filename) {
+        const link = document.createElement('a');
+        link.href = page.filename;
+        link.textContent = page.title;
+        heading.append(link);
+    } else {
+        heading.textContent = page.title;
+    }
+
+    description.textContent = page.description;
+    if (page.status === 'coming-soon') {
+        item.classList.add('coming-soon');
+    }
+
+    item.append(heading, description);
+    return item;
+}
+
 async function loadPages() {
+    const lessonList = document.getElementById('lesson-list');
+    const status = document.getElementById('lesson-status');
+
     try {
         const response = await fetch('pages.json');
+        if (!response.ok) {
+            throw new Error(`HTTP ${response.status}`);
+        }
+
         const data = await response.json();
-        const pagesGrid = document.getElementById('pages-grid');
-
-        data.pages.forEach(page => {
-            const pageCard = document.createElement('div');
-            pageCard.className = `page-card ${page.status === 'coming-soon' ? 'coming-soon' : ''}`;
-
-            // Make entire card clickable for active pages
-            if (page.status === 'active' && page.filename) {
-                pageCard.style.cursor = 'pointer';
-                pageCard.addEventListener('click', () => {
-                    window.location.href = page.filename;
-                });
-            }
-
-            const cardContent = `
-                <div class="card-icon">${page.icon}</div>
-                <div class="card-content">
-                    <h3>${page.title}</h3>
-                    <p>${page.description}</p>
-                </div>
-                ${page.status === 'active' && page.filename ?
-                    `<span class="card-link">View Page</span>` :
-                    `<span class="card-link disabled">${page.status === 'coming-soon' ? 'Coming Soon' : 'In Development'}</span>`
-                }
-            `;
-
-            pageCard.innerHTML = cardContent;
-            pagesGrid.appendChild(pageCard);
-        });
+        lessonList.append(...data.pages.map(createLessonItem));
     } catch (error) {
         console.error('Error loading pages:', error);
-        // Fallback content
-        document.getElementById('pages-grid').innerHTML = `
-            <div class="page-card">
-                <div class="card-icon">⚠️</div>
-                <div class="card-content">
-                    <h3>Error Loading Pages</h3>
-                    <p>Could not load page configuration</p>
-                </div>
-            </div>
-        `;
+        status.textContent = 'Could not load the course demos. Try reloading the page.';
     }
 }
 
-// Load pages when DOM is ready
-document.addEventListener('DOMContentLoaded', loadPages);
+loadPages();

@@ -92,3 +92,7 @@ body {
     font-size: 1.5rem;
 }
 </code></pre>
+
+## Conclusion
+
+You used anchor tags and relative file paths to connect two pages in the same folder. Each page links back to the other, so you can test both directions in the browser.

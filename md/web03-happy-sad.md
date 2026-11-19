@@ -166,10 +166,14 @@ Add a style tag in the **head**.
 </code></pre></details>
 
 
-## Going further
+## Conclusion
+
+You built a page whose buttons change the face on screen. The click handlers update a single element with JavaScript, which lets the page respond as soon as someone chooses a mood.
+
+## Next steps
 
 How would you add another emotion? What would you add?
 
-How would you an animated gif instead of an emoji?
+How would you show an animated GIF in place of an emoji?
 
 Which would be cuter: puppies or kittens? Try it!

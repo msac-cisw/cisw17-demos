@@ -4,119 +4,108 @@
       "title": "Code Editors",
       "description": "Code editors for both Windows and macOS.",
       "filename": "demos/code-editors.html",
-      "icon": "📝",
       "status": "active"
     },
         {
       "title": "WEB00 A Basic HTML Page",
       "description": "Create a basic html page.",
       "filename": "demos/web00-basic-html.html",
-      "icon": "<>",
       "status": "active"
     },
     {
       "title": "WEB03 Happy or Sad",
       "description": "Use JS to change the images to be happy or sad.",
       "filename": "demos/web03-happy-sad.html",
-      "icon": "😀",
       "status": "active"
     },
     {
       "title": "WEB04 Links",
       "description": "Create links between web pages",
       "filename": "demos/web04-links.html",
-      "icon": "🔗",
       "status": "active"
     },
     {
       "title": "WEB05 Custom Homepage",
       "description": "Create a custom homepage for your personal links",
       "filename": "demos/web05-custom-homepage.html",
-      "icon": "🏡",
       "status": "active"
     },
     {
       "title": "WEB06 Simple CSS Animations",
       "description": "Create simple animations using CSS",
       "filename": "demos/web06-simple-animations.html",
-      "icon": "📄",
       "status": "active"
     },
     {
       "title": "Intro to Git",
       "description": "Create a local git repository, stage and commit changes.",
       "filename": "demos/git-intro.html",
-      "icon": "⚙️",
       "status": "active"
     },
     {
       "title": "WEB09 Random Quote Generator",
       "description": "Create single page application that displays a random quote.",
       "filename": "demos/web09-quote-generator.html",
-      "icon": "📄",
       "status": "active"
     },
     {
       "title": "WEB10 A Silly Poem",
       "description": "Create single page application that creates a silly poem from user input.",
       "filename": "demos/web10-silly-poem.html",
-      "icon": "📄",
       "status": "active"
     },
     {
       "title": "WEB11 Let's Play Rock, Paper, Scissors!",
       "description": "Create simple game of Rock, Paper, Scissors.",
       "filename": "demos/web11-rps.html",
-      "icon": "📄",
       "status": "active"
     },
     {
       "title": "WEB12 Press 'd' to Toggle Dark Mode",
       "description": "Toggle darkmode when the 'd' key is pressed.",
       "filename": "demos/web12-dark-mode.html",
-      "icon": "📄",
       "status": "active"
     },
     {
       "title": "WEB17 Simple NodeJS Application and Website",
       "description": "Build a nodejs server and website.",
       "filename": "demos/web17-simple-nodejs.html",
-      "icon": "📄",
       "status": "active"
     },
     {
       "title": "WEB18 Simple TypeScript Application",
       "description": "Build a simple TypeScript application.",
       "filename": "demos/web18-simple-typescript.html",
-      "icon": "📄",
+      "status": "active"
+    },
+    {
+      "title": "WEB19 Build Your First Web Component",
+      "description": "Build a custom HTML element that displays and refreshes a text log.",
+      "filename": "demos/web19-web-components.html",
       "status": "active"
     },
     {
       "title": "DOCKER01 Simple Webserver & PHP",
       "description": "Use Docker to build and deploy a simple webserver and PHP.",
       "filename": "demos/docker01-simple-web.html",
-      "icon": "🐳",
       "status": "active"
     },
     {
       "title": "PY13 Hello, Flask",
       "description": "Build a flask application that says hello to you by name.",
       "filename": "demos/py13-hello-flask.html",
-      "icon": "🐍",
       "status": "active"
     },
     {
       "title": "PY14 Build a Python Study Time Logger",
       "description": "Build a study time logger in python using tkinker.",
       "filename": "demos/py14-study-time-log.html",
-      "icon": "🐍",
       "status": "active"
     },
     {
       "title": "Future Project",
-      "description": "Stay tuned for updates",
+      "description": "Future projects will appear here...",
       "filename": "",
-      "icon": "💡",
       "status": "coming-soon"
     }
   ]
