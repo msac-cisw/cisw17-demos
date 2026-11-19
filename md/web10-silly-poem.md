@@ -59,7 +59,7 @@ We will give the user some instructions as well when the page loads.
 
 Preview your webpage. You should see a simple (and unstyled) page.
 
-<img src="../imgs/web10-1.png" width="400px">
+<img src="../imgs/web10-1.png" width="400px" alt="The unstyled Silly Poem page shows instructions, definitions for adjectives and nouns, and a Let’s Go button.">
 
 ### Add style
 
@@ -95,7 +95,7 @@ h2 {
 
 Your page should look like this now:
 
-<img src="../imgs/web10-2.png" width="400px">
+<img src="../imgs/web10-2.png" width="400px" alt="The styled Silly Poem page has a centered heading, spaced instructions, and a larger Let’s Go button.">
 
 ### Adding Functionality with JavaScript
 
@@ -260,11 +260,11 @@ The browser is now listening for a click (or tap) on the button to start the fun
 
 Click the button and start entering your silly words when prompted.
 
-<img src="../imgs/web10-3.png" width="400px">
+<img src="../imgs/web10-3.png" width="400px" alt="A browser prompt labeled Enter an adjective opens after pressing Let’s Go.">
 
 Your poem will display after you enter all the words.
 
-<img src="../imgs/web10-4.png" width="400px">
+<img src="../imgs/web10-4.png" width="400px" alt="The finished poem appears beneath the title with the entered words smelly, rude, Apples, and adventurous in bold.">
 
 ## Conclusion
 

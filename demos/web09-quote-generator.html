@@ -1,20 +1,21 @@
 <!DOCTYPE html>
-<html lang="" >
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Web Demos</title>
+    <title>Random Quote Generator | Web Demos</title>
     <link rel="icon" type="image/png" href="../imgs/logo.png" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
     <script>hljs.highlightAll();</script>
     <link rel="stylesheet" href="../page-styles.css" />
+    <script src="../tutorial.js" defer></script>
   </head>
 
   <body>
+    <main id="top" class="tutorial-content" tabindex="-1">
     <h1 id="random-quote-generator">Random Quote Generator</h1>
     <p><strong>Objectives</strong></p>
     <p>Build a single page app that displays a random quote each time
@@ -145,7 +146,7 @@ document.getElementById(&quot;quote&quot;).innerText = quotes[i];</code></pre>
     change. You might see the same quote twice in a row as we didn’t
     write code to prevent that and there are only 5 quotes.</p>
     <p>Our page is working. It loads a quote each time you refresh.</p>
-    <p><img src="../imgs/web09-plain.gif" width="400px"></p>
+    <p><img src="../imgs/web09-plain.gif" width="400px" alt="Reloading the unstyled page displays a randomly selected quote and author at the top left."></p>
     <h2 id="add-some-style">Add some style</h2>
     <p>Let’s add some simple styling to your quote page. This will make
     it more fun for you to show off to your friends.</p>
@@ -162,7 +163,7 @@ document.getElementById(&quot;quote&quot;).innerText = quotes[i];</code></pre>
     page.</p>
     <p>The <code>font-size: 3rem</code> sets the font size to 3 times
     the font size of the root (html) element.</p>
-    <p><img src="../imgs/web09-styled.gif" width="400px"></p>
+    <p><img src="../imgs/web09-styled.gif" width="400px" alt="The styled generator displays the selected quote and author in large text at the center of the page."></p>
     <h2 id="conclusion">Conclusion</h2>
     <p>You stored quotes in an array, picked a random index, and
     displayed the selected quote on the page. Refresh the page a few
@@ -180,10 +181,12 @@ document.getElementById(&quot;quote&quot;).innerText = quotes[i];</code></pre>
     href="https://zenquotes.io/">Zen Quotes</a></li>
     <li>Update the quote every minute</li>
     </ol>
+    </main>
 
     <footer>
       &copy; <span id="year"></span> <a href="https://cantus.us/msac/" target="_blank">Sable Cantus</a> |
-      <a href="../index.html" title="Go to the Web Demos menu">Web Demos</a>
+      <a href="../index.html" title="Go to the Web Demos menu">Web Demos</a> |
+      <a href="#top">Back to top</a>
     </footer>
     <script>
       const currentYear = new Date().getFullYear();

@@ -1,2 +1,7 @@
-.vscode
-.DS_Store
+# Ignore hidden files and folders at any depth.
+.*
+!/.gitignore
+
+# Python bytecode.
+__pycache__/
+*.pyc

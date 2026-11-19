@@ -6,6 +6,9 @@
   --page-muted: CanvasText;
   --page-link: LinkText;
   --page-rule: GrayText;
+  --page-inset: rgba(128, 128, 128, 0.11);
+  --syntax-string: CanvasText;
+  --syntax-detail: CanvasText;
   background-color: var(--page-background);
   color: var(--page-text);
 }
@@ -17,6 +20,8 @@
     --page-muted: light-dark(#545c66, #bbc2cb);
     --page-link: light-dark(#285781, #a5c9ec);
     --page-rule: light-dark(#dce1e6, #454851);
+    --syntax-string: light-dark(#17634e, #95d9bf);
+    --syntax-detail: light-dark(#853457, #efa9cb);
   }
 }
 
@@ -32,7 +37,7 @@ a {
   color: var(--page-link);
 }
 
-:where(a, button):focus-visible {
+:where(a, button, pre[tabindex]):focus-visible {
   outline: 2px solid currentColor;
   outline-offset: 3px;
 }
@@ -50,6 +55,14 @@ body {
   line-height: 1.3;
 }
 
+.tutorial-content {
+  overflow-wrap: break-word;
+}
+
+.tutorial-content :where(a, code, td, th) {
+  overflow-wrap: anywhere;
+}
+
 h1, h2, h3, h4, h5, h6 {
   font-family: "Lora", "Times New Roman", serif;
 }
@@ -59,22 +72,41 @@ h2 {
 }
 
 pre {
-  background-color: rgba(128, 128, 128, 0.11);
+  background-color: var(--page-inset);
+  overflow-x: auto;
   padding: 10px;
+  white-space: pre;
 }
 
-.theme-example :is(.bu, .cf, .dt, .fu, .kw) {
+.tutorial-content pre code {
+  overflow-wrap: normal;
+}
+
+pre > code.hljs {
+  box-sizing: border-box;
+  display: block;
+  inline-size: max-content;
+  min-inline-size: 100%;
+  overflow: visible;
+}
+
+.theme-example :is(.bu, .cf, .dt, .fu, .kw),
+.hljs :is(.hljs-built_in, .hljs-keyword, .hljs-name, .hljs-section, .hljs-selector-tag, .hljs-title, .hljs-type) {
   color: var(--page-link);
 }
 
-.theme-example :is(.ch, .st) {
-  color: var(--page-text);
-  color: light-dark(#17634e, #95d9bf);
+.theme-example :is(.ch, .st),
+.hljs :is(.hljs-regexp, .hljs-string) {
+  color: var(--syntax-string);
 }
 
-.theme-example :is(.at, .dv, .ot, .va) {
-  color: var(--page-text);
-  color: light-dark(#853457, #efa9cb);
+.theme-example :is(.at, .dv, .ot, .va),
+.hljs :is(.hljs-attr, .hljs-attribute, .hljs-literal, .hljs-number, .hljs-property, .hljs-variable) {
+  color: var(--syntax-detail);
+}
+
+.hljs :is(.hljs-comment, .hljs-meta, .hljs-quote) {
+  color: var(--page-muted);
 }
 
 code {
@@ -82,19 +114,12 @@ code {
   font-family: "Fira Code", monospace;
 }
 
-pre,
-code {
-  overflow-x: auto;
-  white-space: pre;
-}
-
-img {
-  display: block;
-  margin: 0 auto;
-}
+img,
 video {
   display: block;
+  height: auto;
   margin: 0 auto;
+  max-inline-size: 100%;
 }
 
 li {
@@ -102,13 +127,13 @@ li {
   line-height: 1.5;
 }
 
-li code {
+li code:not(pre code) {
   background-color: rgba(128, 128, 128, 0.11);
   padding: 5px;
 }
 /* Details styling */
 details {
-  background-color: #f4fc5f4e;
+  background-color: var(--page-inset);
   padding: 10px;
   margin-bottom: 2rem;
   border-radius: 10px;

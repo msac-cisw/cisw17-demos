@@ -1,22 +1,21 @@
 <!DOCTYPE html>
-<html lang="" >
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Web Demos</title>
+    <title>Code Editors | Web Demos</title>
     <link rel="icon" type="image/png" href="../imgs/logo.png" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
     <script>hljs.highlightAll();</script>
     <link rel="stylesheet" href="../page-styles.css" />
+    <script src="../tutorial.js" defer></script>
   </head>
 
   <body>
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/bLwwsMoBVJs?si=iJQM390qUM7pSZu7" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
-    </iframe>
+    <main id="top" class="tutorial-content" tabindex="-1">
     <h1 id="code-editors">Code Editors</h1>
     <p>A code editor is a software tool used by developers to write and
     edit source code. It provides features that make programming easier,
@@ -57,10 +56,10 @@
     <table style="width: 100%; border-collapse: collapse; font-family: Arial, sans-serif; font-size: 14px;">
     <thead>
     <tr>
-    <th style="border: 1px solid #ccc; background-color: #f2f2f2; padding: 8px; text-align: left;">
+    <th style="border: 1px solid #ccc; background-color: var(--page-inset); padding: 8px; text-align: left;">
     Feature
     </th>
-    <th style="border: 1px solid #ccc; background-color: #f2f2f2; padding: 8px; text-align: left;">
+    <th style="border: 1px solid #ccc; background-color: var(--page-inset); padding: 8px; text-align: left;">
     Description
     </th>
     </tr>
@@ -228,10 +227,12 @@
     tutorials, the essentials are saving plain-text files with the
     correct extensions and using syntax highlighting to make your code
     easier to read.</p>
+    </main>
 
     <footer>
       &copy; <span id="year"></span> <a href="https://cantus.us/msac/" target="_blank">Sable Cantus</a> |
-      <a href="../index.html" title="Go to the Web Demos menu">Web Demos</a>
+      <a href="../index.html" title="Go to the Web Demos menu">Web Demos</a> |
+      <a href="#top">Back to top</a>
     </footer>
     <script>
       const currentYear = new Date().getFullYear();

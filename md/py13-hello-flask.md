@@ -1,5 +1,3 @@
-<div id="top"></div>
-
 # Hello, Flask
 
 **Objectives**
@@ -76,7 +74,7 @@ This is your local machine (e.g. 127.0.0.1) using port 5000 to open /hello.
 
 You should see your flask application running in the browser.
 
-<img src="../imgs/py13-hello1.png" width="400px">
+<img src="../imgs/py13-hello1.png" width="400px" alt="The /hello route displays Hello, Flask! in the browser.">
 
 You will see a log entry in the terminal as well.
 
@@ -84,7 +82,7 @@ You will see a log entry in the terminal as well.
 
 Did you get an error? If you tried to open the URL without **/hello** you will get the error page.
 
-<img src="../imgs/py13-error.png" width="400px">
+<img src="../imgs/py13-error.png" width="400px" alt="A 404 Not Found page appears when the browser opens the site root before a route is defined for it.">
 
 You also see the **404** error in the log:
 
@@ -249,7 +247,7 @@ Use the `flask run` command and open your browser to `http://localhost:5000`
 
 You should see **index.html**.
 
-<img src="../imgs/py13-index1.png" width="400px">
+<img src="../imgs/py13-index1.png" width="400px" alt="The site root at localhost:5000 now displays Hello, Flask!">
 
 We now have 2 working routes that display similar output. 
 
@@ -291,7 +289,7 @@ Restart flask by pressing the up arrow or typing `flask run` into the terminal.
 
 The **Say hello** button will direct the browser to the correct route, but it isn't using the name yet. You will still see the **h1** from the route in **app.py**.
 
-<img src="../imgs/py13-index2.png" width="400px">
+<img src="../imgs/py13-index2.png" width="400px" alt="The home page shows an empty Enter your name field and a Say hello button.">
 
 ### Create hello.html
 
@@ -393,9 +391,9 @@ Save the file. Start flask by typing the up arrow or `flask run` in the terminal
 
 Test your code several times with both a blank value (to test for World) and various names.
 
-<img src="../imgs/py13-end1.png" width="400px">
+<img src="../imgs/py13-end1.png" width="400px" alt="Sammy is typed into the name field before submitting the form.">
 
-<img src="../imgs/py13-end2.png" width="400px">
+<img src="../imgs/py13-end2.png" width="400px" alt="After submitting, the browser opens /hello?name=Sammy and displays Hello, Sammy.">
 
 
 Here is the complete **app.py** code:
@@ -429,7 +427,3 @@ You built a Flask app that takes a name from a form and displays a greeting. You
 - Add `/static/` files for CSS and images
 - Try using `POST` instead of `GET` to pass data to the server
 - Store persistent data in `sqlite3`
-
-
-
-<p><a href="#top">Back to top.</a></p>

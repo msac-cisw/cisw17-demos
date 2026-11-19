@@ -1,4 +1,4 @@
-## Build a Python Study Time Log
+# Build a Python Study Time Log
 
 You will build a small graphical user interface, or GUI, with Python and `tkinter`. The app will let you type what you are studying, add it to a study log, edit an entry in a popup window, and remove entries you no longer need.
 
@@ -36,7 +36,7 @@ Your first version will keep entries only while the program is open. When you cl
       <td style="border: 1px solid #d6e9f8; padding: 10px;">Event-driven programming</td>
       <td style="border: 1px solid #d6e9f8; padding: 10px;">Button clicks call functions such as <code>add_entry</code>, <code>remove_entry</code>, and <code>edit_entry</code>.</td>
     </tr>
-    <tr style="background: #f5faff;">
+    <tr style="background: var(--page-inset);">
       <td style="border: 1px solid #d6e9f8; padding: 10px;">GUI components</td>
       <td style="border: 1px solid #d6e9f8; padding: 10px;">The app uses a window, labels, an entry box, buttons, a listbox, and a popup window.</td>
     </tr>
@@ -44,7 +44,7 @@ Your first version will keep entries only while the program is open. When you cl
       <td style="border: 1px solid #d6e9f8; padding: 10px;">GUI design issues</td>
       <td style="border: 1px solid #d6e9f8; padding: 10px;">The app uses larger text, clear labels, spacing, and feedback messages so it is easier to read.</td>
     </tr>
-    <tr style="background: #f5faff;">
+    <tr style="background: var(--page-inset);">
       <td style="border: 1px solid #d6e9f8; padding: 10px;">Developing an event-driven app</td>
       <td style="border: 1px solid #d6e9f8; padding: 10px;">You will build the app one feature at a time and test after each major change.</td>
     </tr>
@@ -376,7 +376,7 @@ Answer these questions in your own words:
       <td style="border: 1px solid #d6e9f8; padding: 10px;">The button appears, but nothing happens.</td>
       <td style="border: 1px solid #d6e9f8; padding: 10px;">Check the button's <code>command=</code> option. Use the function name without parentheses, such as <code>command=add_entry</code>.</td>
     </tr>
-    <tr style="background: #f5faff;">
+    <tr style="background: var(--page-inset);">
       <td style="border: 1px solid #d6e9f8; padding: 10px;">The program says a variable is not defined.</td>
       <td style="border: 1px solid #d6e9f8; padding: 10px;">Check spelling and make sure the variable is created before the function uses it.</td>
     </tr>
@@ -384,15 +384,15 @@ Answer these questions in your own words:
       <td style="border: 1px solid #d6e9f8; padding: 10px;">The edit window opens, but the list does not update.</td>
       <td style="border: 1px solid #d6e9f8; padding: 10px;">Make sure the save function changes the selected entry and then calls <code>refresh_listbox()</code>.</td>
     </tr>
-    <tr style="background: #f5faff;">
+    <tr style="background: var(--page-inset);">
       <td style="border: 1px solid #d6e9f8; padding: 10px;">The saved entries do not come back.</td>
       <td style="border: 1px solid #d6e9f8; padding: 10px;">Make sure you clicked <strong>Save Log</strong> before closing the app, and make sure <code>study_log.json</code> is in the same folder as your Python file.</td>
     </tr>
   </tbody>
 </table>
 
-<details style="border: 1px solid #9ec5e8; border-radius: 6px; padding: 1rem; margin: 1rem 0; background-color: #f7fbff;">
-  <summary style="font-weight: 700; color: #2f5597;">Show the full challenge version code</summary>
+<details style="border: 1px solid #9ec5e8; border-radius: 6px; padding: 1rem; margin: 1rem 0; background-color: var(--page-inset);">
+  <summary style="font-weight: 700; color: var(--page-link);">Show the full challenge version code</summary>
 
 <pre><code>
 import json

@@ -1,7 +1,3 @@
----
-lang: en
----
-
 # WEB19 – Build Your First Web Component
 
 Build a `<log-viewer>` element that shows the contents of a text file and checks for changes every five seconds. A **custom element** is an HTML tag whose behavior you define in JavaScript. You can use the tag more than once, and each copy gets its own display.

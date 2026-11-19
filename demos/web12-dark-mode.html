@@ -1,20 +1,19 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Web Demos</title>
+    <title>Press ‘d’ to Toggle Dark Mode | Web Demos</title>
     <link rel="icon" type="image/png" href="../imgs/logo.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../page-styles.css" />
+    <script src="../tutorial.js" defer></script>
   </head>
 
   <body>
-    <div id="top">
-
-    </div>
+    <main id="top" class="tutorial-content" tabindex="-1">
     <h1 id="press-d-to-toggle-dark-mode">Press ‘d’ to Toggle Dark
     Mode</h1>
     <p><strong>Objectives</strong></p>
@@ -136,13 +135,12 @@
         }
     });
     </script>
-    <p>
-    <a href="#top">Back to top.</a>
-    </p>
+    </main>
 
     <footer>
       &copy; <span id="year"></span> <a href="https://cantus.us/msac/" target="_blank">Sable Cantus</a> |
-      <a href="../index.html" title="Go to the Web Demos menu">Web Demos</a>
+      <a href="../index.html" title="Go to the Web Demos menu">Web Demos</a> |
+      <a href="#top">Back to top</a>
     </footer>
     <script>
       const currentYear = new Date().getFullYear();

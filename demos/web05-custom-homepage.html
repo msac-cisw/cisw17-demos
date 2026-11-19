@@ -1,20 +1,21 @@
 <!DOCTYPE html>
-<html lang="" >
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Web Demos</title>
+    <title>WEB05 – Create a Custom Home Page | Web Demos</title>
     <link rel="icon" type="image/png" href="../imgs/logo.png" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
     <script>hljs.highlightAll();</script>
     <link rel="stylesheet" href="../page-styles.css" />
+    <script src="../tutorial.js" defer></script>
   </head>
 
   <body>
+    <main id="top" class="tutorial-content" tabindex="-1">
     <h1 id="web05-create-a-custom-home-page">WEB05 – Create a Custom
     Home Page</h1>
     <p><strong>Objectives</strong></p>
@@ -151,7 +152,7 @@
       text-decoration: underline;
     }
     </code></pre>
-    <p><img src="../imgs/web05-style2.png" width="400px"></p>
+    <p><img src="../imgs/web05-style2.png" width="400px" alt="The finished homepage has Personal, School, and News sections, with each bookmark centered in a pale blue row."></p>
     <h2 id="make-the-homepage-open-in-your-browser">Make The Homepage
     Open in Your Browser</h2>
     <p>Move the <strong>homepage</strong> folder to your home directory
@@ -299,10 +300,12 @@
         column-gap: 20px;
     }
     </code></pre>
+    </main>
 
     <footer>
       &copy; <span id="year"></span> <a href="https://cantus.us/msac/" target="_blank">Sable Cantus</a> |
-      <a href="../index.html" title="Go to the Web Demos menu">Web Demos</a>
+      <a href="../index.html" title="Go to the Web Demos menu">Web Demos</a> |
+      <a href="#top">Back to top</a>
     </footer>
     <script>
       const currentYear = new Date().getFullYear();

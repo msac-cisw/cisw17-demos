@@ -140,7 +140,7 @@ Refresh your browser a few times. You should see the quote change. You might see
 
 Our page is working. It loads a quote each time you refresh.
 
-<img src="../imgs/web09-plain.gif" width="400px">
+<img src="../imgs/web09-plain.gif" width="400px" alt="Reloading the unstyled page displays a randomly selected quote and author at the top left.">
 
 ## Add some style
 
@@ -162,7 +162,7 @@ The `#quote` css specifies a perfect centering on the page.
 
 The `font-size: 3rem` sets the font size to 3 times the font size of the root (html) element.
 
-<img src="../imgs/web09-styled.gif" width="400px">
+<img src="../imgs/web09-styled.gif" width="400px" alt="The styled generator displays the selected quote and author in large text at the center of the page.">
 
 ## Conclusion
 

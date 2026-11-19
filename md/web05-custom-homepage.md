@@ -126,7 +126,7 @@ li a:hover {
 }
 </code></pre>
 
-<img src="../imgs/web05-style2.png" width="400px">
+<img src="../imgs/web05-style2.png" width="400px" alt="The finished homepage has Personal, School, and News sections, with each bookmark centered in a pale blue row.">
 
 
 ## Make The Homepage Open in Your Browser

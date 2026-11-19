@@ -1,23 +1,21 @@
 <!DOCTYPE html>
-<html lang="" >
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Web Demos</title>
+    <title>Hello, Flask | Web Demos</title>
     <link rel="icon" type="image/png" href="../imgs/logo.png" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
     <script>hljs.highlightAll();</script>
     <link rel="stylesheet" href="../page-styles.css" />
+    <script src="../tutorial.js" defer></script>
   </head>
 
   <body>
-    <div id="top">
-
-    </div>
+    <main id="top" class="tutorial-content" tabindex="-1">
     <h1 id="hello-flask">Hello, Flask</h1>
     <p><strong>Objectives</strong></p>
     <p>Build a Hello, World web application using Flask.</p>
@@ -96,12 +94,12 @@
     <p>This is your local machine (e.g. 127.0.0.1) using port 5000 to
     open /hello.</p>
     <p>You should see your flask application running in the browser.</p>
-    <p><img src="../imgs/py13-hello1.png" width="400px"></p>
+    <p><img src="../imgs/py13-hello1.png" width="400px" alt="The /hello route displays Hello, Flask! in the browser."></p>
     <p>You will see a log entry in the terminal as well.</p>
     <pre>127.0.0.1 - - [14/Nov/2025 12:10:42] "GET /hello HTTP/1.1" 200 -</pre>
     <p>Did you get an error? If you tried to open the URL without
     <strong>/hello</strong> you will get the error page.</p>
-    <p><img src="../imgs/py13-error.png" width="400px"></p>
+    <p><img src="../imgs/py13-error.png" width="400px" alt="A 404 Not Found page appears when the browser opens the site root before a route is defined for it."></p>
     <p>You also see the <strong>404</strong> error in the log:</p>
     <pre>127.0.0.1 - - [14/Nov/2025 12:14:06] "GET / HTTP/1.1" 404 -</pre>
     <details>
@@ -372,7 +370,7 @@
     <p>Use the <code>flask run</code> command and open your browser to
     <code>http://localhost:5000</code></p>
     <p>You should see <strong>index.html</strong>.</p>
-    <p><img src="../imgs/py13-index1.png" width="400px"></p>
+    <p><img src="../imgs/py13-index1.png" width="400px" alt="The site root at localhost:5000 now displays Hello, Flask!"></p>
     <p>We now have 2 working routes that display similar output.</p>
     <div id="user-input">
 
@@ -423,7 +421,7 @@
     the correct route, but it isn’t using the name yet. You will still
     see the <strong>h1</strong> from the route in
     <strong>app.py</strong>.</p>
-    <p><img src="../imgs/py13-index2.png" width="400px"></p>
+    <p><img src="../imgs/py13-index2.png" width="400px" alt="The home page shows an empty Enter your name field and a Say hello button."></p>
     <h3 id="create-hello.html">Create hello.html</h3>
     <p>Update the <strong>“/hello”</strong> route to return a webpage
     named <strong>hello.html</strong>.</p>
@@ -522,8 +520,8 @@
     <code>flask run</code> in the terminal.</p>
     <p>Test your code several times with both a blank value (to test for
     World) and various names.</p>
-    <p><img src="../imgs/py13-end1.png" width="400px"></p>
-    <p><img src="../imgs/py13-end2.png" width="400px"></p>
+    <p><img src="../imgs/py13-end1.png" width="400px" alt="Sammy is typed into the name field before submitting the form."></p>
+    <p><img src="../imgs/py13-end2.png" width="400px" alt="After submitting, the browser opens /hello?name=Sammy and displays Hello, Sammy."></p>
     <p>Here is the complete <strong>app.py</strong> code:</p>
     <pre><code>
     from flask import Flask, render_template, request
@@ -557,13 +555,12 @@
     data to the server</li>
     <li>Store persistent data in <code>sqlite3</code></li>
     </ul>
-    <p>
-    <a href="#top">Back to top.</a>
-    </p>
+    </main>
 
     <footer>
       &copy; <span id="year"></span> <a href="https://cantus.us/msac/" target="_blank">Sable Cantus</a> |
-      <a href="../index.html" title="Go to the Web Demos menu">Web Demos</a>
+      <a href="../index.html" title="Go to the Web Demos menu">Web Demos</a> |
+      <a href="#top">Back to top</a>
     </footer>
     <script>
       const currentYear = new Date().getFullYear();

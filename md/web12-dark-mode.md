@@ -1,9 +1,6 @@
 ---
-lang: en
 pandoc-highlighting: true
 ---
-
-<div id="top"></div>
 
 # Press 'd' to Toggle Dark Mode
 
@@ -133,5 +130,3 @@ document.addEventListener('keydown', (event) => {
     }
 });
 </script>
-
-<p><a href="#top">Back to top.</a></p>

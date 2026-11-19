@@ -119,6 +119,7 @@ Add the class to your h1: `<h1 class="slideIn">`.
 }
 .example {
     background-color: lightgoldenrodyellow;
+    color: #333;
     padding: 5px 0px 5px 15px;
 }
 </style>
@@ -162,6 +163,13 @@ Add the class to your paragraphs: `<p class="fadeIn">`.
 }
 .fadeIn {
     animation: fadeIn 3s ease-in-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .slideIn,
+    .fadeIn {
+        animation: none;
+    }
 }
 </style>
 

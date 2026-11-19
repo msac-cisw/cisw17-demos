@@ -200,7 +200,7 @@ The web page will live in a folder named **public** (the same folder we configur
 
 Node.js enables you to run JavaScript on the server side, while the browser still executes JavaScript on the client side.  The two environments communicate over **HTTP**.  The diagram below summarises the relationship:
 
-<img src="../imgs/web17-diagram.png" width="400px">
+<img src="../imgs/web17-diagram.png" width="400px" alt="An arrow labeled HTTP points from the browser to the Node.js server.">
 
 1. The **browser** requests a page from the Node.js server.  Express serves static files like `index.html` and `style.css`.  
 2. When the user clicks the button, the browser sends an **HTTP GET** request to `/api/greet` using the Fetch API.  

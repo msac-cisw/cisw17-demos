@@ -1,14 +1,10 @@
 <!DOCTYPE html>
-<html lang="$lang$" $if(dir)$ dir="$dir$" $endif$>
+<html lang="$if(lang)$$lang$$else$en$endif$"$if(dir)$ dir="$dir$"$endif$>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Web Demos</title>
+    <title>$pagetitle$ | Web Demos</title>
     <link rel="icon" type="image/png" href="../imgs/logo.png" />
-$if(pandoc-highlighting)$
-$else$
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
-$endif$
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
@@ -18,14 +14,18 @@ $else$
     <script>hljs.highlightAll();</script>
 $endif$
     <link rel="stylesheet" href="../page-styles.css" />
+    <script src="../tutorial.js" defer></script>
   </head>
 
   <body>
+    <main id="top" class="tutorial-content" tabindex="-1">
     $body$
+    </main>
 
     <footer>
       &copy; <span id="year"></span> <a href="https://cantus.us/msac/" target="_blank">Sable Cantus</a> |
-      <a href="../index.html" title="Go to the Web Demos menu">Web Demos</a>
+      <a href="../index.html" title="Go to the Web Demos menu">Web Demos</a> |
+      <a href="#top">Back to top</a>
     </footer>
     <script>
       const currentYear = new Date().getFullYear();

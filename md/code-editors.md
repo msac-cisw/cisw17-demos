@@ -1,6 +1,3 @@
-<iframe width="560" height="315" src="https://www.youtube.com/embed/bLwwsMoBVJs?si=iJQM390qUM7pSZu7" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-
-
 # Code Editors
 
 A code editor is a software tool used by developers to write and edit source code. It provides features that make programming easier, such as:
@@ -29,8 +26,8 @@ Ready to build a complete page? Continue to [WEB00 – A Basic HTML Page](web00-
 <table style="width: 100%; border-collapse: collapse; font-family: Arial, sans-serif; font-size: 14px;">
   <thead>
     <tr>
-      <th style="border: 1px solid #ccc; background-color: #f2f2f2; padding: 8px; text-align: left;">Feature</th>
-      <th style="border: 1px solid #ccc; background-color: #f2f2f2; padding: 8px; text-align: left;">Description</th>
+      <th style="border: 1px solid #ccc; background-color: var(--page-inset); padding: 8px; text-align: left;">Feature</th>
+      <th style="border: 1px solid #ccc; background-color: var(--page-inset); padding: 8px; text-align: left;">Description</th>
     </tr>
   </thead>
   <tbody>

@@ -78,7 +78,7 @@ We will use `onclick=""` to provide the command that changes the text content of
 
 Load your page in the browser and test it out. It should be basic, but functional.
 
-<img src="../imgs/web03-basic.png" width="400px">
+<img src="../imgs/web03-basic.png" width="400px" alt="The unstyled page shows the How are you feeling heading, two small buttons, and a small smiling face.">
 
 ## Adding some CSS
 
@@ -110,7 +110,7 @@ Add a style tag in the **head**.
 &lt;/style&gt;
 </code></pre>
 
-<img src="../imgs/web03-styled.png" width="400px">
+<img src="../imgs/web03-styled.png" width="400px" alt="The styled page centers the heading and two mood buttons, with a large smiling face below them.">
 
 
 <details style="margin: 10px; padding: 10px;">

@@ -7,9 +7,7 @@ These are classroom demos.
 
 ## Markdown
 
-Create the markdown tutorial in the `md` folder.
-
-Add the filename to `build.sh`.
+Copy the [tutorial template](templates/template.md) to a new Markdown file in `md`. Its first level-one heading supplies the browser tab title. Pages default to English. For a translation, set `lang` in the Markdown front matter.
 
 Run `build.sh`.
 

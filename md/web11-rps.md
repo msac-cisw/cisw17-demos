@@ -1,5 +1,3 @@
-<div id="top"></div>
-
 # Let's Play Rock, Paper, Scissors!
 
 **Objectives**
@@ -375,6 +373,3 @@ Here are some ideas to try:
 * Add animations to the results
 * Show css confetti when the player wins, or after a certain win streak (e.g. 5 wins in a row)
 * Add some fun easter eggs such as if you pick 5 rocks in a row, display the "blockhead" achievement, etc.
-
-<p><a href="#top">Back to top.</a></p>
-
